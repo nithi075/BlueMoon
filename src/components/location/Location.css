@@ -1,461 +1,124 @@
-/* =========================================
-   PREMIUM CINEMATIC LOCATION SECTION
-========================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
-
-:root{
-
-  --gold:#D4AF37;
-  --gold-light:#F2C94C;
-
-  --bg-dark:#050505;
-  --bg-soft:#0d0d0d;
-
-  --white:#F5F5F5;
-
-  --text-light:
-  rgba(255,255,255,.68);
-
+/* ==========================================================================
+   Location Section Canvas Blueprint
+   ========================================================================== */
+.location-section {
+  background-color: var(--bg-midnight, #090D16);
+  padding: 8rem 5%;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
 }
 
-/* =========================================
-   SECTION
-========================================= */
-
-.location{
-
-  position:relative;
-
-  width:100%;
-
-  padding:140px 6%;
-
-  overflow:hidden;
-
-  background:
-  linear-gradient(
-    180deg,
-    #050505 0%,
-    #0b0b0b 45%,
-    #111111 100%
-  );
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  text-align:center;
-
+.location-master-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ambient glow */
-
-.location::before{
-
-  content:"";
-
-  position:absolute;
-
-  width:650px;
-  height:650px;
-
-  top:-260px;
-  right:-180px;
-
-  background:
-  radial-gradient(
-    circle,
-    rgba(212,175,55,.08),
-    transparent 72%
-  );
-
-  filter:blur(12px);
-
-  pointer-events:none;
-
+/* Typography Metas Overrides */
+.location-tag {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-cyan, #00D2E6);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
-.location::after{
-
-  content:"";
-
-  position:absolute;
-
-  width:420px;
-  height:420px;
-
-  bottom:-180px;
-  left:-120px;
-
-  background:
-  radial-gradient(
-    circle,
-    rgba(242,201,76,.05),
-    transparent 72%
-  );
-
-  pointer-events:none;
-
+.location-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -1px;
 }
 
-/* =========================================
-   TAG
-========================================= */
-
-.location-tag{
-
-  position:relative;
-
-  display:inline-block;
-
-  color:var(--gold-light);
-
-  font-family:'Montserrat',sans-serif;
-
-  font-size:.72rem;
-
-  letter-spacing:6px;
-
-  text-transform:uppercase;
-
-  margin-bottom:24px;
-
-  z-index:2;
-
+.location-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted, #94A3B8);
+  max-width: 500px;
+  margin: 0 0 4.5rem 0;
 }
 
-/* gold line */
-
-.location-tag::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:50%;
-  bottom:-10px;
-
-  transform:translateX(-50%);
-
-  width:60px;
-  height:1px;
-
-  background:
-  linear-gradient(
-    to right,
-    transparent,
-    var(--gold),
-    transparent
-  );
-
+.location-text strong {
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
 }
 
-/* =========================================
-   TITLE
-========================================= */
-
-.location h2{
-
-  position:relative;
-
-  font-family:
-  'Cormorant Garamond',
-  serif;
-
-  font-size:
-  clamp(3rem,5vw,5.5rem);
-
-  font-weight:500;
-
-  color:var(--white);
-
-  letter-spacing:3px;
-
-  margin-bottom:26px;
-
-  z-index:2;
-
+/* ==========================================================================
+   Premium Embedded Map Framework Viewport
+   ========================================================================== */
+.map-container-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  height: 480px; /* Perfect widescreen cinematic balance */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* cinematic shine */
-
-.location h2::after{
-
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:-120%;
-
-  width:70%;
-  height:100%;
-
-  background:
-  linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.08),
-    transparent
-  );
-
-  transform:skewX(-18deg);
-
-  animation:titleShine 6s ease infinite;
-
+/* Filters applied directly to google iframe elements to match pitch black theme */
+.map-container-frame iframe {
+  filter: grayscale(100%) invert(92%) contrast(110%) brightness(95%);
+  mix-blend-mode: lighten;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes titleShine{
+.map-container-frame:hover {
+  border-color: rgba(0, 210, 230, 0.25);
+  box-shadow: 0 40px 80px rgba(0, 210, 230, 0.05);
+}
 
-  0%{
-    left:-120%;
+.map-container-frame:hover iframe {
+  transform: scale(1.02); /* Clean macro zoom layout on focus */
+}
+
+/* Luxury Multi-layer Ambient Darkness Vignette Frame */
+.map-inner-shadow-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows direct map clicks seamlessly */
+  box-shadow: inset 0 0 40px rgba(9, 13, 22, 0.8),
+              inset 0 0 100px rgba(9, 13, 22, 0.4);
+}
+
+/* ==========================================================================
+   Responsive Logic Engine Breakpoints
+   ========================================================================== */
+@media (max-width: 912px) {
+  .location-title {
+    font-size: 2.5rem;
   }
-
-  40%{
-    left:130%;
+  .map-container-frame {
+    height: 380px;
   }
-
-  100%{
-    left:130%;
-  }
-
 }
 
-/* =========================================
-   TEXT
-========================================= */
-
-.location-text{
-
-  color:var(--text-light);
-
-  font-family:'Montserrat',sans-serif;
-
-  font-size:.95rem;
-
-  line-height:2.2;
-
-  letter-spacing:1px;
-
-  margin-bottom:70px;
-
-  z-index:2;
-
-}
-
-/* =========================================
-   MAP
-========================================= */
-
-.map-container{
-
-  position:relative;
-
-  width:min(92%,1200px);
-
-  height:650px;
-
-  overflow:hidden;
-
-  border-radius:26px;
-
-  background:#111;
-
-  z-index:2;
-
-  border:
-  1px solid
-  rgba(255,255,255,.08);
-
-  box-shadow:
-  0 30px 80px rgba(0,0,0,.45);
-
-  transition:
-  transform 1s cubic-bezier(0.16,1,0.3,1),
-  box-shadow .8s ease;
-
-}
-
-/* luxury frame */
-
-.map-container::before{
-
-  content:"";
-
-  position:absolute;
-
-  inset:18px;
-
-  border:
-  1px solid
-  rgba(212,175,55,.16);
-
-  z-index:3;
-
-  pointer-events:none;
-
-}
-
-/* gold glow */
-
-.map-container::after{
-
-  content:"";
-
-  position:absolute;
-
-  inset:0;
-
-  background:
-  radial-gradient(
-    circle at top,
-    rgba(212,175,55,.08),
-    transparent 72%
-  );
-
-  opacity:0;
-
-  transition:.8s ease;
-
-  pointer-events:none;
-
-}
-
-.map-container:hover{
-
-  transform:
-  translateY(-8px);
-
-  box-shadow:
-  0 40px 100px rgba(0,0,0,.6);
-
-}
-
-.map-container:hover::after{
-
-  opacity:1;
-
-}
-
-/* iframe */
-
-.map-container iframe{
-
-  width:100%;
-  height:100%;
-
-  filter:
-  grayscale(100%)
-  contrast(1.05)
-  brightness(.88);
-
-  transition:
-  filter 1s ease,
-  transform 1.4s ease;
-
-}
-
-.map-container:hover iframe{
-
-  filter:
-  grayscale(20%)
-  contrast(1.08)
-  brightness(.96);
-
-  transform:scale(1.02);
-
-}
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media(max-width:768px){
-
-  .location{
-
-    padding:90px 5%;
+@media (max-width: 768px) {
+  .location-section {
+    padding: 6rem 4%;
   }
-
-  .location-tag{
-
-    font-size:.6rem;
-
-    letter-spacing:4px;
-
-    margin-bottom:18px;
+  .location-title {
+    font-size: 2rem;
   }
-
-  .location h2{
-
-    font-size:2.4rem;
-
-    letter-spacing:1.5px;
-
-    margin-bottom:20px;
+  .location-text {
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
   }
-
-  .location-text{
-
-    font-size:.8rem;
-
-    line-height:2;
-
-    margin-bottom:40px;
+  .map-container-frame {
+    height: 280px;
+    border-radius: 8px;
   }
-
-  .map-container{
-
-    width:100%;
-
-    height:420px;
-
-    border-radius:18px;
-  }
-
-  .map-container::before{
-
-    inset:12px;
-  }
-
-}
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media(max-width:480px){
-
-  .location{
-
-    padding:70px 4%;
-  }
-
-  .location h2{
-
-    font-size:2rem;
-  }
-
-  .location-text{
-
-    font-size:.74rem;
-
-    line-height:1.9;
-  }
-
-  .map-container{
-
-    height:320px;
-
-    border-radius:14px;
-  }
-
-  .map-container::before{
-
-    inset:10px;
-  }
-
 }

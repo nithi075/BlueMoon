@@ -1,367 +1,386 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import {
   motion,
-  AnimatePresence
+  AnimatePresence,
 } from "framer-motion";
+
+import {
+  FiPlay,
+  FiArrowUpRight,
+} from "react-icons/fi";
 
 import "./Gallery.css";
 
-import wedding from "../assets/img2.jpg";
-import wedding2 from "../assets/img6.jpg";
-import couple from "../assets/img3.jpg";
-import portrait from "../assets/img4.jpg";
-import candid from "../assets/img5.jpg";
+/* LOCAL VIDEOS */
 
-export default function Gallery(){
+import video1 from "../assets/video1.mp4";
+import video2 from "../assets/video2.mp4";
+import video3 from "../assets/video3.mp4";
+import video4 from "../assets/video4.mp4";
 
-  /* =========================================
-     DATA
-  ========================================= */
+const Gallery = () => {
 
-  const items = [
+  const [activeCategory, setActiveCategory] =
+    useState("all");
+
+  /* VIDEOS */
+
+  const videos = [
 
     {
-      title:"Baby Shower",
-      category:"Celebrations",
-      img:wedding2
+      id: 1,
+
+      title: "Luxury Commercial",
+
+      category: "commercial",
+
+      year: "2026",
+
+      client: "AETHER",
+
+      duration: "02:14",
+
+      description:
+        "High-end cinematic commercial production crafted with luxury visual storytelling and immersive direction.",
+
+      video: video4,
     },
 
     {
-      title:"Wedding Moments",
-      category:"Luxury Weddings",
-      img:wedding
+      id: 2,
+
+      title: "Music Visual",
+
+      category: "music",
+
+      year: "2026",
+
+      client: "NOIR",
+
+      duration: "03:42",
+
+      description:
+        "Creative cinematic visuals engineered for modern music artists and immersive visual identity.",
+
+      video: video3,
     },
 
     {
-      title:"Couple Moments",
-      category:"Love Stories",
-      img:couple
+      id: 3,
+
+      title: "Brand Film",
+
+      category: "brand",
+
+      year: "2025",
+
+      client: "VELORA",
+
+      duration: "01:56",
+
+      description:
+        "Luxury brand storytelling with editorial cinematography and emotional visual narratives.",
+
+      video: video3,
     },
 
     {
-      title:"Portrait Studio",
-      category:"Portraits",
-      img:portrait
-    },
+      id: 4,
 
-    {
-      title:"Bride Photography",
-      category:"Moments",
-      img:candid
-    }
+      title: "Fashion Reel",
+
+      category: "fashion",
+
+      year: "2026",
+
+      client: "ÉLAN",
+
+      duration: "02:38",
+
+      description:
+        "Premium fashion visuals blending cinematic motion, luxury aesthetics, and elevated styling.",
+
+      video: video4,
+    },
 
   ];
 
-  /* =========================================
-     ACTIVE CARD
-  ========================================= */
+  /* FILTERS */
 
-  const [activeIndex,setActiveIndex] = useState(1);
+  const categories = [
+    "all",
+    "commercial",
+    "music",
+    "brand",
+    "fashion",
+  ];
 
-  /* =========================================
-     AUTO SLIDE
-  ========================================= */
+  /* FILTER LOGIC */
 
-  useEffect(()=>{
+  const filteredVideos =
+    activeCategory === "all"
+      ? videos
+      : videos.filter(
+          (video) =>
+            video.category === activeCategory
+        );
 
-    const interval = setInterval(()=>{
+  return (
 
-      setActiveIndex((prev)=>
+    <section className="gallery-page">
 
-        prev === items.length - 1
-        ? 0
-        : prev + 1
+      {/* MAIN GLOW */}
 
-      );
+      <motion.div
 
-    },4000);
+        className="gallery-main-glow"
 
-    return ()=> clearInterval(interval);
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.4, 0.8, 0.4],
+        }}
 
-  },[items.length]);
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
-  /* =========================================
-     POSITION LOGIC
-  ========================================= */
+      {/* HERO */}
 
-  const getPosition = (index)=>{
+      <div className="gallery-hero">
 
-    const total = items.length;
+        <motion.span
 
-    let position = index - activeIndex;
-
-    /* loop effect */
-
-    if(position < -total / 2){
-
-      position += total;
-
-    }
-
-    if(position > total / 2){
-
-      position -= total;
-
-    }
-
-    return position;
-
-  };
-
-  return(
-
-    <section
-      className="portfolio"
-      id="portfolio"
-    >
-
-      <div className="portfolio-wrapper">
-
-        {/* =========================================
-           HEADER
-        ========================================= */}
-
-        <motion.div
-
-          className="portfolio-header"
+          className="gallery-label"
 
           initial={{
-            opacity:0,
-            y:40
+            opacity: 0,
+            y: 20,
           }}
 
-          whileInView={{
-            opacity:1,
-            y:0
+          animate={{
+            opacity: 1,
+            y: 0,
           }}
 
           transition={{
-            duration:1.2,
-            ease:[0.16,1,0.3,1]
+            duration: 0.8,
           }}
-
-          viewport={{
-            once:true
-          }}
-
         >
+          CINEMATIC PORTFOLIO
+        </motion.span>
 
-          <span className="p-tag">
+        <motion.h1
 
-            PORTFOLIO
+          initial={{
+            opacity: 0,
+            y: 60,
+          }}
 
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          transition={{
+            duration: 1,
+          }}
+        >
+          Crafted
+          <span className="gallery-accent">
+            {" "}Visual Stories
           </span>
+        </motion.h1>
 
-          <h2 className="portfolio-title">
+        <motion.p
 
-            Timeless Frames &
-            <br/>
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
 
-            <span>
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
 
-              Editorial Stories
+          transition={{
+            duration: 1,
+            delay: 0.2,
+          }}
+        >
+          Explore premium cinematic productions,
+          immersive storytelling, editorial visuals,
+          and luxury brand experiences engineered
+          with modern creative direction.
+        </motion.p>
 
-            </span>
+      </div>
 
-          </h2>
+      {/* FILTERS */}
 
-          <p className="p-sub">
+      <div className="gallery-filters">
 
-            Explore our curated collection
-            of cinematic wedding storytelling,
-            luxury celebrations,
-            and emotional moments.
+        {categories.map((cat) => (
 
-          </p>
+          <button
+            key={cat}
+            onClick={() =>
+              setActiveCategory(cat)
+            }
+            className={
+              activeCategory === cat
+                ? "active-filter"
+                : ""
+            }
+          >
+            {cat.toUpperCase()}
+          </button>
 
-        </motion.div>
+        ))}
 
-        {/* =========================================
-           SLIDER
-        ========================================= */}
+      </div>
 
-        <div className="portfolio-slider">
+      {/* GRID */}
 
-          {items.map((item,index)=>{
+      <motion.div
+        layout
+        className="gallery-grid"
+      >
 
-            const position =
-            getPosition(index);
+        <AnimatePresence mode="popLayout">
 
-            const isActive =
-            index === activeIndex;
+          {filteredVideos.map((item) => (
 
-            return(
+            <motion.div
 
-              <motion.div
+              layout
 
-                key={index}
+              key={item.id}
 
-                className={`portfolio-card ${
-                  isActive
-                  ? "active"
-                  : ""
-                }`}
+              className="gallery-card"
 
-                animate={{
+              initial={{
+                opacity: 0,
+                y: 80,
+                scale: 0.9,
+              }}
 
-                  x:
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
 
-                  position === 0
-                  ? "0%"
+              exit={{
+                opacity: 0,
+                y: 40,
+                scale: 0.92,
+              }}
 
-                  : position < 0
-                  ? "-105%"
+              whileHover={{
+                y: -14,
+              }}
 
-                  : "105%",
+              transition={{
+                duration: 0.8,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
 
-                  scale:
+              {/* VIDEO */}
 
-                  isActive
-                  ? 1
-                  : 0.82,
+              <div className="gallery-video-wrapper">
 
-                  rotate:
+                <video
+                  src={item.video}
+                  className="gallery-video"
+                  controls
+                  loop
+                  playsInline
+                  preload="metadata"
+                />
 
-                  position < 0
-                  ? -6
-                  : position > 0
-                  ? 6
-                  : 0,
+                {/* OVERLAY */}
 
-                  opacity:
+                <div className="gallery-overlay">
 
-                  Math.abs(position) > 1
-                  ? 0
-                  : 1,
-
-                  filter:
-
-                  isActive
-                  ? "blur(0px)"
-                  : "blur(1px)"
-
-                }}
-
-                transition={{
-
-                  duration:1.2,
-
-                  ease:[0.16,1,0.3,1]
-
-                }}
-
-                style={{
-
-                  zIndex:
-
-                  isActive
-                  ? 10
-                  : 1
-
-                }}
-
-                onClick={()=>
-                  setActiveIndex(index)
-                }
-
-              >
-
-                {/* =========================================
-                   IMAGE
-                ========================================= */}
-
-                <div className="card-image-wrap">
-
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                  />
-
-                  {/* overlay */}
-
-                  <div className="card-overlay"></div>
+                  <div className="gallery-play-btn">
+                    <FiPlay />
+                  </div>
 
                 </div>
 
-              </motion.div>
+                {/* META */}
 
-            );
+                <div className="gallery-top-meta">
 
-          })}
+                  <span>
+                    {item.client}
+                  </span>
 
-        </div>
+                  <span>
+                    {item.duration}
+                  </span>
 
-        {/* =========================================
-           DETAILS
-        ========================================= */}
+                </div>
 
-        <AnimatePresence
-          mode="wait"
-        >
+              </div>
 
-          <motion.div
+              {/* CONTENT */}
 
-            key={activeIndex}
+              <div className="gallery-content">
 
-            className="active-details"
+                <div className="gallery-content-top">
 
-            initial={{
-              opacity:0,
-              y:40
-            }}
+                  <span className="gallery-tag">
+                    {item.category}
+                  </span>
 
-            animate={{
-              opacity:1,
-              y:0
-            }}
+                  <span className="gallery-year">
+                    {item.year}
+                  </span>
 
-            exit={{
-              opacity:0,
-              y:-20
-            }}
+                </div>
 
-            transition={{
-              duration:0.8,
-              ease:[0.16,1,0.3,1]
-            }}
+                <h3>
+                  {item.title}
+                </h3>
 
-          >
+                <p>
+                  {item.description}
+                </p>
 
-            <span className="active-category">
+                {/* FOOTER */}
 
-              {items[activeIndex].category}
+                <div className="gallery-footer">
 
-            </span>
+                  <button className="gallery-watch-btn">
 
-            <h3>
+                    WATCH FILM
 
-              {items[activeIndex].title}
+                    <FiArrowUpRight />
 
-            </h3>
+                  </button>
 
-            <p>
+                </div>
 
-              A celebration of emotions,
-              timeless storytelling,
-              and artistic luxury photography.
+              </div>
 
-            </p>
+            </motion.div>
 
-            <button className="portfolio-btn">
-
-              VIEW FULL GALLERY
-
-            </button>
-
-          </motion.div>
+          ))}
 
         </AnimatePresence>
 
-      </div>
+      </motion.div>
 
     </section>
 
   );
+};
 
-}
+export default Gallery;

@@ -1,329 +1,179 @@
-
-
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-
+import React from "react";
+import { motion } from "framer-motion";
 import "./Hero.css";
+import video from "../../assets/video2.mp4";
+const Hero = () => {
 
-import hero1 from "../../assets/hero1.jpg";
-import hero2 from "../../assets/hero2.jpg";
-import hero3 from "../../assets/hero3.jpg";
+  // Animation Variants
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
 
-export default function Hero() {
-
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const heroImages = [
-    hero1,
-    hero2,
-    hero3
-  ];
-
-  /* =========================================
-     PREMIUM CINEMATIC SLIDER
-  ========================================= */
-
-  useEffect(() => {
-
-    const interval = setInterval(() => {
-
-      setCurrentImage((prev) =>
-        prev === heroImages.length - 1
-          ? 0
-          : prev + 1
-      );
-
-    }, 6500);
-
-    return () => clearInterval(interval);
-
-  }, [heroImages.length]);
-
-  /* =========================================
-     STAGGER ANIMATION
-  ========================================= */
-
-  const container = {
-
-    hidden: {},
-
-    show: {
+    visible: {
+      opacity: 1,
 
       transition: {
-
         staggerChildren: 0.18,
-        delayChildren: 0.3
-
-      }
-
-    }
-
+        delayChildren: 0.3,
+      },
+    },
   };
 
-  const fadeUp = {
-
+  const itemVariants = {
     hidden: {
-
       opacity: 0,
-      y: 40
-
+      y: 40,
     },
 
-    show: {
-
+    visible: {
       opacity: 1,
       y: 0,
 
       transition: {
-
-        duration: 1.2,
-        ease: [0.16, 1, 0.3, 1]
-
-      }
-
-    }
-
-  };
-
-  const titleReveal = {
-
-    hidden: {
-
-      opacity: 0,
-      y: 120
-
+        duration: 0.8,
+        ease: [0.25, 1, 0.5, 1],
+      },
     },
-
-    show: {
-
-      opacity: 1,
-      y: 0,
-
-      transition: {
-
-        duration: 1.5,
-        ease: [0.16, 1, 0.3, 1]
-
-      }
-
-    }
-
   };
 
   return (
-
-    <section className="hero" id="hero">
+    <section className="hero-section" id="hero">
 
       {/* =========================================
-          BACKGROUND
+          VIDEO BACKGROUND
       ========================================= */}
 
-      <div className="hero-bg-container">
+      <div className="hero-video-wrapper">
 
-        <AnimatePresence mode="wait">
-
-          <motion.div
-
-            key={currentImage}
-
-            className="hero-slide"
-
-            style={{
-              backgroundImage:
-              `url(${heroImages[currentImage]})`
-            }}
-
-            initial={{
-              scale: 1.08,
-              opacity: 0
-            }}
-
-            animate={{
-              scale: 1,
-              opacity: 1
-            }}
-
-            exit={{
-              opacity: 0
-            }}
-
-            transition={{
-              duration: 2,
-              ease: [0.16, 1, 0.3, 1]
-            }}
-
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source
+            src={video}
+            type="video/mp4"
           />
+        </video>
 
-        </AnimatePresence>
+        {/* OVERLAYS */}
 
         <div className="hero-overlay"></div>
 
+        <div className="hero-gradient"></div>
+
+        <div className="hero-grid"></div>
+
       </div>
 
       {/* =========================================
-          CONTENT
+          HERO CONTENT
       ========================================= */}
 
-      <div className="hero-content">
+      <motion.div
+        className="hero-content"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+
+        {/* TAG */}
 
         <motion.div
-
-          className="content-inner"
-
-          variants={container}
-
-          initial="hidden"
-
-          animate="show"
-
+          variants={itemVariants}
+          className="hero-tag"
         >
+          <span className="pulse-dot"></span>
 
-          {/* SUB TITLE */}
-
-          <motion.span
-
-            className="sub-title"
-
-            variants={fadeUp}
-
-          >
-
-            HANDCRAFTING TIMELESS LEGACIES
-
-          </motion.span>
-
-          {/* MAIN TITLE */}
-
-          <h1 className="main-heading">
-
-            <motion.div
-              className="title-line"
-              variants={titleReveal}
-            >
-
-              Capturing Your
-
-            </motion.div>
-
-            <motion.div
-              className="title-line"
-              variants={titleReveal}
-            >
-
-              <span className="italic-text">
-                Moments
-              </span>
-
-              {" "}With Emotion & Light
-
-            </motion.div>
-
-          </h1>
-
-          {/* DESCRIPTION */}
-
-          <motion.p
-
-            className="hero-description"
-
-            variants={fadeUp}
-
-          >
-
-            Luxury wedding photography &
-            cinematic films documenting
-            emotions, traditions, and timeless love stories.
-
-          </motion.p>
-
-          {/* BUTTONS */}
-
-          <motion.div
-
-            className="hero-btns"
-
-            variants={fadeUp}
-
-          >
-
-            {/* PRIMARY */}
-
-            <motion.button
-
-              whileHover={{
-                y: -3
-              }}
-
-              whileTap={{
-                scale: 0.97
-              }}
-
-              className="btn-primary"
-
-            >
-
-              Explore Portfolio
-
-              <ArrowRight size={15} />
-
-            </motion.button>
-
-            {/* SECONDARY */}
-
-            <motion.button
-
-              whileHover={{
-                opacity: 0.7
-              }}
-
-              className="btn-secondary"
-
-              onClick={() =>
-                window.open(
-                  "https://wa.me/919597258078"
-                )
-              }
-
-            >
-
-              Book Consultation
-
-            </motion.button>
-
-          </motion.div>
-
+          CINEMATIC STORYTELLING
         </motion.div>
 
-      </div>
+        {/* TITLE */}
+
+        <motion.h1
+          variants={itemVariants}
+          className="hero-title"
+        >
+          We Capture
+          <span className="gradient-text">
+            {" "}Visual Poetry
+          </span>
+
+          <br />
+
+          Beyond Ordinary Frames.
+        </motion.h1>
+
+        {/* DESCRIPTION */}
+
+        <motion.p
+          variants={itemVariants}
+          className="hero-description"
+        >
+          Premium wedding films, destination stories,
+          emotional storytelling, and timeless cinematic
+          experiences crafted with elegance and soul.
+        </motion.p>
+
+        {/* BUTTONS */}
+
+        <motion.div
+          variants={itemVariants}
+          className="hero-buttons"
+        >
+
+          <a
+            href="#showreel"
+            className="hero-btn-primary"
+          >
+            WATCH SHOWREEL
+          </a>
+
+          <a
+            href="#contact"
+            className="hero-btn-secondary"
+          >
+            BOOK A PROJECT
+          </a>
+
+        </motion.div>
+      </motion.div>
 
       {/* =========================================
           SCROLL INDICATOR
       ========================================= */}
 
-      <div className="scroll-indicator">
+      <motion.div
+        className="scroll-indicator"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: 1.5,
+          duration: 1,
+        }}
+      >
+        <div className="mouse">
 
-        <motion.div
+          <motion.div
+            className="wheel"
+            animate={{
+              y: [0, 10, 0],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 1.5,
+            }}
+          />
 
-          className="mouse-line"
-
-          animate={{
-            y:[0,14,0]
-          }}
-
-          transition={{
-            duration:2,
-            repeat:Infinity,
-            ease:"easeInOut"
-          }}
-
-        />
-
-      </div>
+        </div>
+      </motion.div>
 
     </section>
-
   );
+};
 
-}
-
+export default Hero;

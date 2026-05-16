@@ -1,325 +1,333 @@
-import { FaInstagram } from "react-icons/fa";
-
-import {
-  FiSend,
-  FiPhone
-} from "react-icons/fi";
-
+import React from "react";
 import { motion } from "framer-motion";
+import "./Footer.css";
+import logo from "../../assets/logo.png";
 
-import "./footer.css";
-
-export default function Footer() {
+const Footer = () => {
 
   const currentYear =
-  new Date().getFullYear();
+    new Date().getFullYear();
 
   return (
 
-    <footer className="footer">
+    <footer className="footer-canvas">
+
+      {/* AMBIENT GLOW */}
+      <motion.div
+
+        className="footer-ambient-glow"
+
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.25, 0.5, 0.25],
+        }}
+
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       <div className="footer-container">
 
-        {/* =====================================
-            TOP
-        ===================================== */}
+        {/* ================= BRAND ================= */}
 
         <motion.div
 
-          className="footer-top"
+          className="footer-brand-block"
 
           initial={{
-            opacity:0,
-            y:50
+            opacity: 0,
+            y: 40,
           }}
 
           whileInView={{
-            opacity:1,
-            y:0
-          }}
-
-          transition={{
-            duration:1
+            opacity: 1,
+            y: 0,
           }}
 
           viewport={{
-            once:true
+            once: true,
           }}
 
+          transition={{
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1],
+          }}
         >
 
-          {/* BRAND */}
+          {/* LOGO */}
+          <div className="footer-logo-wrapper">
 
-          <div className="footer-brand-section">
+            <motion.img
 
-            <motion.h2
+              src={logo}
 
-              className="footer-logo"
+              alt="Midnight Studio Logo"
 
-              initial={{
-                opacity:0,
-                letterSpacing:"12px"
+              className="footer-logo-img"
+
+              whileHover={{
+                rotate: -4,
+                scale: 1.05,
+              }}
+            />
+
+            <div className="footer-brand-text">
+
+              <span className="footer-brand-name">
+                BLUE MOON STUDIO
+              </span>
+
+              <span className="footer-brand-sub">
+                CINEMATIC VISUAL HOUSE
+              </span>
+
+            </div>
+
+          </div>
+
+          {/* TAGLINE */}
+          <p className="footer-tagline">
+            Engineering premium cinematic experiences,
+            visual narratives, and modern storytelling
+            for luxury brands and creative productions.
+          </p>
+
+          {/* EMAIL */}
+          <a
+            href="mailto:hello@midnightstudio.com"
+
+            className="footer-email-link"
+          >
+            hello@bluemoon.com
+          </a>
+
+        </motion.div>
+
+        {/* ================= NAVIGATION ================= */}
+
+        <motion.div
+
+          className="footer-links-block"
+
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          viewport={{
+            once: true,
+          }}
+
+          transition={{
+            duration: 1,
+            delay: 0.15,
+          }}
+        >
+
+          <h4 className="footer-block-title">
+            NAVIGATION
+          </h4>
+
+          <ul className="footer-links-list">
+
+            {[
+              "Home",
+              "Showreel",
+              "Portfolio",
+              "Services",
+              "Packages",
+              "Contact",
+            ].map((item, i) => (
+
+              <motion.li
+
+                key={i}
+
+                whileHover={{
+                  x: 5,
+                }}
+              >
+
+                <a
+
+                  href={`#${item.toLowerCase()}`}
+
+                  className="footer-link"
+                >
+                  {item}
+                </a>
+
+              </motion.li>
+
+            ))}
+
+          </ul>
+
+        </motion.div>
+
+        {/* ================= SOCIALS ================= */}
+
+        <motion.div
+
+          className="footer-socials-block"
+
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+
+          viewport={{
+            once: true,
+          }}
+
+          transition={{
+            duration: 1,
+            delay: 0.25,
+          }}
+        >
+
+          <h4 className="footer-block-title">
+            CONNECT
+          </h4>
+
+          <div className="footer-social-icons">
+
+            <motion.a
+
+              href="https://instagram.com"
+
+              target="_blank"
+
+              rel="noreferrer"
+
+              className="social-icon-circle"
+
+              whileHover={{
+                y: -4,
+                scale: 1.08,
               }}
 
-              whileInView={{
-                opacity:1,
-                letterSpacing:"4px"
+              whileTap={{
+                scale: 0.95,
               }}
-
-              transition={{
-                duration:1.2
-              }}
-
-              viewport={{
-                once:true
-              }}
-
             >
+              <i className="fab fa-instagram"></i>
+            </motion.a>
 
-              CLICKS BY KORNIZA
+            <motion.a
 
-            </motion.h2>
+              href="https://youtube.com"
 
-            <span className="footer-tagline">
+              target="_blank"
 
-              ARTISANAL WEDDING PHOTOGRAPHY
+              rel="noreferrer"
 
-            </span>
+              className="social-icon-circle"
+
+              whileHover={{
+                y: -4,
+                scale: 1.08,
+              }}
+
+              whileTap={{
+                scale: 0.95,
+              }}
+            >
+              <i className="fab fa-youtube"></i>
+            </motion.a>
+
+            <motion.a
+
+              href="https://vimeo.com"
+
+              target="_blank"
+
+              rel="noreferrer"
+
+              className="social-icon-circle"
+
+              whileHover={{
+                y: -4,
+                scale: 1.08,
+              }}
+
+              whileTap={{
+                scale: 0.95,
+              }}
+            >
+              <i className="fab fa-vimeo-v"></i>
+            </motion.a>
+
+          </div>
+
+          {/* STATUS */}
+          <div className="footer-availability-status">
+
+            <span className="status-indicator-dot"></span>
+
+            Booking Open For 2026
 
           </div>
 
           {/* CTA */}
+          <motion.a
 
-          <motion.div
+            href="#contact"
 
-            className="footer-cta"
+            className="footer-cta-btn"
 
-            initial={{
-              opacity:0,
-              x:40
+            whileHover={{
+              scale: 1.03,
             }}
 
-            whileInView={{
-              opacity:1,
-              x:0
+            whileTap={{
+              scale: 0.97,
             }}
-
-            transition={{
-              duration:1,
-              delay:.2
-            }}
-
-            viewport={{
-              once:true
-            }}
-
           >
-
-            <p>
-
-              Ready to preserve your story?
-
-            </p>
-
-            <motion.button
-
-              className="footer-main-btn"
-
-              whileHover={{
-                y:-4,
-                scale:1.03
-              }}
-
-              whileTap={{
-                scale:.96
-              }}
-
-              onClick={() =>
-                window.open(
-                  "https://wa.me/919597258078",
-                  "_blank"
-                )
-              }
-
-            >
-
-              <span>
-
-                GET IN TOUCH
-
-              </span>
-
-              <FiSend size={14} />
-
-            </motion.button>
-
-          </motion.div>
-
-        </motion.div>
-
-        {/* DIVIDER */}
-
-        <div className="footer-divider"></div>
-
-        {/* =====================================
-            MIDDLE
-        ===================================== */}
-
-        <motion.div
-
-          className="footer-middle"
-
-          initial={{
-            opacity:0,
-            y:40
-          }}
-
-          whileInView={{
-            opacity:1,
-            y:0
-          }}
-
-          transition={{
-            duration:1,
-            delay:.3
-          }}
-
-          viewport={{
-            once:true
-          }}
-
-        >
-
-          {/* NAV */}
-
-          <nav className="footer-nav">
-
-            <a href="#home">
-
-              HOME
-
-            </a>
-
-            <a href="#gallery">
-
-              PORTFOLIO
-
-            </a>
-
-            <a href="#services">
-
-              SERVICES
-
-            </a>
-
-            <a href="#testimonials">
-
-              JOURNAL
-
-            </a>
-
-          </nav>
-
-          {/* SOCIALS */}
-
-          <div className="footer-socials">
-
-            <motion.a
-
-              href="https://www.instagram.com/clicksbykorniza/"
-
-              target="_blank"
-
-              rel="noreferrer"
-
-              className="social-link"
-
-              whileHover={{
-                y:-5,
-                rotate:4
-              }}
-
-            >
-
-              <FaInstagram size={18} />
-
-            </motion.a>
-
-            <motion.a
-
-              href="https://wa.me/919597258078"
-
-              target="_blank"
-
-              rel="noreferrer"
-
-              className="social-link"
-
-              whileHover={{
-                y:-5,
-                rotate:-4
-              }}
-
-            >
-
-              <FiPhone size={18} />
-
-            </motion.a>
-
-          </div>
-
-        </motion.div>
-
-        {/* =====================================
-            BOTTOM
-        ===================================== */}
-
-        <motion.div
-
-          className="footer-bottom"
-
-          initial={{
-            opacity:0
-          }}
-
-          whileInView={{
-            opacity:1
-          }}
-
-          transition={{
-            duration:1,
-            delay:.5
-          }}
-
-          viewport={{
-            once:true
-          }}
-
-        >
-
-          <p className="copyright">
-
-            © {currentYear}
-            {" "}
-            CLICKS BY KORNIZA.
-            ALL RIGHTS RESERVED.
-
-          </p>
-
-          <div className="footer-legal">
-
-            <span>
-
-              CRAFTED WITH PASSION
-
-            </span>
-
-          </div>
+            Start A Project ↗
+          </motion.a>
 
         </motion.div>
 
       </div>
 
+      {/* ================= BOTTOM BAR ================= */}
+
+      <div className="footer-bottom-bar">
+
+        <div className="footer-bottom-container">
+
+          <p className="copyright-text">
+            © {currentYear} Midnight Studio.
+            All Rights Reserved.
+          </p>
+
+          <p className="developer-credit">
+            Crafted by
+            <span className="dev-name">
+              {" "}SAM Web Designing
+            </span>
+          </p>
+
+        </div>
+
+      </div>
+
     </footer>
   );
-}
+};
+
+export default Footer;

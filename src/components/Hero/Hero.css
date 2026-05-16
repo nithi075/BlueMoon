@@ -1,872 +1,570 @@
-/* =========================================
-   CINEMATIC LUXURY HERO SECTION
-========================================= */
+/* =========================================================
+   ULTRA PREMIUM HERO SECTION
+========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap');
+.hero-section {
+  position: relative;
 
-:root{
+  width: 100%;
+  height: 100vh;
 
-  --gold:#D4AF37;
-  --gold-light:#F2C94C;
+  overflow: hidden;
 
-  --white:#F8F8F8;
-
-  --black:#050505;
-
-  --transition:
-  all 1s cubic-bezier(0.16,1,0.3,1);
-
+  background: #05070d;
 }
 
-/* =========================================
-   RESET
-========================================= */
+/* =========================================================
+   VIDEO BACKGROUND
+========================================================= */
 
-*{
+.hero-video-wrapper {
+  position: absolute;
 
-  margin:0;
-  padding:0;
+  inset: 0;
 
-  box-sizing:border-box;
+  width: 100%;
+  height: 100%;
 
+  overflow: hidden;
+
+  z-index: 1;
 }
 
-body{
+.hero-video {
+  position: absolute;
 
-  overflow-x:hidden;
+  inset: 0;
 
-  background:var(--black);
+  width: 100%;
+  height: 100%;
 
-  font-family:'Montserrat',sans-serif;
+  object-fit: cover;
 
-  -webkit-font-smoothing:antialiased;
+  transform: scale(1.08);
 
+  pointer-events: none;
+
+  filter:
+    brightness(0.72)
+    contrast(1.05)
+    saturate(1.05);
 }
 
-/* =========================================
-   HERO
-========================================= */
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
 
-.hero{
+.hero-overlay {
+  position: absolute;
 
-  position:relative;
-
-  width:100%;
-
-  height:100vh;
-
-  min-height:850px;
-
-  overflow:hidden;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:#050505;
-
-}
-
-/* =========================================
-   BACKGROUND CONTAINER
-========================================= */
-
-.hero-bg-container{
-
-  position:absolute;
-
-  inset:0;
-
-  z-index:1;
-
-}
-
-/* =========================================
-   SLIDE
-========================================= */
-
-.hero-slide{
-
-  position:absolute;
-
-  inset:0;
-
-  background-size:cover;
-
-  background-position:center;
-
-  transform:scale(1.08);
-
-  animation:
-  cinematicZoom 14s ease-in-out infinite;
-
-}
-
-/* cinematic zoom */
-
-@keyframes cinematicZoom{
-
-  0%{
-
-    transform:scale(1.08);
-
-  }
-
-  50%{
-
-    transform:scale(1.14);
-
-  }
-
-  100%{
-
-    transform:scale(1.08);
-
-  }
-
-}
-
-/* =========================================
-   OVERLAY
-========================================= */
-
-.hero-overlay{
-
-  position:absolute;
-
-  inset:0;
-
-  z-index:2;
+  inset: 0;
 
   background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.38),
+      rgba(0,0,0,0.82)
+    );
 
-  radial-gradient(
-    circle at center,
-    rgba(0,0,0,0) 0%,
-    rgba(0,0,0,.45) 42%,
-    rgba(0,0,0,.88) 100%
-  ),
-
-  linear-gradient(
-    to top,
-    rgba(0,0,0,.92) 0%,
-    rgba(0,0,0,.2) 45%,
-    rgba(0,0,0,.45) 100%
-  );
-
+  z-index: 2;
 }
 
-/* cinematic grain */
+/* =========================================================
+   CYAN GLOW
+========================================================= */
 
-.hero-overlay::before{
+.hero-gradient {
+  position: absolute;
 
-  content:"";
+  inset: 0;
 
-  position:absolute;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(0,210,230,0.16),
+      transparent 35%
+    );
 
-  inset:0;
+  z-index: 3;
+}
+
+/* =========================================================
+   GRID TEXTURE
+========================================================= */
+
+.hero-grid {
+  position: absolute;
+
+  inset: 0;
 
   background-image:
-  url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+    linear-gradient(
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 1px,
+      transparent 1px
+    );
 
-  opacity:.03;
+  background-size: 70px 70px;
 
+  opacity: 0.32;
+
+  z-index: 3;
 }
 
-/* =========================================
-   GOLD GLOW
-========================================= */
+/* =========================================================
+   HERO CONTENT
+========================================================= */
 
-.hero-overlay::after{
+.hero-content {
+  position: relative;
 
-  content:"";
+  z-index: 10;
 
-  position:absolute;
+  width: 100%;
+  height: 100%;
 
-  width:600px;
-  height:600px;
+  max-width: 1450px;
 
-  top:-200px;
-  right:-150px;
+  margin: 0 auto;
+
+  padding: 0 6%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+/* =========================================================
+   HERO TAG
+========================================================= */
+
+.hero-tag {
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.8rem;
+
+  padding:
+    0.9rem 1.25rem;
+
+  border-radius: 999px;
 
   background:
-  radial-gradient(
-    circle,
-    rgba(212,175,55,.08),
-    transparent 70%
-  );
+    rgba(255,255,255,0.05);
 
-  filter:blur(10px);
-
-}
-
-/* =========================================
-   CONTENT
-========================================= */
-
-.hero-content{
-
-  position:relative;
-
-  z-index:10;
-
-  width:min(92%,1400px);
-
-  margin:auto;
-
-  text-align:center;
-
-  display:flex;
-
-  justify-content:center;
-
-  padding-top:60px;
-
-}
-
-.content-inner{
-
-  max-width:1050px;
-
-}
-
-/* =========================================
-   SUB TITLE
-========================================= */
-
-.sub-title{
-
-  display:inline-block;
-
-  color:var(--gold-light);
-
-  font-size:.72rem;
-
-  letter-spacing:7px;
-
-  text-transform:uppercase;
-
-  margin-bottom:28px;
-
-  font-weight:500;
-
-  position:relative;
-
-}
-
-.sub-title::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:50%;
-
-  transform:translateX(-50%);
-
-  bottom:-10px;
-
-  width:60px;
-  height:1px;
-
-  background:
-  linear-gradient(
-    to right,
-    transparent,
-    var(--gold),
-    transparent
-  );
-
-}
-
-/* =========================================
-   MAIN TITLE
-========================================= */
-
-.main-heading{
-
-  font-family:
-  'Cormorant Garamond',serif;
-
-  font-size:
-  clamp(3.5rem,7vw,7rem);
-
-  font-weight:500;
-
-  line-height:1;
-
-  letter-spacing:1px;
-
-  color:var(--white);
-
-  margin-bottom:34px;
-
-}
-
-/* title reveal */
-
-.title-line{
-
-  display:block;
-
-  overflow:hidden;
-
-}
-
-/* signature accent */
-
-.italic-text{
-
-  font-family:
-  'Great Vibes',cursive;
-
-  color:var(--gold);
-
-  font-size:1.05em;
-
-  font-weight:400;
-
-}
-
-/* =========================================
-   DESCRIPTION
-========================================= */
-
-.hero-description{
-
-  max-width:700px;
-
-  margin:0 auto 50px;
-
-  color:
-  rgba(255,255,255,.72);
-
-  font-size:.88rem;
-
-  line-height:2.1;
-
-  letter-spacing:1.5px;
-
-  font-weight:300;
-
-}
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-.hero-btns{
-
-  display:flex;
-
-  justify-content:center;
-
-  align-items:center;
-
-  gap:26px;
-
-  flex-wrap:wrap;
-
-}
-
-/* =========================================
-   PRIMARY BUTTON
-========================================= */
-
-.btn-primary{
-
-  background:transparent;
+  backdrop-filter: blur(18px);
 
   border:
-  1px solid rgba(255,255,255,.2);
+    1px solid rgba(255,255,255,0.08);
 
-  color:var(--white);
+  color:
+    rgba(255,255,255,0.9);
 
-  padding:18px 42px;
+  font-size: 0.72rem;
+  font-weight: 700;
 
-  font-size:.68rem;
+  letter-spacing: 2.5px;
 
-  letter-spacing:4px;
+  text-transform: uppercase;
 
-  text-transform:uppercase;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  gap:12px;
-
-  cursor:pointer;
-
-  transition:var(--transition);
-
-  backdrop-filter:blur(6px);
-
-}
-
-.btn-primary:hover{
-
-  background:var(--gold);
-
-  color:black;
-
-  border-color:var(--gold);
-
-  transform:translateY(-4px);
+  margin-bottom: 2.3rem;
 
   box-shadow:
-  0 12px 40px rgba(212,175,55,.25);
-
+    0 10px 35px rgba(0,0,0,0.28);
 }
 
-/* =========================================
+/* =========================================================
+   PULSE DOT
+========================================================= */
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #00D2E6;
+
+  position: relative;
+
+  box-shadow:
+    0 0 18px rgba(0,210,230,0.85);
+}
+
+.pulse-dot::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -5px;
+
+  border-radius: 50%;
+
+  border: 1px solid #00D2E6;
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.hero-title {
+
+  font-size:
+    clamp(4rem, 9vw, 8rem);
+
+  line-height: 0.92;
+
+  font-weight: 900;
+
+  color: #FFFFFF;
+
+  letter-spacing: -5px;
+
+  max-width: 1050px;
+
+  margin-bottom: 2rem;
+
+  text-shadow:
+    0 10px 40px rgba(0,0,0,0.4);
+}
+
+.gradient-text {
+
+  background:
+    linear-gradient(
+      135deg,
+      #00D2E6 0%,
+      #7DF9FF 100%
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.hero-description {
+
+  max-width: 720px;
+
+  color:
+    rgba(255,255,255,0.72);
+
+  font-size: 1.08rem;
+
+  line-height: 2;
+
+  letter-spacing: 0.2px;
+
+  margin-bottom: 3rem;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.hero-buttons {
+
+  display: flex;
+  align-items: center;
+
+  gap: 1.2rem;
+}
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.hero-btn-primary {
+
+  position: relative;
+
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    1.1rem 2rem;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00D2E6,
+      #00AFC0
+    );
+
+  color: #FFFFFF;
+
+  text-decoration: none;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  box-shadow:
+    0 14px 40px rgba(0,210,230,0.32);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.hero-btn-primary::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 120%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.22),
+      transparent
+    );
+
+  transition:
+    left 0.7s ease;
+}
+
+.hero-btn-primary:hover::before {
+  left: 120%;
+}
+
+.hero-btn-primary:hover {
+
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 18px 55px rgba(0,210,230,0.45);
+}
+
+/* =========================================================
    SECONDARY BUTTON
-========================================= */
+========================================================= */
 
-.btn-secondary{
+.hero-btn-secondary {
 
-  background:none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  border:none;
+  padding:
+    1.1rem 2rem;
 
-  color:var(--white);
+  border-radius: 999px;
 
-  font-size:.68rem;
-
-  letter-spacing:4px;
-
-  text-transform:uppercase;
-
-  cursor:pointer;
-
-  position:relative;
-
-  padding-bottom:8px;
-
-  transition:var(--transition);
-
-}
-
-.btn-secondary::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  bottom:0;
-
-  width:100%;
-  height:1px;
+  border:
+    1px solid rgba(255,255,255,0.1);
 
   background:
-  rgba(255,255,255,.18);
+    rgba(255,255,255,0.04);
 
-  transition:.5s ease;
+  backdrop-filter: blur(16px);
 
+  color: #FFFFFF;
+
+  text-decoration: none;
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  transition:
+    background 0.35s ease,
+    transform 0.35s ease,
+    border-color 0.35s ease;
 }
 
-.btn-secondary:hover{
+.hero-btn-secondary:hover {
 
-  color:var(--gold);
+  background:
+    rgba(255,255,255,0.08);
 
+  border-color:
+    rgba(0,210,230,0.18);
+
+  transform:
+    translateY(-4px);
 }
 
-.btn-secondary:hover::after{
-
-  background:var(--gold);
-
-}
-
-/* =========================================
+/* =========================================================
    SCROLL INDICATOR
-========================================= */
+========================================================= */
 
-.scroll-indicator{
+.scroll-indicator {
 
-  position:absolute;
+  position: absolute;
 
-  bottom:32px;
+  left: 50%;
+  bottom: 30px;
 
-  left:50%;
+  transform: translateX(-50%);
 
-  transform:translateX(-50%);
-
-  z-index:20;
-
-  opacity:.7;
-
+  z-index: 10;
 }
 
-/* mouse line */
+.mouse {
 
-.mouse-line{
+  width: 30px;
+  height: 54px;
 
-  width:1px;
+  border-radius: 999px;
 
-  height:70px;
+  border:
+    1px solid rgba(255,255,255,0.18);
 
-  background:
-  linear-gradient(
-    to bottom,
-    var(--gold),
-    transparent
-  );
+  display: flex;
+  justify-content: center;
 
-  animation:
-  scrollLine 2s ease-in-out infinite;
+  padding-top: 8px;
 
+  backdrop-filter: blur(10px);
 }
 
-@keyframes scrollLine{
+.wheel {
 
-  0%{
+  width: 5px;
+  height: 10px;
 
-    opacity:.2;
+  border-radius: 999px;
 
-    transform:
-    translateY(0);
+  background: #FFFFFF;
+}
 
-  }
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-  50%{
+@media (max-width: 992px) {
 
-    opacity:1;
-
-    transform:
-    translateY(10px);
-
-  }
-
-  100%{
-
-    opacity:.2;
-
-    transform:
-    translateY(0);
-
+  .hero-title {
+    max-width: 850px;
   }
 
 }
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media(max-width:991px){
-
-  .main-heading{
-
-    font-size:5rem;
-
-  }
-
-}
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media(max-width:768px){
-
-  .hero{
-
-    min-height:100svh;
-
-    padding:120px 0 80px;
-
-  }
-
-  .main-heading{
-
-    font-size:3.3rem;
-
-    line-height:1.05;
-
-  }
-
-  .sub-title{
-
-    font-size:.64rem;
-
-    letter-spacing:4px;
-
-  }
-
-  .hero-description{
-
-    font-size:.8rem;
-
-    line-height:1.9;
-
-    letter-spacing:1px;
-
-  }
-
-  .hero-btns{
-
-    flex-direction:column;
-
-    gap:18px;
-
-  }
-
-  .btn-primary{
-
-    width:100%;
-
-    max-width:300px;
-
-  }
-
-}
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media(max-width:480px){
-
-  .main-heading{
-
-    font-size:2.5rem;
-
-  }
-
-  .hero-description{
-
-    font-size:.76rem;
-
-  }
-
-}
-/* =========================================
-   MOBILE RESPONSIVE CSS ONLY
-========================================= */
 
 @media (max-width: 768px) {
 
-  .hero {
-
-    min-height: 100svh;
-
-    padding: 110px 0 70px;
-  }
-
-  /* ===============================
-     OVERLAY GLOW
-  ================================ */
-
-  .hero-overlay::after {
-
-    width: 280px;
-    height: 280px;
-
-    top: -100px;
-    right: -100px;
-  }
-
-  /* ===============================
-     CONTENT
-  ================================ */
-
   .hero-content {
 
-    width: 92%;
+    align-items: center;
 
-    padding-top: 20px;
+    text-align: center;
+
+    padding: 0 1.5rem;
   }
 
-  .content-inner {
+  .hero-tag {
 
-    max-width: 100%;
+    font-size: 0.62rem;
+
+    letter-spacing: 1.5px;
   }
 
-  /* ===============================
-     SUB TITLE
-  ================================ */
+  .hero-title {
 
-  .sub-title {
+    font-size: 3.3rem;
 
-    font-size: 0.58rem;
+    line-height: 1;
 
-    letter-spacing: 4px;
-
-    margin-bottom: 20px;
+    letter-spacing: -2px;
   }
-
-  .sub-title::after {
-
-    width: 42px;
-
-    bottom: -8px;
-  }
-
-  /* ===============================
-     MAIN TITLE
-  ================================ */
-
-  .main-heading {
-
-    font-size: 3rem;
-
-    line-height: 1.08;
-
-    letter-spacing: 0.5px;
-
-    margin-bottom: 24px;
-  }
-
-  .italic-text {
-
-    font-size: 1em;
-  }
-
-  /* ===============================
-     DESCRIPTION
-  ================================ */
 
   .hero-description {
 
-    max-width: 100%;
-
-    font-size: 0.78rem;
+    font-size: 0.98rem;
 
     line-height: 1.9;
-
-    letter-spacing: 0.8px;
-
-    margin: 0 auto 36px;
   }
 
-  /* ===============================
-     BUTTONS
-  ================================ */
-
-  .hero-btns {
+  .hero-buttons {
 
     flex-direction: column;
 
-    gap: 16px;
+    width: 100%;
   }
 
-  .btn-primary {
+  .hero-btn-primary,
+  .hero-btn-secondary {
 
     width: 100%;
 
-    max-width: 280px;
+    max-width: 320px;
 
-    padding: 15px 24px;
-
-    font-size: 0.58rem;
-
-    letter-spacing: 2px;
-
-    gap: 10px;
-  }
-
-  .btn-secondary {
-
-    font-size: 0.58rem;
-
-    letter-spacing: 2px;
-
-    padding-bottom: 6px;
-  }
-
-  /* ===============================
-     SCROLL INDICATOR
-  ================================ */
-
-  .scroll-indicator {
-
-    bottom: 20px;
-  }
-
-  .mouse-line {
-
-    height: 50px;
+    text-align: center;
   }
 
 }
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
 
 @media (max-width: 480px) {
 
-  .hero {
-
-    padding: 100px 0 60px;
-  }
-
-  .sub-title {
-
-    font-size: 0.52rem;
-
-    letter-spacing: 3px;
-  }
-
-  .main-heading {
-
-    font-size: 2.35rem;
-
-    line-height: 1.12;
+  .hero-title {
+    font-size: 2.6rem;
   }
 
   .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .hero-buttons {
+    gap: 0.9rem;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+
+    padding:
+      1rem 1.5rem;
 
     font-size: 0.72rem;
-
-    line-height: 1.8;
-
-    margin-bottom: 30px;
   }
 
-  .btn-primary {
+  .hero-tag {
 
-    max-width: 240px;
-
-    padding: 14px 20px;
-
-    font-size: 0.54rem;
-
-    letter-spacing: 1.5px;
-  }
-
-  .btn-secondary {
-
-    font-size: 0.54rem;
-
-    letter-spacing: 1.5px;
-  }
-
-}
-
-/* =========================================
-   EXTRA SMALL DEVICES
-========================================= */
-
-@media (max-width: 360px) {
-
-  .main-heading {
-
-    font-size: 2rem;
-  }
-
-  .hero-description {
-
-    font-size: 0.68rem;
-  }
-
-  .btn-primary {
-
-    max-width: 220px;
+    padding:
+      0.75rem 1rem;
   }
 
 }

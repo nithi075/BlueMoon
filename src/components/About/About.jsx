@@ -1,186 +1,200 @@
-import "./About.css";
-import coupleImg from "../../assets/about1.jpg";
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import './About.css';
+import aboutimage from '../../assets/about1.jpg';
+const About = () => {
+  const sectionRef = useRef(null);
 
-import { motion } from "framer-motion";
+  // Scroll Parallax
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
 
-export default function About() {
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -60]);
+
+  // Animation Variants
+  const imageVariants = {
+    hidden: { opacity: 0, x: -80, scale: 0.92 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 1,
+        ease: [0.25, 1, 0.5, 1],
+      },
+    },
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.25, 1, 0.5, 1],
+      },
+    },
+  };
+
   return (
-    <section className="about">
+    <section className="about-section" id="about" ref={sectionRef}>
+      <div className="about-container">
 
-      {/* LEFT IMAGE */}
-      <motion.div
-        className="about-left"
-
-        initial={{
-          opacity: 0,
-          x: -80,
-          scale: 0.95
-        }}
-
-        whileInView={{
-          opacity: 1,
-          x: 0,
-          scale: 1
-        }}
-
-        transition={{
-          duration: 1.2,
-          ease: [0.16, 1, 0.3, 1]
-        }}
-
-        viewport={{ once: true }}
-      >
-        <img src={coupleImg} alt="The Wedding Story" />
-        <div className="fade-overlay"></div>
-      </motion.div>
-
-      {/* RIGHT CONTENT */}
-      <motion.div
-        className="about-right"
-
-        initial={{
-          opacity: 0,
-          y: 60
-        }}
-
-        whileInView={{
-          opacity: 1,
-          y: 0
-        }}
-
-        transition={{
-          duration: 1.2,
-          delay: 0.2,
-          ease: [0.16, 1, 0.3, 1]
-        }}
-
-        viewport={{ once: true }}
-      >
-
-        <motion.span
-          className="about-small"
-
-          initial={{
-            opacity: 0,
-            letterSpacing: "20px"
-          }}
-
-          whileInView={{
-            opacity: 1,
-            letterSpacing: "8px"
-          }}
-
-          transition={{
-            duration: 1
-          }}
-
-          viewport={{ once: true }}
+        {/* LEFT SIDE */}
+        <motion.div
+          className="about-visual-side"
+          variants={imageVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          style={{ y: imageY }}
         >
-          MEET THE ARTIST
-        </motion.span>
+          <div className="image-frame-wrapper">
 
-        <motion.h2
-          className="about-title"
+            {/* Floating Blur Orb */}
+            <div className="floating-orb"></div>
 
-          initial={{
-            opacity: 0,
-            y: 40
-          }}
+            <motion.img
+              src={aboutimage}
+              alt="Production crew behind the camera"
+              className="about-display-img"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.5 }}
+            />
 
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
+            {/* Ambient Glow */}
+            <div className="frame-ambient-glow"></div>
 
-          transition={{
-            duration: 1,
-            delay: 0.3
-          }}
+            {/* Premium Experience Badge */}
+            <motion.div
+              className="experience-badge"
+              initial={{ scale: 0, rotate: -10 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                type: 'spring',
+                stiffness: 100,
+                delay: 0.5,
+              }}
+              whileHover={{
+                y: -8,
+                scale: 1.04,
+              }}
+            >
+              <span className="badge-number">5+</span>
+              <span className="badge-text">
+                Years of Cinematic Excellence
+              </span>
+            </motion.div>
+          </div>
+        </motion.div>
 
-          viewport={{ once: true }}
+        {/* RIGHT SIDE */}
+        <motion.div
+          className="about-content-side"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          Telling Your <span>Legacy</span>
-        </motion.h2>
+          <motion.span
+            variants={itemVariants}
+            className="section-subtitle"
+          >
+            WHO WE ARE
+          </motion.span>
 
-        <motion.p
-          className="about-sub"
+          <motion.div
+            className="accent-line"
+            initial={{ width: 0 }}
+            whileInView={{ width: 90 }}
+            transition={{ duration: 1 }}
+          />
 
-          initial={{
-            opacity: 0,
-            y: 30
-          }}
+          <motion.h2
+            variants={itemVariants}
+            className="section-title"
+          >
+            We Engineer
+            <span className="text-highlight">
+              {' '}Cinematic Experiences
+            </span>
+            {' '}That Command Attention.
+          </motion.h2>
 
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
+          <motion.p
+            variants={itemVariants}
+            className="about-description"
+          >
+            We craft visual systems engineered to dominate attention.
+            From cinematic brand films to high-converting commercial
+            campaigns, every frame is designed with intention,
+            emotion, and precision.
+          </motion.p>
 
-          transition={{
-            duration: 1,
-            delay: 0.5
-          }}
+          <motion.p
+            variants={itemVariants}
+            className="about-description"
+          >
+            Our studio merges storytelling with elite production
+            design — creating immersive visuals that feel timeless,
+            modern, and unforgettable for brands ready to stand above
+            the noise.
+          </motion.p>
 
-          viewport={{ once: true }}
-        >
-          Fine art photography for the modern, soulful couple.
-        </motion.p>
-
-        <motion.p
-          className="about-text"
-
-          initial={{
-            opacity: 0,
-            y: 30
-          }}
-
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-
-          transition={{
-            duration: 1,
-            delay: 0.7
-          }}
-
-          viewport={{ once: true }}
-        >
-          We believe that photography is more than just taking pictures; it is about
-          preserving the raw emotions, the quiet glances, and the grand celebrations
-          that define your life’s greatest milestones. With a keen eye for detail
-          and a passion for storytelling, we transform your fleeting moments into
-          timeless heirlooms that you will cherish for generations.
-        </motion.p>
-
-        <motion.button
-          className="about-btn"
-
-          initial={{
-            opacity: 0,
-            y: 20
-          }}
-
-          whileInView={{
-            opacity: 1,
-            y: 0
-          }}
-
-          transition={{
-            duration: 1,
-            delay: 0.9
-          }}
-
-          viewport={{ once: true }}
-
-          whileHover={{
-            y: -4
-          }}
-        >
-          VIEW PORTFOLIO
-        </motion.button>
-
-      </motion.div>
-
+          {/* STATS */}
+          <motion.div
+            variants={itemVariants}
+            className="about-stats-grid"
+          >
+            {[
+              {
+                id: 1,
+                num: '50+',
+                label: 'Commercial Projects',
+              },
+              {
+                id: 2,
+                num: '12M+',
+                label: 'Digital Views',
+              },
+              {
+                id: 3,
+                num: '100%',
+                label: 'Visual Precision',
+              },
+            ].map((stat) => (
+              <motion.div
+                key={stat.id}
+                className="stat-card"
+                whileHover={{
+                  y: -10,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="stat-number">{stat.num}</h3>
+                <p className="stat-label">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
-}
+};
+
+export default About;

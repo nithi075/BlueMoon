@@ -1,97 +1,346 @@
+// ContactSection.jsx
+
+import { motion } from "framer-motion";
 import "./Contact.css";
 
-export default function Contact() {
-  const whatsappNumber = "919659414250"; 
-  const message = "Hello MihtunaPhotography, I'm interested in booking a luxury session. Let's discuss!";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+/* =========================
+   MAIN CONTAINER
+========================= */
 
+const containerVariants = {
+  hidden: {},
+
+  visible: {
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+/* =========================
+   PANELS
+========================= */
+
+const panelVariants = {
+  hidden: {
+    opacity: 0,
+    y: 80,
+    scale: 0.96,
+    filter: "blur(10px)",
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+
+    transition: {
+      duration: 1,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+/* =========================
+   TEXT
+========================= */
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 0.7,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+/* =========================
+   FORM STAGGER
+========================= */
+
+const formVariants = {
+  hidden: {},
+
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const inputVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+export default function ContactSection() {
   return (
-    <section id="contact" className="contact">
-      <div className="contact-grain"></div>
-      
-      <div className="contact-container">
-        
-        {/* Header Section */}
-        <div className="contact-header">
-          <span className="contact-tag">Reservations</span>
-          <h2 className="contact-title">
-            Let’s Create <span className="italic-text">Art</span> Together
-          </h2>
-          <div className="contact-divider"></div>
-        </div>
+    <section className="contact-section">
 
-        <div className="contact-content-grid">
-          
-          {/* Left: Refined Info Blocks */}
-          <div className="contact-info">
-            <div className="info-block">
-              <span className="info-label">Direct Inquiries</span>
-              <a href="mailto:mithunaphotography@gmail.com" className="info-value email">
-                mithunaphotography@gmail.com
-              </a>
-              <a href="tel:+919047098800" className="info-value phone">
-                +91 96594 14250
-              </a>
+      {/* BACKGROUND GLOW */}
+      <motion.div
+        className="contact-bg-glow"
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.35, 0.6, 0.35],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* MAIN CONTAINER */}
+      <motion.div
+        className="contact-container"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{
+          once: true,
+          amount: 0.2,
+        }}
+      >
+
+        {/* =========================
+            LEFT PANEL
+        ========================= */}
+
+        <motion.div
+          className="contact-left"
+          variants={panelVariants}
+        >
+
+          <motion.p
+            className="section-tag"
+            variants={textVariants}
+          >
+            CONTACT
+          </motion.p>
+
+          <motion.h2
+            className="panel-title"
+            variants={textVariants}
+          >
+            Turning Bold Ideas
+            <br />
+            Into Cinematic Reality.
+          </motion.h2>
+
+          <motion.p
+            className="panel-description"
+            variants={textVariants}
+          >
+            Whether it’s a brand film, commercial,
+            or cinematic storytelling — let’s create
+            something unforgettable together.
+          </motion.p>
+
+          {/* CONTACT INFO */}
+          <motion.div
+            className="contact-info"
+            variants={formVariants}
+          >
+
+            {[
+              {
+                title: "Email",
+                value: "hello@yourstudio.com",
+              },
+
+              {
+                title: "Phone",
+                value: "+91 98765 43210",
+              },
+
+              {
+                title: "Location",
+                value: "Chennai, India",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="info-item"
+                variants={inputVariants}
+
+                whileHover={{
+                  x: 8,
+                }}
+
+                transition={{
+                  type: "spring",
+                  stiffness: 200,
+                }}
+              >
+                <span>{item.title}</span>
+                <p>{item.value}</p>
+              </motion.div>
+            ))}
+
+          </motion.div>
+        </motion.div>
+
+        {/* =========================
+            RIGHT PANEL
+        ========================= */}
+
+        <motion.div
+          className="contact-form-wrapper"
+          variants={panelVariants}
+
+          whileHover={{
+            y: -4,
+          }}
+
+          transition={{
+            duration: 0.4,
+          }}
+        >
+
+          <motion.form
+            className="contact-form"
+            variants={formVariants}
+          >
+
+            {/* ROW */}
+            <div className="form-input-row">
+
+              <motion.div
+                className="input-group"
+                variants={inputVariants}
+              >
+                <label>Name</label>
+
+                <motion.input
+                  type="text"
+                  placeholder="Your Name"
+
+                  whileFocus={{
+                    scale: 1.02,
+                  }}
+
+                  transition={{
+                    duration: 0.2,
+                  }}
+                />
+              </motion.div>
+
+              <motion.div
+                className="input-group"
+                variants={inputVariants}
+              >
+                <label>Email</label>
+
+                <motion.input
+                  type="email"
+                  placeholder="Your Email"
+
+                  whileFocus={{
+                    scale: 1.02,
+                  }}
+
+                  transition={{
+                    duration: 0.2,
+                  }}
+                />
+              </motion.div>
+
             </div>
 
-            <div className="info-block">
-              <span className="info-label">Main Atelier</span>
-              <p className="info-value">Erode, Tamil Nadu</p>
-            </div>
+            {/* SELECT */}
 
-            <div className="info-block">
-              <span className="info-label">Digital Presence</span>
-              <div className="social-links-minimal">
-                <a href="https://www.instagram.com/mithuna_photography" target="_blank" rel="noreferrer">Instagram</a>
-                <span className="dot"></span>
-                <a href={whatsappLink} target="_blank" rel="noreferrer">WhatsApp</a>
-              </div>
-            </div>
-          </div>
+            <motion.div
+              className="input-group"
+              variants={inputVariants}
+            >
+              <label>Project Type</label>
 
-          {/* Right: Premium Booking Card */}
-          <div className="contact-action-card">
-            <div className="card-inner">
-              <div className="status-badge">
-                <span className="pulse"></span>
-                <span className="badge-text">Accepting 2026 Bookings</span>
-              </div>
-              
-              <h3 className="card-heading">Ready to capture <br/> your story?</h3>
-              <p className="card-subtext">
-                Limited dates available for weddings and cinematic sessions. 
-                Secure your consultation today.
-              </p>
+              <motion.select
+                whileFocus={{
+                  scale: 1.02,
+                }}
+              >
+                <option>Select Project</option>
+                <option>Brand Film</option>
+                <option>Commercial</option>
+                <option>Music Video</option>
+                <option>Photography</option>
+              </motion.select>
+            </motion.div>
 
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="premium-whatsapp-btn">
-                <span>Check Availability</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
-                  <path d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
+            {/* TEXTAREA */}
 
-        </div>
+            <motion.div
+              className="input-group"
+              variants={inputVariants}
+            >
+              <label>Message</label>
 
-        {/* Minimal Footer */}
-        <div className="contact-footer">
-          <div className="footer-line"></div>
-          <div className="footer-flex">
-            <div className="footer-brand">
-             Mihtuna<span className="brand-sub">Photography</span>
-            </div>
-            <div className="footer-links">
-              <span>&copy; 2026</span>
-              <span className="separator">/</span>
-              <a href="#">Privacy</a>
-              <span className="separator">/</span>
-              <a href="#">Studio Policy</a>
-            </div>
-          </div>
-        </div>
+              <motion.textarea
+                rows={6}
+                placeholder="Tell us about your vision..."
 
-      </div>
+                whileFocus={{
+                  scale: 1.02,
+                }}
+              />
+            </motion.div>
+
+            {/* BUTTON */}
+
+            <motion.button
+              type="submit"
+              className="submit-btn"
+
+              variants={inputVariants}
+
+              whileHover={{
+                scale: 1.05,
+                y: -4,
+              }}
+
+              whileTap={{
+                scale: 0.96,
+              }}
+
+              transition={{
+                type: "spring",
+                stiffness: 250,
+                damping: 15,
+              }}
+            >
+              LET’S CREATE MAGIC
+            </motion.button>
+
+          </motion.form>
+
+        </motion.div>
+
+      </motion.div>
     </section>
   );
 }

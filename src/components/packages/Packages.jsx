@@ -1,46 +1,56 @@
 import "./Packages.css";
-
 import { motion } from "framer-motion";
 
 const packagesData = [
   {
-    title: "Basic",
-    subtitle: "ONE PHOTOGRAPHER",
-    price: "₹49,999",
+    title: "Starter Reel",
+    subtitle: "SOLO VIDEOGRAPHER PACKAGE",
+    price: "₹39,999",
+
     features: [
-      "1 Photographer",
-      "4 Hours of Photo Coverage",
-      "250 Edited Images",
-      "Photo Print Release"
+      "1 Professional Videographer",
+      "4 Hours of Event Coverage",
+      "Cinematic Highlight Reel",
+      "Edited HD Video Delivery",
+      "Social Media Short Clips",
+      "Licensed Music Integration"
     ]
   },
+
   {
-    title: "Plus",
-    subtitle: "TWO PHOTOGRAPHERS + VIDEOGRAPHY",
-    price: "₹89,999",
+    title: "Cinema Plus",
+    subtitle: "MULTI-CAMERA VIDEOGRAPHY",
+    price: "₹79,999",
+
     badge: "Most Popular",
+
     features: [
-      "2 Photographers",
-      "1 Cinematographer",
-      "6 Hours of Photo & Video Coverage",
-      "500 Edited Images",
-      "Photo Print Release",
-      "1 Teaser Video",
-      "Full Event Video"
+      "2 Videographers",
+      "Multi-Camera Coverage",
+      "6 Hours of Cinematic Coverage",
+      "4K Highlight Film",
+      "Instagram Reels & Teasers",
+      "Professional Audio Recording",
+      "Color Grading & Cinematic Editing",
+      "Full Event Film"
     ]
   },
+
   {
-    title: "Premium",
-    subtitle: "PHOTO + VIDEO + DRONE COVERAGE",
+    title: "Signature Production",
+    subtitle: "PREMIUM FILMMAKING EXPERIENCE",
     price: "₹1,29,999",
+
     features: [
-      "2 Photographers",
-      "2 Cinematographers",
-      "8 Hours of Photo & Video Coverage",
-      "900 Edited Images",
-      "Photo Print Release",
-      "1 Teaser Video",
-      "Full Event Video"
+      "3 Cinematographers",
+      "Drone Coverage Included",
+      "8+ Hours of Full Production",
+      "4K Cinematic Film",
+      "Luxury Teaser Trailer",
+      "Story-Based Editing",
+      "Professional Lighting Setup",
+      "Full Event Documentary Film",
+      "Priority Delivery"
     ]
   }
 ];
@@ -57,31 +67,35 @@ export default function Packages() {
       {/* HEADER */}
 
       <motion.div
+
         className="packages-header"
 
         initial={{
-          opacity:0,
-          y:40
+          opacity: 0,
+          y: 40
         }}
 
         whileInView={{
-          opacity:1,
-          y:0
+          opacity: 1,
+          y: 0
         }}
 
         transition={{
-          duration:1
+          duration: 1
         }}
 
         viewport={{
-          once:true
+          once: true
         }}
+
       >
 
-        <p>PRICING</p>
+        <p>VIDEOGRAPHY PRICING</p>
 
         <h2>
-          Event <span>Packages</span>
+
+          Cinematic <span>Packages</span>
+
         </h2>
 
       </motion.div>
@@ -90,7 +104,7 @@ export default function Packages() {
 
       <div className="packages-container">
 
-        {packagesData.map((item,index)=>(
+        {packagesData.map((item, index) => (
 
           <motion.div
 
@@ -98,37 +112,37 @@ export default function Packages() {
 
             className={`package-card ${
               item.badge
-              ? "featured"
-              : ""
+                ? "featured"
+                : ""
             }`}
 
             initial={{
-              opacity:0,
-              y:80
+              opacity: 0,
+              y: 80
             }}
 
             whileInView={{
-              opacity:1,
-              y:0
+              opacity: 1,
+              y: 0
             }}
 
             transition={{
-              duration:1,
-              delay:index * 0.2
+              duration: 1,
+              delay: index * 0.2
             }}
 
             viewport={{
-              once:true
+              once: true
             }}
 
             whileHover={{
-              y:-14,
-              scale:1.02
+              y: -14,
+              scale: 1.02
             }}
 
           >
 
-            {/* badge */}
+            {/* BADGE */}
 
             {item.badge && (
 
@@ -140,7 +154,7 @@ export default function Packages() {
 
             )}
 
-            {/* title */}
+            {/* TITLE */}
 
             <h3>{item.title}</h3>
 
@@ -150,7 +164,7 @@ export default function Packages() {
 
             </p>
 
-            {/* price */}
+            {/* PRICE */}
 
             <div className="price-box">
 
@@ -158,18 +172,18 @@ export default function Packages() {
 
               <span className="event-text">
 
-                /event
+                /project
 
               </span>
 
             </div>
 
-            {/* features */}
+            {/* FEATURES */}
 
             <div className="features">
 
               {item.features.map(
-                (feature,i)=>(
+                (feature, i) => (
 
                   <p key={i}>
 
@@ -182,11 +196,11 @@ export default function Packages() {
 
             </div>
 
-            {/* button */}
+            {/* BUTTON */}
 
             <button className="package-btn">
 
-              Book Experience ↗
+              Book Your Shoot ↗
 
             </button>
 
@@ -197,5 +211,6 @@ export default function Packages() {
       </div>
 
     </section>
+
   );
 }

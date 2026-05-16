@@ -1,477 +1,558 @@
-/* =========================================
-   PACKAGES SECTION - PREMIUM DARK THEME
-========================================= */
-
-:root {
-  --gold: #D4AF37;
-  --gold-light: #F2C94C;
-  --white: #F8F8F8;
-  --black: #050505;
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
-}
+/* ========================================================================== 
+   PACKAGES SECTION
+========================================================================== */
 
 .packages {
   position: relative;
-  padding: 140px 8%;
-  background: linear-gradient(180deg, #050505 0%, #0d0d0d 100%);
+  width: 100%;
+
+  padding: 8rem 5%;
+
   overflow: hidden;
+
+  background:
+    var(--bg-midnight, #090D16);
 }
 
-/* ===============================
+/* ========================================================================== 
+   AMBIENT GLOW
+========================================================================== */
+
+.packages::before {
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  top: -250px;
+  right: -200px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,210,230,0.08) 0%,
+      transparent 70%
+    );
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+/* ========================================================================== 
    HEADER
-================================ */
+========================================================================== */
 
 .packages-header {
   text-align: center;
-  margin-bottom: 90px;
+
+  margin-bottom: 5rem;
+
+  position: relative;
+  z-index: 2;
 }
 
 .packages-header p {
-  color: var(--gold-light);
-  letter-spacing: 6px;
-  font-size: 0.75rem;
-  margin-bottom: 24px;
-  text-transform: uppercase;
+  display: inline-block;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #00D2E6;
+
+  margin-bottom: 1rem;
 }
 
 .packages-header h2 {
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  color: #fff;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 500;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+
+  line-height: 1.05;
+  font-weight: 900;
+
+  letter-spacing: -2px;
+
+  color: #FFFFFF;
 }
 
-.packages-header span {
-  color: var(--gold);
-  font-family: 'Great Vibes', cursive;
-  font-style: italic;
-  margin-left: 10px;
+.packages-header h2 span {
+  background:
+    linear-gradient(
+      135deg,
+      #00D2E6 0%,
+      #7DF9FF 100%
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* ===============================
-   CONTAINER & HORIZONTAL SCROLL
-================================ */
+/* ========================================================================== 
+   GRID
+========================================================================== */
 
 .packages-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  transition: var(--transition);
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 2rem;
+
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  position: relative;
+  z-index: 2;
 }
 
-/* ===============================
-   CARD STYLING
-================================ */
+/* ========================================================================== 
+   CARD
+========================================================================== */
 
 .package-card {
   position: relative;
-  padding: 60px 40px;
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  display: flex;
-  flex-direction: column;
-  transition: var(--transition);
+
+  padding: 3rem 2.5rem;
+
+  border-radius: 32px;
+
+  overflow: hidden;
+
+  background:
+    rgba(255,255,255,0.03);
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter: blur(18px);
+
+  transform-style: preserve-3d;
+
+  will-change: transform;
+
+  transition:
+    transform 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    background 0.45s ease;
 }
 
 .package-card::before {
   content: "";
+
   position: absolute;
+
   inset: 0;
-  background: radial-gradient(circle at top, rgba(212, 175, 55, 0.1), transparent 70%);
-  opacity: 0;
-  transition: var(--transition);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.04),
+      transparent
+    );
+
+  pointer-events: none;
 }
 
 .package-card:hover {
-  border-color: rgba(212, 175, 55, 0.3);
-  transform: translateY(-10px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  border-color:
+    rgba(0,210,230,0.18);
+
+  background:
+    rgba(255,255,255,0.05);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(0,210,230,0.05);
 }
 
-.package-card:hover::before {
-  opacity: 1;
+/* ========================================================================== 
+   FEATURED CARD
+========================================================================== */
+
+.package-card.featured {
+  transform:
+    scale(1.03);
+
+  border:
+    1px solid rgba(0,210,230,0.22);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0,210,230,0.08),
+      rgba(255,255,255,0.03)
+    );
 }
 
-/* Featured / Most Popular Card */
-.featured {
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  background: rgba(212, 175, 55, 0.02);
+.package-card.featured:hover {
+  transform:
+    translateY(-12px)
+    scale(1.04);
 }
 
-/* Badge */
+/* ========================================================================== 
+   BADGE
+========================================================================== */
+
 .badge {
   position: absolute;
-  top: 25px;
-  right: 25px;
-  padding: 6px 14px;
-  background: var(--gold);
-  color: #000;
-  font-size: 0.6rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+
+  top: 1.5rem;
+  right: 1.5rem;
+
+  padding:
+    0.55rem 1rem;
+
+  border-radius: 100px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00D2E6,
+      #00AFC0
+    );
+
+  color: #FFFFFF;
+
+  font-size: 0.68rem;
   font-weight: 700;
+
+  letter-spacing: 1px;
+
+  box-shadow:
+    0 10px 30px rgba(0,210,230,0.28);
 }
 
-/* Typography Inside Card */
+/* ========================================================================== 
+   TITLE
+========================================================================== */
+
 .package-card h3 {
-  font-size: 1.8rem;
-  color: #fff;
-  margin-bottom: 10px;
-  font-family: 'Cormorant Garamond', serif;
-  letter-spacing: 1px;
+  font-size: 2rem;
+  font-weight: 800;
+
+  color: #FFFFFF;
+
+  margin-bottom: 0.7rem;
+
+  letter-spacing: -1px;
 }
 
 .subtitle {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+
   letter-spacing: 2px;
-  margin-bottom: 35px;
-  text-transform: uppercase;
-  line-height: 1.5;
+
+  color: #94A3B8;
+
+  margin-bottom: 2rem;
 }
 
-/* Price Section */
+/* ========================================================================== 
+   PRICE
+========================================================================== */
+
 .price-box {
   display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 40px;
+  align-items: flex-end;
+
+  gap: 0.5rem;
+
+  margin-bottom: 2.5rem;
 }
 
 .price-box h1 {
-  color: var(--gold);
   font-size: 3rem;
-  font-weight: 500;
-  font-family: 'Cormorant Garamond', serif;
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: -2px;
+
+  color: #FFFFFF;
 }
 
 .event-text {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  color: #94A3B8;
+
+  margin-bottom: 0.4rem;
 }
 
-/* Features List */
+/* ========================================================================== 
+   FEATURES
+========================================================================== */
+
 .features {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 50px;
+
+  gap: 1rem;
+
+  margin-bottom: 2.5rem;
 }
 
 .features p {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+
+  color: #CBD5E1;
+
+  margin: 0;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
-/* Button */
+.package-card:hover .features p {
+  transform: translateX(4px);
+  color: #FFFFFF;
+}
+
+/* ========================================================================== 
+   BUTTON
+========================================================================== */
+
 .package-btn {
   width: 100%;
-  padding: 18px;
-  background: transparent;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: #fff;
-  font-size: 0.7rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+
+  padding:
+    1rem 1.2rem;
+
+  border: none;
+  outline: none;
+
+  border-radius: 100px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00D2E6,
+      #00AFC0
+    );
+
+  color: #FFFFFF;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
   cursor: pointer;
-  transition: 0.4s ease;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    opacity 0.35s ease;
 }
 
 .package-btn:hover {
-  background: var(--gold);
-  color: #000;
-  border-color: var(--gold);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 30px rgba(0,210,230,0.3);
 }
 
-/* =========================================
-   TABLET & MOBILE (Horizontal Scroll)
-========================================= */
+/* ========================================================================== 
+   RESPONSIVE
+========================================================================== */
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
+
   .packages-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 20px;
-    padding: 20px 0 60px 0;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE */
+    grid-template-columns: 1fr;
   }
 
-  /* Hide scrollbar for Chrome/Safari */
-  .packages-container::-webkit-scrollbar {
-    display: none;
+  .package-card.featured {
+    transform: scale(1);
   }
 
-  .package-card {
-    min-width: 85%; /* Shows a peek of the next card */
-    scroll-snap-align: center;
-    transform: none !important; /* Disable hover lifting on mobile for better UX */
-  }
-
-  .featured {
-    transform: none;
-  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
   .packages {
-    padding: 100px 5%;
+    padding: 6rem 4%;
   }
 
-  .packages-header h2 {
-    font-size: 2.8rem;
+  .packages-header {
+    margin-bottom: 4rem;
   }
 
   .package-card {
-    min-width: 90%;
-    padding: 45px 30px;
+    padding: 2.2rem 1.8rem;
+
+    border-radius: 24px;
+  }
+
+  .package-card h3 {
+    font-size: 1.7rem;
   }
 
   .price-box h1 {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
   }
+
+  .features p {
+    font-size: 0.88rem;
+  }
+
+  .package-btn {
+    font-size: 0.74rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .packages-header h2 {
+    letter-spacing: -1px;
+  }
+
+  .package-card {
+    padding: 2rem 1.4rem;
+  }
+
+  .price-box h1 {
+    font-size: 2.2rem;
+  }
+
+  .badge {
+    font-size: 0.6rem;
+  }
+
 }
 /* =========================================
-   MOBILE RESPONSIVE CSS ONLY
+   PACKAGES MOBILE RESPONSIVE CSS
 ========================================= */
 
 @media (max-width: 768px) {
 
   .packages {
-
-    padding: 80px 5%;
+    padding: 5rem 1rem;
   }
 
-  /* ===============================
-     HEADER
-  ================================ */
+  /* HEADER */
 
   .packages-header {
-
-    margin-bottom: 50px;
+    margin-bottom: 3rem;
   }
 
   .packages-header p {
-
-    font-size: 0.62rem;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 16px;
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
   }
 
   .packages-header h2 {
-
-    font-size: 2.2rem;
-
+    font-size: 2rem;
     line-height: 1.15;
+    letter-spacing: -1px;
   }
 
-  .packages-header span {
-
-    margin-left: 6px;
-  }
-
-  /* ===============================
-     HORIZONTAL SCROLL
-  ================================ */
+  /* GRID */
 
   .packages-container {
-
-    display: flex;
-
-    overflow-x: auto;
-
-    gap: 18px;
-
-    padding-bottom: 10px;
-
-    scroll-snap-type: x mandatory;
-
-    scrollbar-width: none;
-
-    -ms-overflow-style: none;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .packages-container::-webkit-scrollbar {
-
-    display: none;
-  }
-
-  /* ===============================
-     CARD
-  ================================ */
+  /* CARD */
 
   .package-card {
-
-    min-width: 88%;
-
-    padding: 38px 24px;
-
-    scroll-snap-align: center;
-
-    backdrop-filter: blur(10px);
-
-    transform: none !important;
+    padding: 2rem 1.3rem;
+    border-radius: 22px;
   }
 
-  .package-card:hover {
+  .package-card.featured {
+    transform: scale(1);
+  }
 
+  .package-card.featured:hover {
     transform: none;
   }
 
-  /* featured */
-
-  .featured {
-
-    border-color: rgba(212, 175, 55, 0.28);
-  }
-
-  /* badge */
+  /* BADGE */
 
   .badge {
+    top: 1rem;
+    right: 1rem;
 
-    top: 18px;
-    right: 18px;
+    padding: 0.45rem 0.8rem;
 
-    padding: 5px 10px;
-
-    font-size: 0.52rem;
-
-    letter-spacing: 1.5px;
+    font-size: 0.58rem;
+    letter-spacing: 0.8px;
   }
 
-  /* ===============================
-     TYPOGRAPHY
-  ================================ */
+  /* TITLE */
 
   .package-card h3 {
-
-    font-size: 1.45rem;
-
-    margin-bottom: 8px;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .subtitle {
-
-    font-size: 0.62rem;
-
+    font-size: 0.68rem;
     letter-spacing: 1.5px;
-
-    margin-bottom: 28px;
-
-    line-height: 1.6;
+    margin-bottom: 1.5rem;
   }
 
-  /* ===============================
-     PRICE
-  ================================ */
+  /* PRICE */
 
   .price-box {
-
-    gap: 8px;
-
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
+    gap: 0.3rem;
   }
 
   .price-box h1 {
-
-    font-size: 2.2rem;
+    font-size: 2rem;
+    letter-spacing: -1px;
   }
 
   .event-text {
-
-    font-size: 0.7rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.25rem;
   }
 
-  /* ===============================
-     FEATURES
-  ================================ */
+  /* FEATURES */
 
   .features {
-
-    gap: 14px;
-
-    margin-bottom: 35px;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
   }
 
   .features p {
-
-    font-size: 0.78rem;
-
+    font-size: 0.82rem;
     line-height: 1.5;
   }
 
-  /* ===============================
-     BUTTON
-  ================================ */
+  .package-card:hover .features p {
+    transform: none;
+  }
+
+  /* BUTTON */
 
   .package-btn {
+    padding: 0.9rem 1rem;
 
-    padding: 15px;
+    font-size: 0.75rem;
 
-    font-size: 0.62rem;
-
-    letter-spacing: 2px;
+    border-radius: 100px;
   }
 
-}
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media (max-width: 480px) {
-
-  .packages {
-
-    padding: 65px 4%;
-  }
-
-  .packages-header {
-
-    margin-bottom: 40px;
-  }
-
-  .packages-header h2 {
-
-    font-size: 1.9rem;
-  }
-
-  .package-card {
-
-    min-width: 92%;
-
-    padding: 34px 22px;
-  }
-
-  .package-card h3 {
-
-    font-size: 1.3rem;
-  }
-
-  .price-box h1 {
-
-    font-size: 2rem;
-  }
-
-  .features p {
-
-    font-size: 0.74rem;
-  }
-
-  .package-btn {
-
-    font-size: 0.58rem;
-
-    letter-spacing: 1.5px;
+  .package-btn:hover {
+    transform: none;
+    box-shadow: none;
   }
 
 }
@@ -480,21 +561,36 @@
    EXTRA SMALL DEVICES
 ========================================= */
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+
+  .packages {
+    padding: 4rem 0.9rem;
+  }
 
   .packages-header h2 {
-
     font-size: 1.7rem;
   }
 
   .package-card {
+    padding: 1.7rem 1.1rem;
+    border-radius: 20px;
+  }
 
-    min-width: 95%;
+  .package-card h3 {
+    font-size: 1.3rem;
   }
 
   .price-box h1 {
-
     font-size: 1.8rem;
+  }
+
+  .features p {
+    font-size: 0.78rem;
+  }
+
+  .package-btn {
+    font-size: 0.7rem;
+    padding: 0.85rem 1rem;
   }
 
 }

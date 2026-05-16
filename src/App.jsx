@@ -1,72 +1,72 @@
 import "./App.css";
 
-import Packages from "./components/packages/Packages";   // NEW
-import Testimonials from "./components/testimonials/Testimonials";
+import { Routes, Route } from "react-router-dom";
+
+import Packages from "./components/packages/Packages";
 import Instagram from "./components/instagram/Instagram";
 import Footer from "./components/footer/footer";
 import Gallery from "./pages/Gallery";
 import Location from "./components/location/Location";
 import Featured from "./components/featured/featured";
-import Services from "./components/Services/Services"
+import Services from "./components/Services/Services";
 import About from "./components/About/About";
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
+import Contact from "./components/Contact/Contact";
+import Portfolio from "./components/Portfolio/Portfolio";
 
-function App() {
+function HomePage() {
   return (
     <>
-      <Navbar/>
-      {/* Home Section */}
+      <Navbar />
+
       <section id="home">
-        <Hero/>
+        <Hero />
       </section>
 
-      {/* Services Section */}
-      {/* <section id="services">
-         <Services/>
-      </section> */}
-
-       <section id="gallery">
-        <Gallery/>
-        </section>
-     
-
-      {/* Gallery Section */}
-      <section id="gallery">
-        <Featured/>
+      <section id="services">
+        <Services />
       </section>
 
-      {/* About Section */}
+      <section id="featured">
+        <Featured />
+      </section>
+
       <section id="about">
-        <About/>
+        <About />
       </section>
 
-      {/* Video Section */}
+      <section id="portfolio">
+        <Portfolio />
+      </section>
+
       <section id="packages">
         <Packages />
       </section>
-    
 
-      {/* Testimonials Section */}
-      <section id="testimonials">
-        <Testimonials />
+      <section id="contact">
+        <Contact />
       </section>
 
-      {/* Instagram Section */}
       <section id="instagram">
         <Instagram />
       </section>
-      <section id="location">
-        <Location/>
-      </section>
-   
 
-      {/* Contact Section */}
-      <section id="contact">
-        <Footer />
+      <section id="location">
+        <Location />
       </section>
-   
+
+      <Footer />
     </>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/gallery" element={<Gallery />} />
+    </Routes>
   );
 }
 

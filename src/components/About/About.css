@@ -1,1202 +1,908 @@
-/* =========================================
-   PREMIUM CINEMATIC ABOUT SECTION
-========================================= */
+/* =========================================================
+   PREMIUM ABOUT SECTION
+========================================================= */
 
-.about{
+.about-section {
+  position: relative;
+  overflow: hidden;
 
-  position:relative;
+  background: #070b14;
 
-  width:100%;
+  padding: 9rem 5%;
+}
+
+/* Background Glow Layer */
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
   background:
-  linear-gradient(
-    180deg,
-    #050505 0%,
-    #0b0b0b 45%,
-    #111111 100%
+    radial-gradient(circle at 20% 30%,
+      rgba(0, 210, 230, 0.12),
+      transparent 35%),
+    radial-gradient(circle at 80% 70%,
+      rgba(255,255,255,0.04),
+      transparent 30%);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grid Texture */
+.about-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+  background-size: 80px 80px;
+
+  opacity: 0.2;
+
+  mask-image: radial-gradient(circle, white 10%, transparent 80%);
+
+  pointer-events: none;
+}
+
+.about-container {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1350px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 7rem;
+  align-items: center;
+}
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.about-visual-side {
+  position: relative;
+}
+
+.image-frame-wrapper {
+  position: relative;
+
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  aspect-ratio: 4 / 5;
+
+  isolation: isolate;
+}
+
+/* Luxury Border */
+.image-frame-wrapper::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  padding: 1px;
+
+  border-radius: 28px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.03)
   );
 
-  padding:160px 0;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
 
-  overflow:hidden;
+  -webkit-mask-composite: xor;
 
-  display:grid;
-
-  grid-template-columns:
-  1fr 1fr;
-
-  align-items:center;
-
-  gap:100px;
-
+  z-index: 5;
 }
 
-/* =========================================
-   GOLD AMBIENT GLOW
-========================================= */
+/* Floating Orb */
+.floating-orb {
+  position: absolute;
 
-.about::before{
+  width: 240px;
+  height: 240px;
 
-  content:"";
+  background: rgba(0, 210, 230, 0.18);
 
-  position:absolute;
+  filter: blur(100px);
 
-  width:650px;
-  height:650px;
+  top: -40px;
+  left: -60px;
 
-  top:-260px;
-  right:-180px;
+  z-index: 0;
 
-  background:
-  radial-gradient(
-    circle,
-    rgba(212,175,55,.10),
-    transparent 72%
-  );
-
-  pointer-events:none;
-
-  filter:blur(10px);
-
+  animation: floatOrb 8s ease-in-out infinite;
 }
 
-.about::after{
-
-  content:"";
-
-  position:absolute;
-
-  width:420px;
-  height:420px;
-
-  bottom:-180px;
-  left:-140px;
-
-  background:
-  radial-gradient(
-    circle,
-    rgba(242,201,76,.06),
-    transparent 70%
-  );
-
-  pointer-events:none;
-
+@keyframes floatOrb {
+  0%,100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
 }
 
-/* =========================================
-   LEFT IMAGE
-========================================= */
+/* Main Image */
+.about-display-img {
+  width: 100%;
+  height: 100%;
 
-.about-left{
+  object-fit: cover;
 
-  position:relative;
+  border-radius: 28px;
 
-  width:100%;
-  height:920px;
+  filter:
+    grayscale(10%)
+    contrast(1.05)
+    brightness(0.82);
 
-  overflow:hidden;
-
-}
-
-.about-left img{
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
+  transform: scale(1.02);
 
   transition:
-  transform 2s cubic-bezier(0.16,1,0.3,1),
-  filter 1.2s ease;
+    transform 0.8s ease,
+    filter 0.6s ease;
+
+  position: relative;
+  z-index: 2;
+}
+
+.image-frame-wrapper:hover .about-display-img {
+  transform: scale(1.07);
 
   filter:
-  brightness(.82)
-  contrast(1.06)
-  saturate(.95);
-
+    grayscale(0%)
+    contrast(1.08)
+    brightness(0.95);
 }
 
-.about-left:hover img{
+/* Ambient Glow */
+.frame-ambient-glow {
+  position: absolute;
 
-  transform:scale(1.06);
-
-  filter:
-  brightness(.9)
-  contrast(1.08);
-
-}
-
-/* =========================================
-   IMAGE OVERLAY
-========================================= */
-
-.fade-overlay{
-
-  position:absolute;
-  inset:0;
+  inset: 0;
 
   background:
+    radial-gradient(circle at center,
+    rgba(0,210,230,0.12),
+    transparent 70%);
 
-  linear-gradient(
-    to right,
-    rgba(5,5,5,0.18),
-    rgba(5,5,5,0.62)
-  ),
-
-  linear-gradient(
-    to top,
-    rgba(5,5,5,0.86),
-    transparent 42%
-  );
-
+  z-index: 1;
 }
 
-/* luxury border */
+/* =========================================================
+   EXPERIENCE BADGE
+========================================================= */
 
-.about-left::after{
+.experience-badge {
+  position: absolute;
 
-  content:"";
+  bottom: 35px;
+  right: -40px;
 
-  position:absolute;
+  width: 190px;
 
-  inset:30px;
+  background: rgba(255,255,255,0.08);
 
-  border:1px solid
-  rgba(212,175,55,.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
-  pointer-events:none;
+  border: 1px solid rgba(255,255,255,0.08);
 
+  border-radius: 22px;
+
+  padding: 1.4rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.5),
+    inset 0 1px 1px rgba(255,255,255,0.08);
+
+  z-index: 6;
 }
 
-/* =========================================
-   RIGHT CONTENT
-========================================= */
+.experience-badge::before {
+  content: "";
 
-.about-right{
+  position: absolute;
+  top: 0;
+  left: -100%;
 
-  width:min(88%,640px);
+  width: 100%;
+  height: 1px;
 
-  position:relative;
-
-  z-index:2;
-
-}
-
-/* =========================================
-   SMALL LABEL
-========================================= */
-
-.about-small{
-
-  display:inline-block;
-
-  color:var(--gold-light);
-
-  font-size:.74rem;
-
-  font-weight:500;
-
-  letter-spacing:8px;
-
-  text-transform:uppercase;
-
-  margin-bottom:28px;
-
-  position:relative;
-
-}
-
-/* gold line */
-
-.about-small::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:0;
-  bottom:-10px;
-
-  width:70px;
-  height:1px;
-
-  background:
-  linear-gradient(
-    to right,
-    var(--gold),
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.9),
     transparent
   );
 
+  animation: shine 4s infinite;
 }
 
-/* =========================================
-   TITLE
-========================================= */
-
-.about-title{
-
-  font-family:var(--heading-font);
-
-  font-size:clamp(3.2rem,5vw,6rem);
-
-  font-weight:500;
-
-  line-height:1.05;
-
-  color:var(--text-white);
-
-  margin-bottom:34px;
-
-  letter-spacing:3px;
-
-  text-transform:uppercase;
-
+@keyframes shine {
+  to {
+    left: 200%;
+  }
 }
 
-.about-title span{
+.badge-number {
+  font-size: 2.5rem;
+  font-weight: 900;
 
-  font-family:var(--accent-font);
+  color: #00D2E6;
 
-  color:var(--gold);
-
-  font-style:italic;
-
-  text-transform:none;
-
-  letter-spacing:1px;
-
+  line-height: 1;
 }
 
-/* =========================================
-   SUBTEXT
-========================================= */
+.badge-text {
+  font-size: 0.8rem;
+  font-weight: 600;
 
-.about-sub{
+  color: rgba(255,255,255,0.85);
 
-  color:rgba(255,255,255,0.78);
+  text-align: center;
 
-  font-size:1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 
-  line-height:2;
-
-  margin-bottom:34px;
-
-  font-weight:300;
-
-  max-width:560px;
-
+  line-height: 1.5;
 }
 
-/* =========================================
-   MAIN TEXT
-========================================= */
+/* =========================================================
+   RIGHT SIDE CONTENT
+========================================================= */
 
-.about-text{
-
-  color:rgba(255,255,255,0.54);
-
-  font-size:.95rem;
-
-  line-height:2.15;
-
-  font-weight:300;
-
-  margin-bottom:56px;
-
-  max-width:560px;
-
+.about-content-side {
+  display: flex;
+  flex-direction: column;
 }
 
-/* =========================================
-   BUTTON
-========================================= */
+.section-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
 
-.about-btn{
+  color: #00D2E6;
 
-  position:relative;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:16px;
-
-  background:none;
-
-  border:none;
-
-  color:var(--text-white);
-
-  font-size:.72rem;
-
-  letter-spacing:4px;
-
-  text-transform:uppercase;
-
-  padding-bottom:14px;
-
-  cursor:pointer;
-
-  transition:all .5s ease;
-
+  margin-bottom: 1rem;
 }
 
-/* underline */
+/* Accent Line */
+.accent-line {
+  width: 90px;
+  height: 2px;
 
-.about-btn::after{
+  margin-bottom: 2rem;
 
-  content:"";
+  background: linear-gradient(
+    90deg,
+    #00D2E6,
+    transparent
+  );
+}
 
-  position:absolute;
+/* Heading */
+.section-title {
+  font-size: clamp(2.8rem, 5vw, 4.6rem);
 
-  left:0;
-  bottom:0;
+  line-height: 1.05;
 
-  width:100%;
-  height:1px;
+  font-weight: 900;
+
+  color: #ffffff;
+
+  letter-spacing: -2px;
+
+  margin-bottom: 2rem;
+
+  max-width: 720px;
+}
+
+.text-highlight {
+  background: linear-gradient(
+    135deg,
+    #00D2E6,
+    #00A3C4
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Description */
+.about-description {
+  font-size: 1.08rem;
+
+  line-height: 1.95;
+
+  color: rgba(255,255,255,0.68);
+
+  margin-bottom: 1.6rem;
+
+  max-width: 90%;
+}
+
+/* =========================================================
+   STATS GRID
+========================================================= */
+
+.about-stats-grid {
+  margin-top: 2.5rem;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 1.5rem;
+}
+
+.stat-card {
+  position: relative;
+
+  padding: 1.6rem;
+
+  border-radius: 24px;
 
   background:
-  rgba(255,255,255,.16);
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.02)
+    );
 
-  transition:.5s ease;
+  border: 1px solid rgba(255,255,255,0.08);
 
+  backdrop-filter: blur(12px);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease;
 }
 
-.about-btn:hover{
+.stat-card::before {
+  content: "";
 
-  color:var(--gold-light);
+  position: absolute;
+  inset: 0;
 
-  transform:translateY(-3px);
+  background:
+    radial-gradient(circle at top right,
+    rgba(0,210,230,0.16),
+    transparent 40%);
 
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
 }
 
-.about-btn:hover::after{
-
-  background:var(--gold);
-
-  box-shadow:
-  0 0 14px rgba(212,175,55,.45);
-
+.stat-card:hover::before {
+  opacity: 1;
 }
 
-/* arrow */
-
-.about-btn span{
-
-  transition:.4s ease;
-
+.stat-card:hover {
+  border-color: rgba(0,210,230,0.4);
 }
 
-.about-btn:hover span{
+.stat-number {
+  font-size: 2.4rem;
+  font-weight: 900;
 
-  transform:translateX(6px);
+  color: white;
 
+  margin-bottom: 0.5rem;
+
+  letter-spacing: -1px;
+
+  position: relative;
+  z-index: 2;
 }
 
-/* =========================================
-   LARGE LAPTOP
-========================================= */
+.stat-label {
+  font-size: 0.9rem;
 
-@media(max-width:1400px){
+  color: rgba(255,255,255,0.65);
 
-  .about{
-
-    gap:70px;
-
-    padding:130px 0;
-
-  }
-
-  .about-left{
-
-    height:760px;
-
-  }
-
+  position: relative;
+  z-index: 2;
 }
 
-/* =========================================
-   TABLET
-========================================= */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-@media(max-width:991px){
-
-  .about{
-
-    grid-template-columns:1fr;
-
-    gap:70px;
-
-    padding:110px 0;
-
+@media (max-width: 1100px) {
+  .about-container {
+    gap: 4rem;
   }
 
-  .about-left{
-
-    height:620px;
-
+  .section-title {
+    font-size: 3.5rem;
   }
-
-  .about-right{
-
-    width:min(90%,720px);
-
-    margin:auto;
-
-  }
-
 }
 
-/* =========================================
-   MOBILE
-========================================= */
-
-@media(max-width:768px){
-
-  .about{
-
-    padding:90px 0;
-
-    gap:45px;
-
+@media (max-width: 768px) {
+  .about-section {
+    padding: 7rem 5%;
   }
 
-  .about-left{
-
-    height:430px;
-
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 5rem;
   }
 
-  .about-left::after{
-
-    inset:18px;
-
+  .about-visual-side {
+    max-width: 500px;
+    margin: 0 auto;
   }
 
-  .about-right{
+  .experience-badge {
+    right: -10px;
+    bottom: 20px;
 
-    width:90%;
-
+    width: 160px;
   }
 
-  .about-title{
-
-    font-size:3rem;
-
-    line-height:1.08;
-
-    letter-spacing:2px;
-
+  .section-title {
+    font-size: 2.6rem;
   }
 
-  .about-sub{
-
-    font-size:.92rem;
-
-    line-height:1.9;
-
+  .about-description {
+    max-width: 100%;
   }
 
-  .about-text{
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================================
+   PREMIUM MOBILE RESPONSIVE CSS
+========================================================= */
 
-    font-size:.84rem;
+/* =========================
+   LARGE TABLETS
+========================= */
 
-    line-height:1.95;
+@media (max-width: 1100px) {
 
+  .about-section {
+    padding: 7rem 5%;
   }
 
-  .about-small{
-
-    letter-spacing:5px;
-
+  .about-container {
+    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
   }
 
+  .section-title {
+    font-size: 3.4rem;
+  }
+
+  .about-description {
+    max-width: 100%;
+  }
+
+  .experience-badge {
+    width: 170px;
+    right: -20px;
+  }
 }
 
-/* =========================================
+/* =========================
+   TABLETS
+========================= */
+
+@media (max-width: 900px) {
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
+
+  .about-visual-side {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .about-content-side {
+    text-align: center;
+    align-items: center;
+  }
+
+  .accent-line {
+    margin-inline: auto;
+  }
+
+  .section-title {
+    font-size: 3rem;
+    max-width: 100%;
+  }
+
+  .about-description {
+    max-width: 90%;
+  }
+
+  .about-stats-grid {
+    width: 100%;
+  }
+
+  .experience-badge {
+    right: 10px;
+    bottom: 20px;
+  }
+}
+
+/* =========================
+   MOBILE DEVICES
+========================= */
+
+@media (max-width: 768px) {
+
+  .about-section {
+    padding: 6rem 1.5rem;
+  }
+
+  .about-container {
+    gap: 4rem;
+  }
+
+  /* IMAGE */
+
+  .about-visual-side {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-frame-wrapper {
+    border-radius: 24px;
+  }
+
+  .about-display-img {
+    border-radius: 24px;
+    min-height: 500px;
+  }
+
+  /* FLOATING ORB */
+
+  .floating-orb {
+    width: 180px;
+    height: 180px;
+
+    top: -30px;
+    left: -30px;
+
+    filter: blur(80px);
+  }
+
+  /* EXPERIENCE BADGE */
+
+  .experience-badge {
+    width: 150px;
+
+    padding: 1rem;
+
+    bottom: 15px;
+    right: 10px;
+
+    border-radius: 18px;
+  }
+
+  .badge-number {
+    font-size: 2rem;
+  }
+
+  .badge-text {
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  /* CONTENT */
+
+  .section-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+  }
+
+  .section-title {
+    font-size: 2.4rem;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+  }
+
+  .about-description {
+    font-size: 1rem;
+    line-height: 1.9;
+
+    max-width: 100%;
+  }
+
+  /* STATS */
+
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    margin-top: 2rem;
+  }
+
+  .stat-card {
+    padding: 1.4rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+}
+
+/* =========================
    SMALL MOBILE
-========================================= */
+========================= */
 
-@media(max-width:480px){
+@media (max-width: 480px) {
 
-  .about{
-
-    padding:70px 0;
-
+  .about-section {
+    padding: 5rem 1rem;
   }
 
-  .about-title{
-
-    font-size:2.35rem;
-
+  .about-container {
+    gap: 3.5rem;
   }
 
-  .about-left{
+  /* IMAGE */
 
-    height:320px;
-
+  .image-frame-wrapper {
+    aspect-ratio: 4 / 5.3;
   }
 
-  .about-btn{
-
-    letter-spacing:3px;
-
-    font-size:.66rem;
-
+  .about-display-img {
+    min-height: 420px;
   }
 
-}
-/* =========================================
-   MOBILE RESPONSIVE CSS
-========================================= */
+  /* BADGE */
 
-@media(max-width:768px){
+  .experience-badge {
+    width: 135px;
 
-  .about{
+    padding: 0.9rem;
 
-    grid-template-columns:1fr;
-
-    padding:90px 0;
-
-    gap:45px;
-
+    bottom: 12px;
+    right: 8px;
   }
 
-  /* =========================
-     IMAGE
-  ========================= */
-
-  .about-left{
-
-    width:100%;
-
-    height:430px;
-
+  .badge-number {
+    font-size: 1.8rem;
   }
 
-  .about-left::after{
-
-    inset:18px;
-
+  .badge-text {
+    font-size: 0.65rem;
   }
 
-  .about-left img{
+  /* CONTENT */
 
-    object-position:center;
-
+  .section-subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
   }
 
-  /* =========================
-     CONTENT
-  ========================= */
-
-  .about-right{
-
-    width:90%;
-
-    margin:auto;
-
-    text-align:left;
-
+  .section-title {
+    font-size: 2rem;
+    line-height: 1.15;
   }
 
-  /* small label */
-
-  .about-small{
-
-    font-size:.68rem;
-
-    letter-spacing:5px;
-
-    margin-bottom:22px;
-
+  .about-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
   }
 
-  .about-small::after{
+  /* STATS */
 
-    width:55px;
-
+  .stat-card {
+    border-radius: 20px;
+    padding: 1.2rem;
   }
 
-  /* title */
-
-  .about-title{
-
-    font-size:3rem;
-
-    line-height:1.08;
-
-    letter-spacing:2px;
-
-    margin-bottom:24px;
-
+  .stat-number {
+    font-size: 1.8rem;
   }
 
-  .about-title span{
-
-    display:inline-block;
-
+  .stat-label {
+    font-size: 0.8rem;
   }
-
-  /* sub text */
-
-  .about-sub{
-
-    font-size:.92rem;
-
-    line-height:1.9;
-
-    margin-bottom:26px;
-
-  }
-
-  /* body text */
-
-  .about-text{
-
-    font-size:.84rem;
-
-    line-height:1.95;
-
-    margin-bottom:40px;
-
-  }
-
-  /* button */
-
-  .about-btn{
-
-    font-size:.66rem;
-
-    letter-spacing:3px;
-
-    padding-bottom:10px;
-
-  }
-
 }
 
+/* =========================
+   EXTRA SMALL DEVICES
+========================= */
+
+@media (max-width: 360px) {
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .about-description {
+    font-size: 0.9rem;
+  }
+
+  .experience-badge {
+    width: 120px;
+  }
+
+  .badge-number {
+    font-size: 1.5rem;
+  }
+
+  .badge-text {
+    font-size: 0.6rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+}
 /* =========================================
-   SMALL MOBILE
+   ABOUT SECTION MOBILE CSS
 ========================================= */
 
-@media(max-width:480px){
+@media (max-width: 768px) {
 
-  .about{
-
-    padding:70px 0;
-
-    gap:35px;
-
+  .about-section {
+    padding: 5rem 1.2rem;
   }
 
-  /* image */
-
-  .about-left{
-
-    height:320px;
-
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
-  .about-left::after{
-
-    inset:12px;
-
+  .image-frame-wrapper {
+    border-radius: 22px;
+    aspect-ratio: 4 / 5;
   }
 
-  /* content */
-
-  .about-right{
-
-    width:92%;
-
+  .image-frame-wrapper::before {
+    border-radius: 22px;
   }
 
-  /* heading */
-
-  .about-title{
-
-    font-size:2.3rem;
-
-    line-height:1.1;
-
-    letter-spacing:1.5px;
-
+  .about-display-img {
+    border-radius: 22px;
   }
 
-  /* texts */
+  .floating-orb {
+    width: 160px;
+    height: 160px;
+    filter: blur(70px);
 
-  .about-sub{
-
-    font-size:.84rem;
-
+    top: -20px;
+    left: -20px;
   }
 
-  .about-text{
+  .experience-badge {
+    width: 150px;
 
-    font-size:.78rem;
+    right: 10px;
+    bottom: 15px;
 
-    line-height:1.85;
+    padding: 1rem;
 
+    border-radius: 18px;
   }
 
-  /* label */
-
-  .about-small{
-
-    font-size:.62rem;
-
-    letter-spacing:4px;
-
+  .badge-number {
+    font-size: 2rem;
   }
 
-  /* button */
-
-  .about-btn{
-
-    font-size:.62rem;
-
-    letter-spacing:2px;
-
-    gap:10px;
-
+  .badge-text {
+    font-size: 0.8rem;
+    text-align: center;
   }
 
+  /* RIGHT CONTENT */
+
+  .about-content-side {
+    text-align: left;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+
+  .about-heading {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .about-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .feature-card {
+    padding: 1rem;
+    border-radius: 18px;
+  }
+
+  .feature-card h4 {
+    font-size: 1rem;
+  }
+
+  .feature-card p {
+    font-size: 0.85rem;
+  }
+
+  .about-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .about-buttons a {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* =========================================
    EXTRA SMALL DEVICES
 ========================================= */
 
-@media(max-width:360px){
-
-  .about-title{
-
-    font-size:2rem;
-
-  }
-
-  .about-left{
-
-    height:260px;
-
-  }
-
-  .about-text{
-
-    font-size:.75rem;
-
-  }
-
-}
-/* =========================================
-   CINEMATIC TEXT REVEAL
-========================================= */
-
-.about-right > *{
-
-  will-change: transform, opacity;
-
-}
-
-/* =========================================
-   TITLE GLOW EFFECT
-========================================= */
-
-.about-title{
-
-  position: relative;
-
-  overflow: hidden;
-
-}
-
-.about-title::after{
-
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:-120%;
-
-  width:80%;
-  height:100%;
-
-  background:
-  linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.08),
-    transparent
-  );
-
-  transform:skewX(-20deg);
-
-  animation:titleShine 5s ease infinite;
-
-}
-
-@keyframes titleShine{
-
-  0%{
-    left:-120%;
-  }
-
-  40%{
-    left:130%;
-  }
-
-  100%{
-    left:130%;
-  }
-
-}
-
-/* =========================================
-   SMALL LABEL GLOW
-========================================= */
-
-.about-small{
-
-  animation:goldPulse 3s ease-in-out infinite;
-
-}
-
-@keyframes goldPulse{
-
-  0%{
-    opacity:.7;
-    text-shadow:0 0 0 rgba(212,175,55,0);
-  }
-
-  50%{
-    opacity:1;
-    text-shadow:
-    0 0 12px rgba(212,175,55,.35);
-  }
-
-  100%{
-    opacity:.7;
-    text-shadow:0 0 0 rgba(212,175,55,0);
-  }
-
-}
-
-/* =========================================
-   PARAGRAPH SMOOTH APPEAR
-========================================= */
-
-.about-sub,
-.about-text{
-
-  transform:translateY(10px);
-
-}
-
-/* =========================================
-   BUTTON PREMIUM HOVER
-========================================= */
-
-.about-btn{
-
-  overflow:hidden;
-
-}
-
-.about-btn::before{
-
-  content:"";
-
-  position:absolute;
-
-  top:0;
-  left:-120%;
-
-  width:100%;
-  height:100%;
-
-  background:
-  linear-gradient(
-    120deg,
-    transparent,
-    rgba(212,175,55,.12),
-    transparent
-  );
-
-  transition:1s ease;
-
-}
-
-.about-btn:hover::before{
-
-  left:120%;
-
-}
-
-/* =========================================
-   IMAGE CINEMATIC FLOAT
-========================================= */
-
-.about-left img{
-
-  animation:slowFloat 8s ease-in-out infinite;
-
-}
-
-@keyframes slowFloat{
-
-  0%{
-    transform:scale(1) translateY(0px);
-  }
-
-  50%{
-    transform:scale(1.03) translateY(-8px);
-  }
-
-  100%{
-    transform:scale(1) translateY(0px);
-  }
-
-}
-
-/* =========================================
-   PREMIUM FADE OVERLAY
-========================================= */
-
-.fade-overlay{
-
-  backdrop-filter: blur(.5px);
-
-}
-
-/* =========================================
-   MOBILE OPTIMIZATION
-========================================= */
-
-@media(max-width:768px){
-
-  .about-title::after{
-
-    animation-duration:6s;
-
-  }
-
-  .about-left img{
-
-    animation:none;
-
-  }
-
-}
-/* =========================================
-   MOBILE CSS ONLY
-========================================= */
-
-@media (max-width: 768px) {
-
-  .about {
-
-    grid-template-columns: 1fr;
-    gap: 40px;
-
-    padding: 80px 0;
-  }
-
-  /* glow reduce */
-
-  .about::before {
-
-    width: 320px;
-    height: 320px;
-
-    top: -120px;
-    right: -120px;
-  }
-
-  .about::after {
-
-    width: 220px;
-    height: 220px;
-
-    bottom: -100px;
-    left: -100px;
-  }
-
-  /* =========================
-     IMAGE
-  ========================= */
-
-  .about-left {
-
-    width: 100%;
-    height: 360px;
-  }
-
-  .about-left::after {
-
-    inset: 14px;
-  }
-
-  .about-left img {
-
-    object-position: center;
-    animation: none;
-  }
-
-  /* =========================
-     CONTENT
-  ========================= */
-
-  .about-right {
-
-    width: 90%;
-    margin: auto;
-  }
-
-  /* small heading */
-
-  .about-small {
-
-    font-size: 0.62rem;
-    letter-spacing: 4px;
-
-    margin-bottom: 18px;
-  }
-
-  .about-small::after {
-
-    width: 45px;
-    bottom: -8px;
-  }
-
-  /* title */
-
-  .about-title {
-
-    font-size: 2.3rem;
-
-    line-height: 1.12;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 20px;
-  }
-
-  /* sub */
-
-  .about-sub {
-
-    font-size: 0.86rem;
-
-    line-height: 1.8;
-
-    margin-bottom: 22px;
-  }
-
-  /* body */
-
-  .about-text {
-
-    font-size: 0.78rem;
-
-    line-height: 1.9;
-
-    margin-bottom: 34px;
-  }
-
-  /* button */
-
-  .about-btn {
-
-    font-size: 0.62rem;
-
-    letter-spacing: 2px;
-
-    gap: 10px;
-
-    padding-bottom: 8px;
-  }
-
-}
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
 @media (max-width: 480px) {
 
-  .about {
-
-    padding: 65px 0;
-
-    gap: 30px;
+  .about-section {
+    padding: 4rem 1rem;
   }
 
-  .about-left {
-
-    height: 280px;
+  .about-heading {
+    font-size: 1.6rem;
   }
 
-  .about-left::after {
-
-    inset: 10px;
+  .about-description {
+    font-size: 0.88rem;
   }
 
-  .about-right {
-
-    width: 92%;
+  .experience-badge {
+    width: 135px;
+    padding: 0.9rem;
   }
 
-  .about-title {
-
-    font-size: 1.95rem;
-
-    line-height: 1.15;
-  }
-
-  .about-sub {
-
-    font-size: 0.8rem;
-  }
-
-  .about-text {
-
-    font-size: 0.74rem;
-
-    line-height: 1.8;
-  }
-
-  .about-small {
-
-    font-size: 0.56rem;
-
-    letter-spacing: 3px;
-  }
-
-  .about-btn {
-
-    font-size: 0.58rem;
-
-    letter-spacing: 1.5px;
-  }
-
-}
-
-/* =========================================
-   EXTRA SMALL
-========================================= */
-
-@media (max-width: 360px) {
-
-  .about-title {
-
+  .badge-number {
     font-size: 1.7rem;
   }
 
-  .about-left {
-
-    height: 240px;
+  .feature-card {
+    padding: 0.9rem;
   }
 
 }

@@ -1,282 +1,338 @@
-/* =========================================
-   CINEMATIC LUXURY PORTFOLIO SECTION
-========================================= */
+/* =========================================================
+   ULTRA PREMIUM CINEMATIC GALLERY
+========================================================= */
 
-.portfolio{
-
+.gallery-page{
   position:relative;
+  width:100%;
+  min-height:100vh;
 
-  padding:160px 0;
+  padding:9rem 5%;
 
   background:
-  linear-gradient(
-    180deg,
-    #050505 0%,
-    #0c0c0c 45%,
-    #111111 100%
-  );
+    radial-gradient(
+      circle at top,
+      rgba(0,210,230,0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #060B14 0%,
+      #090D16 100%
+    );
 
   overflow:hidden;
-
 }
 
-/* =========================================
-   AMBIENT GOLD GLOW
-========================================= */
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
 
-.portfolio::before{
-
-  content:"";
-
+.gallery-main-glow{
   position:absolute;
 
   width:700px;
   height:700px;
 
-  top:-320px;
-  right:-220px;
+  top:-200px;
+  right:-200px;
+
+  border-radius:50%;
 
   background:
-  radial-gradient(
-    circle,
-    rgba(212,175,55,.08),
-    transparent 72%
-  );
+    radial-gradient(
+      circle,
+      rgba(0,210,230,0.14) 0%,
+      transparent 70%
+    );
+
+  filter:blur(90px);
 
   pointer-events:none;
-
-  filter:blur(10px);
-
 }
 
-.portfolio::after{
+/* =========================================================
+   HERO
+========================================================= */
 
-  content:"";
-
-  position:absolute;
-
-  width:500px;
-  height:500px;
-
-  bottom:-220px;
-  left:-180px;
-
-  background:
-  radial-gradient(
-    circle,
-    rgba(242,201,76,.05),
-    transparent 70%
-  );
-
-  pointer-events:none;
-
-}
-
-/* =========================================
-   WRAPPER
-========================================= */
-
-.portfolio-wrapper{
-
-  width:min(92%,1500px);
-
-  margin:auto;
-
+.gallery-hero{
   position:relative;
-
   z-index:2;
 
-}
+  max-width:900px;
 
-/* =========================================
-   HEADER
-========================================= */
-
-.portfolio-header{
+  margin:0 auto 6rem auto;
 
   text-align:center;
-
-  margin-bottom:100px;
-
 }
 
-.p-tag{
+.gallery-label{
 
-  display:inline-block;
+  display:inline-flex;
 
-  color:var(--gold-light);
+  align-items:center;
 
-  font-size:.72rem;
+  gap:12px;
 
-  letter-spacing:7px;
+  padding:0.7rem 1.2rem;
 
-  margin-bottom:26px;
+  border-radius:50px;
 
-  text-transform:uppercase;
+  background:
+    rgba(0,210,230,0.05);
 
-  font-weight:500;
+  border:
+    1px solid rgba(0,210,230,0.14);
 
-  position:relative;
+  color:#00D2E6;
 
+  font-size:0.7rem;
+
+  font-weight:700;
+
+  letter-spacing:4px;
+
+  margin-bottom:2rem;
 }
 
-.p-tag::after{
+.gallery-label::before{
 
   content:"";
 
-  position:absolute;
+  width:8px;
+  height:8px;
 
-  left:50%;
-  transform:translateX(-50%);
+  border-radius:50%;
 
-  bottom:-10px;
+  background:#00D2E6;
 
-  width:60px;
-  height:1px;
-
-  background:
-  linear-gradient(
-    to right,
-    transparent,
-    var(--gold),
-    transparent
-  );
-
+  box-shadow:
+    0 0 12px rgba(0,210,230,0.9);
 }
 
-/* =========================================
-   TITLE
-========================================= */
-
-.portfolio-title{
-
-  font-family:var(--heading-font);
+.gallery-hero h1{
 
   font-size:
-  clamp(3.2rem,6vw,6.2rem);
+    clamp(3.5rem,8vw,7rem);
 
-  font-weight:500;
+  line-height:0.95;
 
-  line-height:1.02;
+  font-weight:800;
 
-  color:var(--text-white);
+  letter-spacing:-4px;
 
-  margin-bottom:30px;
+  color:#FFFFFF;
 
-  letter-spacing:2px;
-
+  margin-bottom:2rem;
 }
 
-.portfolio-title span{
+.gallery-accent{
 
-  font-family:var(--accent-font);
+  background:
+    linear-gradient(
+      135deg,
+      #00D2E6,
+      #7CF3FF
+    );
 
-  color:var(--gold);
-
-  font-style:normal;
-
-  text-transform:none;
-
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-/* =========================================
-   SUBTEXT
-========================================= */
+.gallery-hero p{
 
-.p-sub{
-
-  max-width:680px;
+  max-width:760px;
 
   margin:auto;
 
-  color:rgba(255,255,255,0.66);
+  color:#94A3B8;
 
-  font-size:.92rem;
+  font-size:1.05rem;
 
-  line-height:2.1;
-
-  letter-spacing:.5px;
-
-  font-weight:300;
-
+  line-height:1.9;
 }
 
-/* =========================================
-   SLIDER
-========================================= */
+/* =========================================================
+   FILTERS
+========================================================= */
 
-.portfolio-slider{
-
-  position:relative;
-
-  width:100%;
-  height:720px;
+.gallery-filters{
 
   display:flex;
 
   justify-content:center;
 
-  align-items:center;
+  flex-wrap:wrap;
 
-  margin-bottom:90px;
+  gap:1rem;
 
+  margin-bottom:5rem;
+
+  position:relative;
+  z-index:2;
 }
 
-/* =========================================
+.gallery-filters button{
+
+  padding:
+    0.9rem 1.5rem;
+
+  border-radius:60px;
+
+  background:
+    rgba(255,255,255,0.02);
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  color:#94A3B8;
+
+  backdrop-filter:blur(14px);
+
+  transition:all 0.45s ease;
+
+  font-size:0.72rem;
+
+  letter-spacing:3px;
+}
+
+.gallery-filters button:hover{
+
+  color:#00D2E6;
+
+  border-color:
+    rgba(0,210,230,0.22);
+
+  transform:
+    translateY(-3px);
+
+  background:
+    rgba(0,210,230,0.04);
+}
+
+.active-filter{
+
+  background:
+    rgba(0,210,230,0.08) !important;
+
+  border-color:
+    rgba(0,210,230,0.28) !important;
+
+  color:#00D2E6 !important;
+
+  box-shadow:
+    0 0 25px rgba(0,210,230,0.12);
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.gallery-grid{
+
+  position:relative;
+  z-index:2;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fit,minmax(360px,1fr));
+
+  gap:2.5rem;
+}
+
+/* =========================================================
    CARD
-========================================= */
+========================================================= */
 
-.portfolio-card{
-
-  position:absolute;
-
-  width:430px;
-  height:590px;
-
-  cursor:pointer;
-
-  transition:
-  transform 1s cubic-bezier(0.16,1,0.3,1),
-  opacity .8s ease,
-  filter .8s ease;
-
-}
-
-.card-image-wrap{
+.gallery-card{
 
   position:relative;
 
-  width:100%;
-  height:100%;
-
   overflow:hidden;
 
-  border-radius:2px;
+  border-radius:30px;
 
-  background:#111;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.04),
+      rgba(255,255,255,0.015)
+    );
 
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(18px);
+
+  transition:
+    transform 0.55s ease,
+    border-color 0.55s ease,
+    box-shadow 0.55s ease;
+
+  isolation:isolate;
 }
 
-/* luxury border */
+.gallery-card:hover{
 
-.card-image-wrap::after{
+  transform:
+    translateY(-14px);
+
+  border-color:
+    rgba(0,210,230,0.18);
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(0,210,230,0.06),
+    0 0 40px rgba(0,210,230,0.08);
+}
+
+/* TOP LIGHT */
+
+.gallery-card::before{
 
   content:"";
 
   position:absolute;
 
-  inset:24px;
+  top:0;
+  left:0;
 
-  border:
-  1px solid rgba(212,175,55,.18);
+  width:100%;
+  height:1px;
 
-  pointer-events:none;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0,210,230,0.7),
+      transparent
+    );
 
-  transition:.5s ease;
+  opacity:0;
 
+  transition:0.5s ease;
 }
 
-.card-image-wrap img{
+.gallery-card:hover::before{
+  opacity:1;
+}
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.gallery-video-wrapper{
+
+  position:relative;
+
+  width:100%;
+  height:270px;
+
+  overflow:hidden;
+}
+
+.gallery-video-wrapper video{
 
   width:100%;
   height:100%;
@@ -284,589 +340,306 @@
   object-fit:cover;
 
   transition:
-  transform 1.6s cubic-bezier(0.16,1,0.3,1),
-  filter 1s ease;
-
-  filter:
-  brightness(.88)
-  contrast(1.04);
-
+    transform 1.3s ease,
+    filter 0.8s ease;
 }
 
-.portfolio-card:hover img{
+.gallery-card:hover video{
 
-  transform:scale(1.05);
+  transform:scale(1.08);
 
-  filter:
-  brightness(.95)
-  contrast(1.08);
-
+  filter:brightness(1.05);
 }
 
-.portfolio-card:hover
-.card-image-wrap::after{
+/* DARK OVERLAY */
 
-  inset:18px;
-
-  border-color:
-  rgba(212,175,55,.35);
-
-}
-
-/* =========================================
-   OVERLAY
-========================================= */
-
-.card-overlay{
+.gallery-overlay{
 
   position:absolute;
+
   inset:0;
 
   background:
+    linear-gradient(
+      to top,
+      rgba(9,13,22,0.85),
+      rgba(9,13,22,0.15)
+    );
 
-  linear-gradient(
-    to top,
-    rgba(0,0,0,.72),
-    transparent 55%
-  );
+  display:flex;
 
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+
+  transition:0.45s ease;
 }
 
-/* =========================================
-   ACTIVE CARD
-========================================= */
-
-.portfolio-card.active{
-
-  box-shadow:
-  0 40px 100px rgba(0,0,0,.55);
-
-  z-index:5;
-
+.gallery-card:hover .gallery-overlay{
+  opacity:1;
 }
 
-/* =========================================
-   DETAILS
-========================================= */
+/* PLAY BUTTON */
 
-.active-details{
+.gallery-play-btn{
 
-  text-align:center;
+  width:82px;
+  height:82px;
 
-  max-width:760px;
+  border-radius:50%;
 
-  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
+  background:
+    rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  border:
+    1px solid rgba(255,255,255,0.12);
+
+  color:#FFFFFF;
+
+  font-size:1.5rem;
+
+  transition:0.4s ease;
 }
 
-.active-category{
+.gallery-play-btn:hover{
 
-  display:block;
+  transform:scale(1.08);
 
-  color:var(--gold-light);
+  background:
+    rgba(0,210,230,0.12);
 
-  font-size:.72rem;
-
-  letter-spacing:6px;
-
-  margin-bottom:20px;
-
-  text-transform:uppercase;
-
+  color:#00D2E6;
 }
 
-.active-details h3{
+/* =========================================================
+   TOP META
+========================================================= */
 
-  font-family:var(--heading-font);
-
-  font-size:
-  clamp(2.2rem,4vw,4rem);
-
-  font-weight:500;
-
-  color:var(--text-white);
-
-  margin-bottom:26px;
-
-  line-height:1.08;
-
-}
-
-.active-details p{
-
-  color:rgba(255,255,255,.65);
-
-  line-height:2.1;
-
-  font-size:.92rem;
-
-  margin-bottom:38px;
-
-  font-weight:300;
-
-}
-
-/* =========================================
-   BUTTON
-========================================= */
-
-.portfolio-btn{
-
-  position:relative;
-
-  background:none;
-
-  border:none;
-
-  padding-bottom:10px;
-
-  color:var(--text-white);
-
-  font-size:.68rem;
-
-  letter-spacing:4px;
-
-  text-transform:uppercase;
-
-  cursor:pointer;
-
-  transition:.5s ease;
-
-}
-
-.portfolio-btn::after{
-
-  content:"";
+.gallery-top-meta{
 
   position:absolute;
 
-  left:0;
-  bottom:0;
+  top:20px;
+  left:20px;
+  right:20px;
 
-  width:100%;
-  height:1px;
+  display:flex;
+  justify-content:space-between;
+
+  z-index:3;
+}
+
+.gallery-top-meta span{
+
+  padding:
+    0.45rem 0.8rem;
+
+  border-radius:40px;
 
   background:
-  rgba(255,255,255,.18);
+    rgba(0,0,0,0.35);
 
-  transition:.5s ease;
+  backdrop-filter:blur(12px);
 
+  color:#FFFFFF;
+
+  font-size:0.68rem;
+
+  letter-spacing:2px;
 }
 
-.portfolio-btn:hover{
+/* =========================================================
+   CONTENT
+========================================================= */
 
-  color:var(--gold);
-
-  transform:translateY(-2px);
-
+.gallery-content{
+  padding:2rem;
 }
 
-.portfolio-btn:hover::after{
+.gallery-content-top{
 
-  background:var(--gold);
+  display:flex;
 
-  box-shadow:
-  0 0 12px rgba(212,175,55,.4);
+  justify-content:space-between;
 
+  align-items:center;
+
+  margin-bottom:1.4rem;
 }
 
-/* =========================================
-   TABLET
-========================================= */
+.gallery-tag{
 
-@media(max-width:991px){
+  padding:
+    0.45rem 0.9rem;
 
-  .portfolio{
+  border-radius:50px;
 
-    padding:120px 0;
+  background:
+    rgba(0,210,230,0.05);
 
+  border:
+    1px solid rgba(0,210,230,0.12);
+
+  color:#00D2E6;
+
+  font-size:0.65rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+}
+
+.gallery-year{
+
+  color:#64748B;
+
+  font-size:0.75rem;
+
+  letter-spacing:2px;
+}
+
+.gallery-content h3{
+
+  font-size:2rem;
+
+  color:#FFFFFF;
+
+  margin-bottom:1rem;
+
+  line-height:1.1;
+
+  letter-spacing:-1px;
+}
+
+.gallery-content p{
+
+  color:#94A3B8;
+
+  line-height:1.9;
+
+  margin-bottom:2rem;
+
+  font-size:0.95rem;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.gallery-footer{
+  display:flex;
+}
+
+.gallery-watch-btn{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:
+    1rem 1.4rem;
+
+  border-radius:60px;
+
+  background:
+    rgba(255,255,255,0.03);
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  color:#FFFFFF;
+
+  transition:0.4s ease;
+
+  font-size:0.72rem;
+
+  letter-spacing:2px;
+}
+
+.gallery-watch-btn:hover{
+
+  color:#00D2E6;
+
+  border-color:
+    rgba(0,210,230,0.18);
+
+  background:
+    rgba(0,210,230,0.04);
+
+  transform:
+    translateX(4px);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:992px){
+
+  .gallery-grid{
+    grid-template-columns:
+      repeat(auto-fit,minmax(320px,1fr));
   }
 
-  .portfolio-slider{
-
-    height:560px;
-
-  }
-
-  .portfolio-card{
-
-    width:330px;
-    height:460px;
-
-  }
-
 }
-
-/* =========================================
-   MOBILE
-========================================= */
 
 @media(max-width:768px){
 
-  .portfolio{
-
-    padding:90px 0;
-
+  .gallery-page{
+    padding:7rem 4%;
   }
 
-  .portfolio-header{
-
-    margin-bottom:60px;
-
+  .gallery-hero{
+    margin-bottom:4rem;
   }
 
-  .portfolio-slider{
-
-    height:430px;
-
-    margin-bottom:60px;
-
+  .gallery-hero h1{
+    font-size:3.2rem;
+    letter-spacing:-2px;
   }
 
-  .portfolio-card{
-
-    width:240px;
-    height:340px;
-
+  .gallery-grid{
+    grid-template-columns:1fr;
   }
 
-  .card-image-wrap::after{
-
-    inset:14px;
-
+  .gallery-video-wrapper{
+    height:240px;
   }
 
-  .portfolio-title{
-
-    font-size:3rem;
-
-    line-height:1.05;
-
+  .gallery-content{
+    padding:1.5rem;
   }
 
-  .p-sub{
-
-    font-size:.82rem;
-
-    line-height:1.9;
-
-  }
-
-  .active-details h3{
-
-    font-size:2rem;
-
-  }
-
-  .active-details p{
-
-    font-size:.84rem;
-
+  .gallery-content h3{
+    font-size:1.6rem;
   }
 
 }
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
 
 @media(max-width:480px){
 
-  .portfolio{
-
-    padding:75px 0;
-
+  .gallery-filters button{
+    width:100%;
   }
 
-  .portfolio-card{
-
-    width:200px;
-    height:300px;
-
+  .gallery-top-meta{
+    top:14px;
+    left:14px;
+    right:14px;
   }
 
-  .portfolio-title{
-
-    font-size:2.3rem;
-
-  }
-
-  .p-tag{
-
-    letter-spacing:4px;
-
-  }
-
-  .active-details h3{
-
-    font-size:1.7rem;
-
-  }
-
-}
-/* =========================================
-   MOBILE RESPONSIVE CSS ONLY
-========================================= */
-
-@media (max-width: 768px) {
-
-  .portfolio {
-
-    padding: 85px 0;
-  }
-
-  /* reduce glow */
-
-  .portfolio::before {
-
-    width: 320px;
-    height: 320px;
-
-    top: -140px;
-    right: -120px;
-  }
-
-  .portfolio::after {
-
-    width: 240px;
-    height: 240px;
-
-    bottom: -120px;
-    left: -100px;
-  }
-
-  /* ===============================
-     WRAPPER
-  ================================ */
-
-  .portfolio-wrapper {
-
-    width: 92%;
-  }
-
-  /* ===============================
-     HEADER
-  ================================ */
-
-  .portfolio-header {
-
-    margin-bottom: 50px;
-  }
-
-  .p-tag {
-
-    font-size: 0.6rem;
-
-    letter-spacing: 4px;
-
-    margin-bottom: 18px;
-  }
-
-  .p-tag::after {
-
-    width: 45px;
-
-    bottom: -8px;
-  }
-
-  /* title */
-
-  .portfolio-title {
-
-    font-size: 2.3rem;
-
-    line-height: 1.12;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 20px;
-  }
-
-  /* subtext */
-
-  .p-sub {
-
-    font-size: 0.78rem;
-
-    line-height: 1.9;
-
-    max-width: 100%;
-  }
-
-  /* ===============================
-     SLIDER
-  ================================ */
-
-  .portfolio-slider {
-
-    height: 380px;
-
-    margin-bottom: 45px;
-  }
-
-  /* cards */
-
-  .portfolio-card {
-
-    width: 220px;
-    height: 310px;
-  }
-
-  .card-image-wrap {
-
-    border-radius: 14px;
-  }
-
-  .card-image-wrap::after {
-
-    inset: 12px;
-  }
-
-  /* ===============================
-     ACTIVE DETAILS
-  ================================ */
-
-  .active-details {
-
-    width: 92%;
-  }
-
-  .active-category {
-
-    font-size: 0.58rem;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 14px;
-  }
-
-  .active-details h3 {
-
-    font-size: 1.8rem;
-
-    line-height: 1.15;
-
-    margin-bottom: 18px;
-  }
-
-  .active-details p {
-
-    font-size: 0.76rem;
-
-    line-height: 1.85;
-
-    margin-bottom: 26px;
-  }
-
-  /* button */
-
-  .portfolio-btn {
-
-    font-size: 0.58rem;
-
-    letter-spacing: 2px;
-
-    padding-bottom: 8px;
-  }
-
-}
-
-/* =========================================
-   SMALL MOBILE
-========================================= */
-
-@media (max-width: 480px) {
-
-  .portfolio {
-
-    padding: 70px 0;
-  }
-
-  .portfolio-header {
-
-    margin-bottom: 40px;
-  }
-
-  .portfolio-title {
-
-    font-size: 1.95rem;
-  }
-
-  .p-tag {
-
-    font-size: 0.54rem;
-
-    letter-spacing: 3px;
-  }
-
-  .p-sub {
-
-    font-size: 0.72rem;
-  }
-
-  /* slider */
-
-  .portfolio-slider {
-
-    height: 320px;
-
-    margin-bottom: 35px;
-  }
-
-  .portfolio-card {
-
-    width: 180px;
-    height: 260px;
-  }
-
-  .card-image-wrap::after {
-
-    inset: 10px;
-  }
-
-  /* content */
-
-  .active-details h3 {
-
-    font-size: 1.45rem;
-  }
-
-  .active-details p {
-
-    font-size: 0.7rem;
-
-    line-height: 1.8;
-  }
-
-  .portfolio-btn {
-
-    font-size: 0.54rem;
-
-    letter-spacing: 1.5px;
-  }
-
-}
-
-/* =========================================
-   EXTRA SMALL DEVICES
-========================================= */
-
-@media (max-width: 360px) {
-
-  .portfolio-title {
-
-    font-size: 1.7rem;
-  }
-
-  .portfolio-card {
-
-    width: 160px;
-    height: 230px;
-  }
-
-  .active-details h3 {
-
-    font-size: 1.25rem;
+  .gallery-play-btn{
+    width:70px;
+    height:70px;
   }
 
 }
