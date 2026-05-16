@@ -568,3 +568,131 @@
   }
 
 }
+/* =========================================================
+   RESPONSIVE (TABLETS & MOBILE DISCOVERIES)
+========================================================= */
+
+@media (max-width: 992px) {
+  .hero-title {
+    max-width: 850px;
+  }
+}
+
+/* TABLET & MOBILE VIEWPORT */
+@media (max-width: 768px) {
+  .hero-content {
+    align-items: center;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  /* Video wrapper layout configuration */
+  .hero-video {
+    transform: scale(1.15); /* Cross-browser safe rendering */
+  }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    padding: 0.75rem 1.1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 7.5vw, 3.8rem); /* Fluid scaling layout */
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem; /* Paragraph margins prevention */
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    max-width: 340px; /* Thumbs interaction zone optimized */
+    text-align: center;
+    padding: 1rem 1.8rem;
+    font-size: 0.75rem;
+  }
+
+  /* Interaction feedback for mobile devices */
+  .hero-btn-primary:active,
+  .hero-btn-secondary:active {
+    transform: scale(0.98) translateY(-2px);
+  }
+
+  /* Radial gradient scale optimized for mobile viewport */
+  .hero-gradient {
+    background: radial-gradient(
+      circle at top center,
+      rgba(0,210,230,0.22),
+      transparent 55%
+    );
+  }
+}
+
+/* ULTRA SMALL PHONES */
+@media (max-width: 480px) {
+  .hero-section {
+    height: 100dvh; /* Dynamic Viewport Height (Safari, Chrome mobile address bar fixes) */
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    gap: 0.8rem;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    padding: 0.95rem 1.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-tag {
+    padding: 0.65rem 0.95rem;
+    margin-bottom: 1.4rem;
+  }
+
+  /* Scroll indicator dynamic repositioning */
+  .scroll-indicator {
+    bottom: 20px;
+    transform: translateX(-50%) scale(0.85);
+  }
+}
+
+/* LANDSCAPE ORIENTATION BUG FIX (Phonela crosswise-ah thirupuna content overlap aagama irukka) */
+@media (max-width: 932px) and (orientation: landscape) {
+  .hero-section {
+    height: auto;
+    min-height: 120vh;
+    padding: 6rem 0;
+  }
+  .hero-content {
+    justify-content: flex-start;
+  }
+  .scroll-indicator {
+    display: none; /* Layout overlay issues protection */
+  }
+}
