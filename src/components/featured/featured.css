@@ -1,37 +1,30 @@
 /* ========================================================================== 
-   FEATURED SECTION
+   LUXURY EDITORIAL FEATURED SECTION
 ========================================================================== */
 
 .featured-section {
   position: relative;
   width: 100%;
-  padding: 8rem 5%;
+  padding: 10rem 6%; /* Breathable luxury editorial padding */
   overflow: hidden;
-  background: var(--bg-midnight, #090D16);
+  background: #05070d; /* Premium deep rich black matching services */
 }
 
+/* Luxury Ambient Setup */
 .featured-section::before {
   content: "";
-
   position: absolute;
-
   width: 700px;
   height: 700px;
-
   top: -250px;
   right: -200px;
-
   border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0,210,230,0.08) 0%,
-      transparent 70%
-    );
-
+  background: radial-gradient(
+    circle,
+    rgba(0, 210, 230, 0.03) 0%, /* Soft immersive accent glow */
+    transparent 70%
+  );
   filter: blur(120px);
-
   pointer-events: none;
 }
 
@@ -41,309 +34,214 @@
 
 .featured-ambient-glow {
   position: absolute;
-
   width: 650px;
   height: 650px;
-
   bottom: -250px;
   left: -180px;
-
   border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(0,210,230,0.08) 0%,
-      transparent 70%
-    );
-
+  background: radial-gradient(
+    circle,
+    rgba(0, 210, 230, 0.03) 0%,
+    transparent 70%
+  );
   filter: blur(120px);
-
   pointer-events: none;
 }
 
 /* ========================================================================== 
-   HEADER
+   EDITORIAL HEADER DESIGN
 ========================================================================== */
 
 .portfolio-header {
-  text-align: center;
-
+  text-align: left; /* Editorial asymmetric alignment */
   max-width: 760px;
-
-  margin: 0 auto 5rem auto;
-
+  margin: 0 0 6rem 0;
   position: relative;
   z-index: 2;
 }
 
 .tagline {
   display: inline-block;
-
   color: #00D2E6;
-
-  font-size: 0.78rem;
-  font-weight: 700;
-
-  letter-spacing: 3px;
-
-  margin-bottom: 1rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 4px; /* High-end spaced tracking */
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
 }
 
 .portfolio-header h2 {
-  font-size: clamp(2.7rem, 6vw, 5rem);
-
-  line-height: 1.05;
-  font-weight: 900;
-
-  letter-spacing: -2px;
-
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.15;
+  font-weight: 300; /* Fine line elegance weight */
+  letter-spacing: -1px;
   color: #FFFFFF;
-
   margin-bottom: 1.5rem;
 }
 
+/* Removed heavy gradient text for a minimalist premium look */
 .text-highlight {
-  background:
-    linear-gradient(
-      135deg,
-      #00D2E6 0%,
-      #7DF9FF 100%
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic; /* Editorial signature look */
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 .featured-description {
-  font-size: 1.05rem;
-  line-height: 1.8;
-
-  color: #94A3B8;
-
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.45);
   max-width: 680px;
-
-  margin: 0 auto;
+  margin: 0;
+  letter-spacing: 0.3px;
 }
 
 /* ========================================================================== 
-   CONTAINER
+   CONTAINER LEYOUT
 ========================================================================== */
 
 .bento-container {
   width: 100%;
-  max-width: 1450px;
-
+  max-width: 1600px; /* Aligned with grid constraints */
   margin: 0 auto;
-
   position: relative;
   z-index: 2;
 }
 
 /* ========================================================================== 
-   BENTO GRID
+   BENTO GRID SYSTEM
 ========================================================================== */
 
 .bento-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  grid-auto-rows: 240px;
-
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 260px;
+  gap: 2rem; /* Clean grid separation gap */
 }
+
+/* GRID SIZES */
+.item-1 { grid-column: span 2; grid-row: span 2; }
+.item-2 { grid-column: span 1; grid-row: span 1; }
+.item-3 { grid-column: span 1; grid-row: span 2; }
+.item-4 { grid-column: span 1; grid-row: span 1; }
+.item-5 { grid-column: span 2; grid-row: span 1; }
 
 /* ========================================================================== 
-   GRID SIZES
-========================================================================== */
-
-.item-1 {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
-.item-2 {
-  grid-column: span 1;
-  grid-row: span 1;
-}
-
-.item-3 {
-  grid-column: span 1;
-  grid-row: span 2;
-}
-
-.item-4 {
-  grid-column: span 1;
-  grid-row: span 1;
-}
-
-.item-5 {
-  grid-column: span 2;
-  grid-row: span 1;
-}
-
-/* ========================================================================== 
-   CARD
+   EDITORIAL BENTO CARD (Sharp Structure Style)
 ========================================================================== */
 
 .bento-item {
   position: relative;
-
   overflow: hidden;
-
-  border-radius: 28px;
-
-  background:
-    rgba(255,255,255,0.02);
-
-  border:
-    1px solid rgba(255,255,255,0.05);
-
+  border-radius: 0px; /* Sharp editorial grid layout */
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   cursor: pointer;
-
   transform-style: preserve-3d;
-
   will-change: transform;
-
   transition:
-    transform 0.45s ease,
-    border-color 0.45s ease,
-    box-shadow 0.45s ease;
+    transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .bento-item:hover {
-  border-color:
-    rgba(0,210,230,0.16);
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.4),
-    0 0 0 1px rgba(0,210,230,0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
 }
 
 /* ========================================================================== 
-   MEDIA WRAPPER
+   MEDIA ARCHITECTURE WRAPPER
 ========================================================================== */
 
 .img-wrapper {
   position: absolute;
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   overflow: hidden;
-
   border-radius: inherit;
-
-  background: #050811;
+  background: #05070d;
 }
 
-/* IMAGE */
-
+/* IMAGE TREATMENT */
 .img-wrapper img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   display: block;
-
+  filter: grayscale(15%) brightness(0.85); /* Magazine film look overlay */
   transition:
-    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 1s ease;
-
+    transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
 }
 
-/* VIDEO */
-
+/* VIDEO TREATMENT */
 .img-wrapper video,
 .featured-video {
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   display: block;
-
   transform: scale(1.01);
-
+  filter: grayscale(15%) brightness(0.85);
   transition:
-    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 1s ease;
-
+    transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform;
-
-  background: #050811;
+  background: #05070d;
 }
 
-/* HOVER */
-
+/* HOVER RE-ACTIVE STATES */
 .bento-item:hover img,
 .bento-item:hover video,
 .bento-item:hover .featured-video {
-
-  transform: scale(1.08);
-
-  filter: brightness(1.05);
+  transform: scale(1.05);
+  filter: grayscale(0%) brightness(0.9); /* Subtle reveal animation */
 }
 
 /* ========================================================================== 
-   VIGNETTE
+   VIGNETTE GRADIENTS
 ========================================================================== */
 
 .bento-vignette {
   position: absolute;
   inset: 0;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(5,8,15,0.96) 0%,
-      rgba(5,8,15,0.45) 45%,
-      rgba(5,8,15,0.12) 100%
-    );
-
+  background: linear-gradient(
+    to top,
+    rgba(5, 7, 13, 0.95) 0%,
+    rgba(5, 7, 13, 0.4) 50%,
+    rgba(5, 7, 13, 0.1) 100%
+  );
   z-index: 2;
-
-  transition:
-    opacity 0.4s ease;
+  transition: opacity 0.5s ease;
 }
 
 .bento-item:hover .bento-vignette {
-  opacity: 0.92;
+  opacity: 0.95;
 }
 
 /* ========================================================================== 
-   OVERLAY
+   OVERLAY TYPOGRAPHY LAYER
 ========================================================================== */
 
-.overlay{
-  position:absolute;
-  inset:0;
-
-  z-index:5;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-
-  padding:2rem;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(5,8,15,0.82) 0%,
-      rgba(5,8,15,0.18) 45%,
-      transparent 100%
-    );
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem; /* Spacious padding setup */
+  background: transparent;
 }
 
 /* ========================================================================== 
-   TEXT CONTENT
+   TEXT CONTENT STRUCTURE
 ========================================================================== */
 
 .text-content {
@@ -352,45 +250,28 @@
 
 .mini-tag {
   display: inline-flex;
-
   align-items: center;
-
-  padding:
-    0.45rem 0.9rem;
-
-  border-radius: 100px;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  border:
-    1px solid rgba(255,255,255,0.08);
-
+  padding: 0.45rem 1rem;
+  border-radius: 0px; /* Sharp modern clean layout badge */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(14px);
-
-  color: #E2E8F0;
-
-  font-size: 0.68rem;
-  font-weight: 700;
-
-  letter-spacing: 1.5px;
-
-  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
 }
 
 .text-content h4 {
-  font-size: 1.7rem;
-  line-height: 1.15;
-  font-weight: 800;
-
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 400; /* Sophisticated light weight */
   color: #FFFFFF;
-
-  letter-spacing: -0.5px;
-
-  margin-bottom: 0.7rem;
-
-  transition:
-    transform 0.35s ease;
+  letter-spacing: -0.3px;
+  margin-bottom: 0.6rem;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .bento-item:hover .text-content h4 {
@@ -398,108 +279,174 @@
 }
 
 .text-content p {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  font-weight: 300;
   line-height: 1.6;
-
-  color: #CBD5E1;
-
+  color: rgba(255, 255, 255, 0.4);
   margin: 0;
 }
 
 /* ========================================================================== 
-   BUTTON
+   MINIMALIST CTAs BUTTON
 ========================================================================== */
 
 .arrow-btn {
   position: absolute;
-
-  top: 1.5rem;
-  right: 1.5rem;
-
-  width: 52px;
-  height: 52px;
-
+  top: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  border:
-    1px solid rgba(255,255,255,0.12);
-
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
-
   color: #FFFFFF;
-
   transition:
-    transform 0.35s ease,
-    background 0.35s ease;
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    background 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .bento-item:hover .arrow-btn {
-  background:
-    rgba(0,210,230,0.16);
-
-  transform:
-    translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
 }
 
 .arrow-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 /* ========================================================================== 
-   RESPONSIVE
+   RESPONSIVE DESIGN ADAPTATIONS
 ========================================================================== */
 
 @media (max-width: 1200px) {
-
   .bento-grid {
-    grid-template-columns:
-      repeat(2, 1fr);
-
-    grid-auto-rows: 260px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 280px;
+    gap: 1.5rem;
   }
 
-  .item-1,
-  .item-2,
-  .item-3,
-  .item-4,
-  .item-5 {
+  .item-1, .item-2, .item-3, .item-4, .item-5 {
     grid-column: span 1;
     grid-row: span 1;
   }
-
 }
 
 @media (max-width: 768px) {
-
   .featured-section {
-    padding: 6rem 4%;
+    padding: 6rem 0rem; /* Full viewport side alignment bleed */
   }
 
   .portfolio-header {
     margin-bottom: 4rem;
+    padding: 0 2rem;
+  }
+
+  .portfolio-header h2 {
+    font-size: clamp(1.8rem, 6vw, 2.4rem) !important;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+
+  .tagline {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
   }
 
   .featured-description {
-    font-size: 0.96rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    max-width: 100%;
+    margin-top: 1.2rem;
   }
 
   .bento-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: 320px;
-
+    grid-auto-rows: auto;
     gap: 1.2rem;
+    padding: 0 2rem;
+  }
+
+  .item-1, .item-2, .item-3, .item-4, .item-5 {
+    grid-column: span 1;
+    grid-row: span 1;
   }
 
   .bento-item {
-    border-radius: 22px;
+    min-height: 340px; /* Fluid structured height allocation */
+    border-radius: 0px;
+  }
+
+  .overlay {
+    padding: 2rem 1.8rem;
+  }
+
+  .mini-tag {
+    font-size: 0.55rem;
+    padding: 0.4rem 0.85rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.8rem;
+  }
+
+  .text-content h4 {
+    font-size: 1.15rem;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+  }
+
+  .text-content p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .arrow-btn {
+    width: 44px;
+    height: 44px;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  /* Prevent translation glitches on viewport interaction elements */
+  .bento-item:hover img,
+  .bento-item:hover video,
+  .bento-item:hover .featured-video {
+    transform: none;
+    filter: grayscale(15%) brightness(0.85);
+  }
+
+  .bento-item:hover .text-content h4 {
+    transform: none;
+  }
+}
+
+/* ========================================================================== 
+   SMALL MOBILE VIEWPORTS
+========================================================================== */
+
+@media (max-width: 480px) {
+  .featured-section {
+    padding: 5rem 0rem;
+  }
+
+  .portfolio-header {
+    margin-bottom: 3rem;
+    padding: 0 1.5rem;
+  }
+
+  .bento-grid {
+    gap: 1rem;
+    padding: 0 1.5rem;
+  }
+
+  .bento-item {
+    min-height: 300px;
   }
 
   .overlay {
@@ -507,211 +454,17 @@
   }
 
   .text-content h4 {
-    font-size: 1.35rem;
-  }
-
-  .text-content p {
-    font-size: 0.88rem;
-  }
-
-  .arrow-btn {
-    width: 46px;
-    height: 46px;
-
-    top: 1rem;
-    right: 1rem;
-  }
-
-}
-
-@media (max-width: 480px) {
-
-  .portfolio-header h2 {
-    letter-spacing: -1px;
-  }
-
-  .bento-grid {
-    grid-auto-rows: 280px;
-  }
-
-  .mini-tag {
-    font-size: 0.62rem;
-  }
-
-  .text-content h4 {
-    font-size: 1.15rem;
-  }
-
-}
-/* =========================
-   MOBILE OPTIMIZED CSS
-========================= */
-
-@media (max-width: 768px) {
-
-  .featured-section {
-    padding: 4rem 1rem;
-  }
-
-  .featured-section::before,
-  .featured-ambient-glow {
-    width: 300px;
-    height: 300px;
-    filter: blur(70px);
-  }
-
-  .portfolio-header {
-    margin-bottom: 2.5rem;
-    text-align: left;
-  }
-
-  .tagline {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    margin-bottom: 0.8rem;
-  }
-
-  .portfolio-header h2 {
-    font-size: 2rem;
-    line-height: 1.15;
-    letter-spacing: -1px;
-    margin-bottom: 1rem;
-  }
-
-  .featured-description {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    max-width: 100%;
-  }
-
-  .bento-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    gap: 1rem;
-  }
-
-  .item-1,
-  .item-2,
-  .item-3,
-  .item-4,
-  .item-5 {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  .bento-item {
-    min-height: 260px;
-    border-radius: 20px;
-  }
-
-  .img-wrapper img,
-  .img-wrapper video,
-  .featured-video {
-    object-position: center;
-  }
-
-  .overlay {
-    padding: 1.2rem;
-  }
-
-  .text-content {
-    max-width: 100%;
-  }
-
-  .mini-tag {
-    font-size: 0.6rem;
-    padding: 0.4rem 0.75rem;
-    letter-spacing: 1px;
-    margin-bottom: 0.7rem;
-  }
-
-  .text-content h4 {
-    font-size: 1.2rem;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
   }
 
   .text-content p {
     font-size: 0.82rem;
-    line-height: 1.5;
   }
 
   .arrow-btn {
-    width: 42px;
-    height: 42px;
-    top: 0.9rem;
-    right: 0.9rem;
+    width: 40px;
+    height: 40px;
+    top: 1.2rem;
+    right: 1.2rem;
   }
-
-  .arrow-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-
-  /* disable heavy hover effects on mobile */
-
-  .bento-item:hover img,
-  .bento-item:hover video,
-  .bento-item:hover .featured-video {
-    transform: none;
-    filter: none;
-  }
-
-  .bento-item:hover .text-content h4 {
-    transform: none;
-  }
-
-}
-
-/* EXTRA SMALL DEVICES */
-
-@media (max-width: 480px) {
-
-  .featured-section {
-    padding: 3.5rem 0.9rem;
-  }
-
-  .portfolio-header h2 {
-    font-size: 1.7rem;
-  }
-
-  .featured-description {
-    font-size: 0.85rem;
-  }
-
-  .bento-item {
-    min-height: 240px;
-    border-radius: 18px;
-  }
-
-  .overlay {
-    padding: 1rem;
-  }
-
-  .text-content h4 {
-    font-size: 1.05rem;
-  }
-
-  .text-content p {
-    font-size: 0.78rem;
-  }
-
-}
-/* MOBILE TITLE SIZE REDUCE */
-
-@media (max-width: 768px) {
-
-  .portfolio-header h2 {
-    font-size: 1.6rem;
-    line-height: 1.2;
-  }
-
-}
-
-@media (max-width: 480px) {
-
-  .portfolio-header h2 {
-    font-size: 1.3rem;
-  }
-
 }

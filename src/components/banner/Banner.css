@@ -1,0 +1,647 @@
+/* =========================================================
+   CINEMATIC PHOTOGRAPHY BANNER
+========================================================= */
+
+.cinematic-banner{
+
+  position:relative;
+
+  width:100%;
+
+  height:100vh;
+
+  min-height:780px;
+
+  overflow:hidden;
+
+  background:#05070d;
+
+  isolation:isolate;
+
+}
+
+/* =========================================================
+   BACKGROUND VIDEO
+========================================================= */
+
+.banner-video{
+
+  position:absolute;
+
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  object-position:center;
+
+  z-index:0;
+
+  filter:
+
+    brightness(.34)
+
+    contrast(1.08)
+
+    saturate(.92);
+
+  transform:scale(1.05);
+
+}
+
+/* =========================================================
+   DARK OVERLAY
+========================================================= */
+
+.banner-video-overlay{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:1;
+
+  background:
+
+  linear-gradient(
+    to bottom,
+    rgba(5,7,13,.15),
+    rgba(5,7,13,.92)
+  );
+
+}
+
+/* =========================================================
+   CINEMATIC GLOW
+========================================================= */
+
+.cinematic-banner::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:800px;
+  height:800px;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  background:
+  radial-gradient(
+    circle,
+    rgba(255,255,255,.06),
+    transparent 70%
+  );
+
+  filter:blur(160px);
+
+  pointer-events:none;
+
+  z-index:1;
+
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.banner-overlay{
+
+  position:relative;
+
+  z-index:3;
+
+  width:min(92%,1100px);
+
+  height:100%;
+
+  margin:auto;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:20px;
+
+}
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.banner-label{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:.7rem;
+
+  width:fit-content;
+
+  padding-bottom:.9rem;
+
+  border-bottom:
+  1px solid rgba(255,255,255,.12);
+
+  color:
+  rgba(255,255,255,.88);
+
+  font-size:.72rem;
+
+  font-weight:500;
+
+  letter-spacing:4px;
+
+  text-transform:uppercase;
+
+  margin-bottom:2rem;
+
+}
+
+.banner-label::before{
+
+  content:"";
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  box-shadow:
+  0 0 20px rgba(255,255,255,.7);
+
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.banner-overlay h2{
+
+  font-size:
+  clamp(3.5rem,8vw,8rem);
+
+  line-height:.88;
+
+  font-weight:300;
+
+  letter-spacing:-5px;
+
+  color:#fff;
+
+  margin-bottom:1.6rem;
+
+}
+
+/* HIGHLIGHT */
+
+.banner-overlay h2 span{
+
+  background:
+  linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #d9d9d9 100%
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.banner-desc{
+
+  max-width:760px;
+
+  color:
+  rgba(255,255,255,.64);
+
+  font-size:1rem;
+
+  line-height:2;
+
+  margin-bottom:2.8rem;
+
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.banner-btn{
+
+  position:relative;
+
+  overflow:hidden;
+
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:
+  1.15rem
+  1.8rem;
+
+  border-radius:999px;
+
+  background:
+  rgba(255,255,255,.06);
+
+  border:
+  1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(16px);
+
+  -webkit-backdrop-filter:blur(16px);
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:.72rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  transition:
+  all .5s cubic-bezier(.22,1,.36,1);
+
+}
+
+/* REFLECTION */
+
+.banner-btn::before{
+
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.16),
+    transparent
+  );
+
+  transform:translateX(-120%);
+
+  transition:1s ease;
+
+}
+
+.banner-btn:hover::before{
+
+  transform:translateX(120%);
+
+}
+
+/* HOVER */
+
+.banner-btn:hover{
+
+  transform:
+  translateY(-4px);
+
+  background:
+  rgba(255,255,255,.1);
+
+  border-color:
+  rgba(255,255,255,.18);
+
+  box-shadow:
+  0 0 40px rgba(255,255,255,.08);
+
+}
+
+/* =========================================================
+   SCROLL VIBE
+========================================================= */
+
+.cinematic-banner::before{
+
+  content:"";
+
+  position:absolute;
+
+  bottom:0;
+  left:0;
+
+  width:100%;
+  height:140px;
+
+  background:
+  linear-gradient(
+    to top,
+    #05070d,
+    transparent
+  );
+
+  z-index:2;
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+  .cinematic-banner{
+
+    min-height:720px;
+
+  }
+
+  /* VIDEO */
+
+  .banner-video{
+
+    transform:scale(1.1);
+
+    filter:
+
+      brightness(.28)
+
+      contrast(1.04);
+
+  }
+
+  /* CONTENT */
+
+  .banner-overlay{
+
+    width:92%;
+
+    padding:20px 14px;
+
+  }
+
+  /* LABEL */
+
+  .banner-label{
+
+    font-size:.55rem;
+
+    letter-spacing:3px;
+
+    padding-bottom:.7rem;
+
+    margin-bottom:1.2rem;
+
+  }
+
+  .banner-label::before{
+
+    width:6px;
+    height:6px;
+
+  }
+
+  /* TITLE */
+
+  .banner-overlay h2{
+
+    font-size:
+    clamp(2.5rem,12vw,4rem);
+
+    line-height:.95;
+
+    letter-spacing:-2px;
+
+    margin-bottom:1rem;
+
+  }
+
+  /* DESCRIPTION */
+
+  .banner-desc{
+
+    font-size:.84rem;
+
+    line-height:1.8;
+
+    max-width:340px;
+
+    margin-bottom:2rem;
+
+  }
+
+  /* BUTTON */
+
+  .banner-btn{
+
+    width:100%;
+
+    max-width:260px;
+
+    font-size:.58rem;
+
+    letter-spacing:1.5px;
+
+    padding:
+    1rem
+    1rem;
+
+  }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .cinematic-banner{
+
+    min-height:680px;
+
+  }
+
+  .banner-overlay h2{
+
+    font-size:2rem;
+
+  }
+
+  .banner-desc{
+
+    font-size:.8rem;
+
+    line-height:1.7;
+
+  }
+
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+  .cinematic-banner{
+
+    min-height:620px;
+
+  }
+
+  /* VIDEO */
+
+  .banner-video{
+
+    transform:scale(1.08);
+
+    filter:
+      brightness(.26)
+      contrast(1.02);
+
+  }
+
+  /* CONTENT */
+
+  .banner-overlay{
+
+    width:92%;
+
+    padding:18px 12px;
+
+  }
+
+  /* LABEL */
+
+  .banner-label{
+
+    font-size:.5rem;
+
+    letter-spacing:2px;
+
+    padding-bottom:.6rem;
+
+    margin-bottom:1rem;
+
+  }
+
+  .banner-label::before{
+
+    width:5px;
+    height:5px;
+
+  }
+
+  /* TITLE */
+
+  .banner-overlay h2{
+
+    font-size:
+    clamp(1.8rem,9vw,3rem);
+
+    line-height:1;
+
+    letter-spacing:-1px;
+
+    margin-bottom:.9rem;
+
+  }
+
+  /* DESCRIPTION */
+
+  .banner-desc{
+
+    font-size:.78rem;
+
+    line-height:1.7;
+
+    max-width:300px;
+
+    margin-bottom:1.6rem;
+
+  }
+
+  /* BUTTON */
+
+  .banner-btn{
+
+    width:100%;
+
+    max-width:220px;
+
+    font-size:.52rem;
+
+    letter-spacing:1px;
+
+    padding:
+    .9rem
+    1rem;
+
+  }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .cinematic-banner{
+
+    min-height:560px;
+
+  }
+
+  .banner-overlay{
+
+    padding:14px 10px;
+
+  }
+
+  .banner-overlay h2{
+
+    font-size:1.6rem;
+
+    line-height:1.05;
+
+  }
+
+  .banner-desc{
+
+    font-size:.74rem;
+
+    line-height:1.6;
+
+    max-width:260px;
+
+  }
+
+  .banner-btn{
+
+    max-width:200px;
+
+    font-size:.5rem;
+
+    padding:.8rem .9rem;
+
+  }
+
+}

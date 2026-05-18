@@ -1,6 +1,10 @@
 import React from "react";
+
 import { motion } from "framer-motion";
 import "./footer.css";
+
+import "./Footer.css";
+
 import logo from "../../assets/logo.png";
 
 const Footer = () => {
@@ -12,7 +16,12 @@ const Footer = () => {
 
     <footer className="footer-canvas">
 
+      {/* HUGE BG TEXT */}
+
+    
+
       {/* AMBIENT GLOW */}
+
       <motion.div
 
         className="footer-ambient-glow"
@@ -58,13 +67,14 @@ const Footer = () => {
         >
 
           {/* LOGO */}
+
           <div className="footer-logo-wrapper">
 
             <motion.img
 
               src={logo}
 
-              alt="Midnight Studio Logo"
+              alt="Blue Moon Logo"
 
               className="footer-logo-img"
 
@@ -77,11 +87,11 @@ const Footer = () => {
             <div className="footer-brand-text">
 
               <span className="footer-brand-name">
-                BLUE MOON STUDIO
+                BLUE MOON
               </span>
 
               <span className="footer-brand-sub">
-                CINEMATIC VISUAL HOUSE
+                SOCIAL-FIRST CREATIVE AGENCY
               </span>
 
             </div>
@@ -89,19 +99,26 @@ const Footer = () => {
           </div>
 
           {/* TAGLINE */}
+
           <p className="footer-tagline">
-            Engineering premium cinematic experiences,
-            visual narratives, and modern storytelling
-            for luxury brands and creative productions.
+
+            Building scroll-stopping content systems,
+            cinematic brand storytelling,
+            and social-first digital experiences
+            for modern businesses.
+
           </p>
 
           {/* EMAIL */}
+
           <a
-            href="mailto:hello@midnightstudio.com"
+            href="mailto:hello@bluemoon.com"
 
             className="footer-email-link"
           >
+
             hello@bluemoon.com
+
           </a>
 
         </motion.div>
@@ -140,10 +157,11 @@ const Footer = () => {
 
             {[
               "Home",
-              "Showreel",
+              "About",
               "Portfolio",
               "Services",
-              "Packages",
+              "Awards",
+              "Instagram",
               "Contact",
             ].map((item, i) => (
 
@@ -162,7 +180,9 @@ const Footer = () => {
 
                   className="footer-link"
                 >
+
                   {item}
+
                 </a>
 
               </motion.li>
@@ -203,6 +223,8 @@ const Footer = () => {
             CONNECT
           </h4>
 
+          {/* SOCIALS */}
+
           <div className="footer-social-icons">
 
             <motion.a
@@ -224,12 +246,14 @@ const Footer = () => {
                 scale: 0.95,
               }}
             >
+
               <i className="fab fa-instagram"></i>
+
             </motion.a>
 
             <motion.a
 
-              href="https://youtube.com"
+              href="https://behance.net"
 
               target="_blank"
 
@@ -246,12 +270,14 @@ const Footer = () => {
                 scale: 0.95,
               }}
             >
-              <i className="fab fa-youtube"></i>
+
+              <i className="fab fa-behance"></i>
+
             </motion.a>
 
             <motion.a
 
-              href="https://vimeo.com"
+              href="https://linkedin.com"
 
               target="_blank"
 
@@ -268,21 +294,25 @@ const Footer = () => {
                 scale: 0.95,
               }}
             >
-              <i className="fab fa-vimeo-v"></i>
+
+              <i className="fab fa-linkedin-in"></i>
+
             </motion.a>
 
           </div>
 
           {/* STATUS */}
+
           <div className="footer-availability-status">
 
             <span className="status-indicator-dot"></span>
 
-            Booking Open For 2026
+            Few Partnership Slots Available
 
           </div>
 
           {/* CTA */}
+
           <motion.a
 
             href="#contact"
@@ -297,12 +327,18 @@ const Footer = () => {
               scale: 0.97,
             }}
           >
-            Start A Project ↗
+
+            Work With Us ↗
+
           </motion.a>
 
         </motion.div>
 
       </div>
+
+      {/* DIVIDER */}
+
+      <div className="footer-divider-line"></div>
 
       {/* ================= BOTTOM BAR ================= */}
 
@@ -311,15 +347,22 @@ const Footer = () => {
         <div className="footer-bottom-container">
 
           <p className="copyright-text">
-            © {currentYear} Midnight Studio.
+
+            © {currentYear} Blue Moon Studio.
             All Rights Reserved.
+
           </p>
 
           <p className="developer-credit">
+
             Crafted by
+
             <span className="dev-name">
+
               {" "}SAM Web Designing
+
             </span>
+
           </p>
 
         </div>

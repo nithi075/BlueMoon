@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 
 import "./Instagram.css";
 
-/* ================= VIDEOS ================= */
+/* =========================================================
+   VIDEOS
+========================================================= */
 
 import video1 from "../../assets/video1.mp4";
 import video2 from "../../assets/video2.mp4";
@@ -15,18 +17,71 @@ import video6 from "../../assets/video3.mp4";
 
 export default function Instagram() {
 
+  /* =========================================================
+     REELS DATA
+  ========================================================= */
+
   const videos = [
-    video1,
-    video2,
-    video3,
-    video4,
-    video5,
-    video6,
+
+    {
+      video: video1,
+
+      tag: "REEL",
+
+      link:
+        "https://www.instagram.com/reel/XXXXXXXX/",
+    },
+
+    {
+      video: video2,
+
+      tag: "CAMPAIGN",
+
+      link:
+        "https://www.instagram.com/p/DXb2Vhdj4Ly/",
+    },
+
+    {
+      video: video3,
+
+      tag: "SOCIAL",
+
+      link:
+        "https://www.instagram.com/p/CyD5zkLLgTG/",
+    },
+
+    {
+      video: video4,
+
+      tag: "CONTENT",
+
+      link:
+        "https://www.instagram.com/p/DXRi2WbDwYX/",
+    },
+
+    {
+      video: video5,
+
+      tag: "BRAND",
+
+      link:
+        "https://www.instagram.com/p/CyD5zkLLgTG/",
+    },
+
+    {
+      video: video6,
+
+      tag: "STORY",
+
+      link:
+        "https://www.instagram.com/p/CyD5zkLLgTG/",
+    },
+
   ];
 
-  /* =========================
+  /* =========================================================
       CONTAINER VARIANTS
-  ========================= */
+  ========================================================= */
 
   const containerVariants = {
 
@@ -39,35 +94,49 @@ export default function Instagram() {
       opacity: 1,
 
       transition: {
+
         staggerChildren: 0.12,
+
         delayChildren: 0.15,
+
       },
     },
   };
 
-  /* =========================
+  /* =========================================================
       ITEM VARIANTS
-  ========================= */
+  ========================================================= */
 
   const itemVariants = {
 
     hidden: {
+
       opacity: 0,
+
       y: 60,
+
       scale: 0.92,
+
       filter: "blur(12px)",
+
     },
 
     visible: {
 
       opacity: 1,
+
       y: 0,
+
       scale: 1,
+
       filter: "blur(0px)",
 
       transition: {
+
         duration: 1,
+
         ease: [0.16, 1, 0.3, 1],
+
       },
     },
   };
@@ -76,25 +145,46 @@ export default function Instagram() {
 
     <section className="insta-container">
 
-      {/* ================= GLOW ================= */}
+      {/* =====================================================
+          BG TEXT
+      ===================================================== */}
+
+      <div className="insta-bg-text">
+
+        SOCIAL
+
+      </div>
+
+      {/* =====================================================
+          GLOW
+      ===================================================== */}
 
       <motion.div
 
         className="insta-floating-glow"
 
         animate={{
+
           scale: [1, 1.08, 1],
+
           opacity: [0.25, 0.55, 0.25],
+
         }}
 
         transition={{
+
           duration: 8,
+
           repeat: Infinity,
+
           ease: "easeInOut",
+
         }}
       />
 
-      {/* ================= HEADER ================= */}
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
 
       <motion.div
 
@@ -121,20 +211,30 @@ export default function Instagram() {
       >
 
         <span className="insta-tag">
-          ART LIVES IN THE
+
+          SOCIAL-FIRST STORYTELLING
+
         </span>
 
         <h2 className="insta-title">
-          INSTAGRAM
+
+          Built For
+
+          <span> Attention.</span>
+
         </h2>
 
       </motion.div>
 
-      {/* ================= CONTENT ================= */}
+      {/* =====================================================
+          MAIN
+      ===================================================== */}
 
       <div className="insta-main-content">
 
-        {/* ================= GRID ================= */}
+        {/* =================================================
+            GRID
+        ================================================= */}
 
         <motion.div
 
@@ -152,19 +252,33 @@ export default function Instagram() {
           }}
         >
 
-          {videos.map((video, i) => (
+          {videos.map((item, i) => (
 
-            <motion.div
+            <motion.a
+
+              href={item.link}
+
+              target="_blank"
+
+              rel="noopener noreferrer"
 
               key={i}
 
-              className="insta-photo-item"
+              className={`insta-photo-item ${
+                i === 0 || i === 4
+                  ? "tall-card"
+                  : ""
+              }`}
 
               variants={itemVariants}
 
               whileHover={{
                 y: -10,
                 scale: 1.02,
+              }}
+
+              whileTap={{
+                scale: 0.985,
               }}
 
               transition={{
@@ -174,11 +288,23 @@ export default function Instagram() {
               }}
             >
 
-              {/* VIDEO */}
+              {/* =================================================
+                  TAG
+              ================================================= */}
+
+              <span className="reel-tag">
+
+                {item.tag}
+
+              </span>
+
+              {/* =================================================
+                  VIDEO
+              ================================================= */}
 
               <motion.video
 
-                src={video}
+                src={item.video}
 
                 className="insta-video"
 
@@ -197,7 +323,9 @@ export default function Instagram() {
                 }}
               />
 
-              {/* OVERLAY */}
+              {/* =================================================
+                  OVERLAY
+              ================================================= */}
 
               <motion.div
 
@@ -218,7 +346,7 @@ export default function Instagram() {
 
                 <motion.div
 
-                  className="insta-overlay-icon"
+                  className="insta-overlay-content"
 
                   initial={{
                     scale: 0.7,
@@ -237,19 +365,27 @@ export default function Instagram() {
                   }}
                 >
 
+                  <span>
+
+                    View Reel
+
+                  </span>
+
                   <i className="fab fa-instagram"></i>
 
                 </motion.div>
 
               </motion.div>
 
-            </motion.div>
+            </motion.a>
 
           ))}
 
         </motion.div>
 
-        {/* ================= RIGHT BOX ================= */}
+        {/* =================================================
+            RIGHT PANEL
+        ================================================= */}
 
         <motion.div
 
@@ -281,7 +417,13 @@ export default function Instagram() {
           }}
         >
 
+          {/* REFLECTION */}
+
+          <div className="insta-reflection"></div>
+
           <div className="gold-content">
+
+            {/* TITLE */}
 
             <motion.h3
 
@@ -300,9 +442,11 @@ export default function Instagram() {
               }}
             >
 
-              FOLLOW OUR JOURNEY
+              Follow The Studio
 
             </motion.h3>
+
+            {/* DESCRIPTION */}
 
             <motion.p
 
@@ -321,9 +465,11 @@ export default function Instagram() {
               }}
             >
 
-              Get inspired and follow us on
-              Instagram for premium cinematic
-              frames and behind-the-scenes stories.
+              Behind the scenes,
+              cinematic campaigns,
+              trending reels,
+              and modern brand storytelling —
+              updated weekly.
 
             </motion.p>
 
@@ -331,7 +477,7 @@ export default function Instagram() {
 
             <motion.a
 
-              href="https://www.instagram.com/clicksbykorniza/"
+              href="https://www.instagram.com/bluemoonmedia_ads/"
 
               target="_blank"
 
@@ -367,7 +513,7 @@ export default function Instagram() {
 
               </motion.span>
 
-              FOLLOW OUR JOURNEY
+              FOLLOW ON INSTAGRAM ↗
 
             </motion.a>
 

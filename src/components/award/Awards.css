@@ -1,8 +1,8 @@
 /* =========================================================
-   CINEMATIC PACKAGES SECTION
+   CINEMATIC AWARDS SECTION
 ========================================================= */
 
-.packages{
+.awards-section{
 
   position:relative;
 
@@ -20,7 +20,7 @@
    GRAIN
 ========================================================= */
 
-.packages::before{
+.awards-section::before{
 
   content:"";
 
@@ -43,7 +43,7 @@
    AMBIENT GLOW
 ========================================================= */
 
-.packages::after{
+.awards-section::after{
 
   content:"";
 
@@ -72,7 +72,7 @@
    HUGE BG TEXT
 ========================================================= */
 
-.packages-bg-text{
+.awards-bg-text{
 
   position:absolute;
 
@@ -103,7 +103,7 @@
    MAIN GLOW
 ========================================================= */
 
-.packages-main-glow{
+.awards-main-glow{
 
   position:absolute;
 
@@ -129,25 +129,36 @@
 }
 
 /* =========================================================
-   HEADER
+   CONTAINER
 ========================================================= */
 
-.packages-header{
+.awards-container{
 
   position:relative;
+
   z-index:2;
 
-  max-width:760px;
+  max-width:1600px;
 
-  margin:0 auto 6rem;
-
-  text-align:center;
+  margin:0 auto;
 
 }
 
-/* MINI TITLE */
+/* =========================================================
+   HEADER
+========================================================= */
 
-.packages-header p{
+.awards-header{
+
+  max-width:760px;
+
+  margin-bottom:5rem;
+
+}
+
+/* TAG */
+
+.awards-tag{
 
   display:inline-flex;
 
@@ -176,7 +187,7 @@
 
 }
 
-.packages-header p::before{
+.awards-tag::before{
 
   content:"";
 
@@ -196,7 +207,7 @@
    TITLE
 ========================================================= */
 
-.packages-header h2{
+.awards-title{
 
   font-size:
   clamp(3rem,6vw,7rem);
@@ -213,7 +224,7 @@
 
 }
 
-.packages-header h2 span{
+.awards-title span{
 
   background:
   linear-gradient(
@@ -228,51 +239,36 @@
 }
 
 /* =========================================================
-   SUBTEXT
+   DESCRIPTION
 ========================================================= */
 
-.packages-subtext{
-
-  display:block;
+.awards-description{
 
   max-width:620px;
 
-  margin:0 auto;
-
   font-size:1rem;
-
-  font-weight:300;
 
   line-height:2;
 
-  letter-spacing:.3px;
-
   color:
-  rgba(255,255,255,.5);
+  rgba(255,255,255,.52);
 
 }
 
 /* =========================================================
-   CONTAINER
+   GRID
 ========================================================= */
 
-.packages-container{
-
-  position:relative;
-  z-index:2;
-
-  max-width:1600px;
-
-  margin:0 auto;
+.awards-grid{
 
   display:grid;
 
   grid-template-columns:
-  repeat(3,1fr);
+  repeat(4,1fr);
 
-  gap:2rem;
+  gap:1.5rem;
 
-  align-items:stretch;
+  margin-bottom:5rem;
 
 }
 
@@ -280,7 +276,7 @@
    CARD
 ========================================================= */
 
-.package-card{
+.award-card{
 
   position:relative;
 
@@ -289,6 +285,8 @@
   isolation:isolate;
 
   padding:2.5rem;
+
+  border-radius:32px;
 
   background:
   linear-gradient(
@@ -317,7 +315,7 @@
 
 /* REFLECTION */
 
-.card-reflection{
+.award-reflection{
 
   position:absolute;
   inset:0;
@@ -338,13 +336,13 @@
 
 }
 
-.package-card:hover .card-reflection{
+.award-card:hover .award-reflection{
   transform:translateX(120%);
 }
 
 /* HOVER */
 
-.package-card:hover{
+.award-card:hover{
 
   border-color:
   rgba(0,210,230,.2);
@@ -357,239 +355,102 @@
 
 }
 
-/* FEATURED */
+/* VALUE */
 
-.featured{
+.award-card h3{
 
-  transform:scale(1.03);
+  position:relative;
 
-  border:
-  1px solid rgba(0,210,230,.22);
-
-}
-
-/* =========================================================
-   BADGE
-========================================================= */
-
-.badge{
-
-  position:absolute;
-
-  top:18px;
-  right:18px;
-
-  padding:
-  .45rem
-  .8rem;
-
-  border-radius:999px;
-
-  background:
-  rgba(0,210,230,.12);
-
-  border:
-  1px solid rgba(0,210,230,.18);
-
-  backdrop-filter:blur(14px);
-
-  font-size:.55rem;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  color:#fff;
-
-  z-index:5;
-
-}
-
-/* =========================================================
-   TOP
-========================================================= */
-
-.package-top{
-  margin-bottom:2rem;
-}
-
-/* MINI */
-
-.package-mini-title{
-
-  font-size:.65rem;
-
-  letter-spacing:3px;
-
-  text-transform:uppercase;
-
-  color:
-  rgba(255,255,255,.45);
-
-  margin-bottom:1rem;
-
-}
-
-/* TITLE */
-
-.package-card h3{
+  z-index:4;
 
   font-size:
-  clamp(2rem,2.5vw,3rem);
-
-  line-height:.95;
-
-  font-weight:300;
-
-  letter-spacing:-2px;
-
-  color:#fff;
-
-}
-
-/* =========================================================
-   PRICE
-========================================================= */
-
-.price-box{
-
-  margin-bottom:2.2rem;
-
-}
-
-.price-box h1{
-
-  font-size:
-  clamp(3rem,5vw,5rem);
+  clamp(2.5rem,5vw,5rem);
 
   line-height:1;
 
   font-weight:300;
 
-  letter-spacing:-4px;
+  letter-spacing:-3px;
 
   color:#fff;
 
-}
-
-.event-text{
-
-  font-size:.7rem;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  color:
-  rgba(255,255,255,.45);
+  margin-bottom:1rem;
 
 }
 
-/* =========================================================
-   FEATURES
-========================================================= */
+/* LABEL */
 
-.features{
+.award-card p{
 
-  display:flex;
-  flex-direction:column;
+  position:relative;
 
-  gap:1rem;
-
-  margin-bottom:2.5rem;
-
-}
-
-/* ITEM */
-
-.feature-item{
-
-  display:flex;
-  align-items:flex-start;
-
-  gap:.8rem;
-
-}
-
-/* DOT */
-
-.feature-dot{
-
-  color:#00d2e6;
-
-  font-size:.7rem;
-
-  margin-top:.2rem;
-
-}
-
-/* TEXT */
-
-.feature-item p{
+  z-index:4;
 
   font-size:.92rem;
 
   line-height:1.8;
 
   color:
-  rgba(255,255,255,.58);
+  rgba(255,255,255,.5);
 
 }
 
 /* =========================================================
-   BUTTON
+   MARQUEE
 ========================================================= */
 
-.package-btn{
+.logo-marquee-wrapper{
+
+  position:relative;
+
+  overflow:hidden;
 
   width:100%;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:
-  1rem
-  1.2rem;
-
-  border:none;
-
-  cursor:pointer;
-
-  background:
-  rgba(255,255,255,.04);
-
-  border:
-  1px solid rgba(255,255,255,.06);
-
-  backdrop-filter:blur(14px);
-
-  color:#fff;
-
-  font-size:.72rem;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-
-  transition:
-  all .5s cubic-bezier(.22,1,.36,1);
+  padding:1rem 0;
 
 }
 
-.package-btn:hover{
+/* TRACK */
 
-  transform:
-  translateY(-3px);
+.logo-marquee{
 
-  border-color:
-  rgba(0,210,230,.22);
+  display:flex;
 
-  background:
-  rgba(255,255,255,.06);
+  align-items:center;
 
-  box-shadow:
-  0 0 40px rgba(0,210,230,.08);
+  gap:4rem;
+
+  width:max-content;
+
+}
+
+/* ITEM */
+
+.logo-item{
+
+  font-size:
+  clamp(2rem,4vw,4rem);
+
+  font-weight:600;
+
+  letter-spacing:4px;
+
+  color:
+  rgba(255,255,255,.08);
+
+  white-space:nowrap;
+
+  user-select:none;
+
+  transition:.4s ease;
+
+}
+
+.logo-item:hover{
+
+  color:
+  rgba(255,255,255,.22);
 
 }
 
@@ -599,16 +460,11 @@
 
 @media(max-width:1100px){
 
-  .packages-container{
+  .awards-grid{
 
-    grid-template-columns:1fr;
+    grid-template-columns:
+    repeat(2,1fr);
 
-    max-width:700px;
-
-  }
-
-  .featured{
-    transform:none;
   }
 
 }
@@ -619,13 +475,15 @@
 
 @media(max-width:768px){
 
-  .packages{
+  .awards-section{
 
     padding:7rem 1rem;
 
   }
 
-  .packages-bg-text{
+  /* BG */
+
+  .awards-bg-text{
 
     font-size:24vw;
 
@@ -635,131 +493,128 @@
 
   }
 
-  .packages-header{
+  /* HEADER */
 
-    margin-bottom:4rem;
+  .awards-header{
+
+    margin-bottom:3rem;
 
   }
 
-  .packages-header p{
+  .awards-tag{
 
-    font-size:.58rem;
+    font-size:.55rem;
 
     letter-spacing:3px;
 
     padding-bottom:.7rem;
 
+    margin-bottom:1.3rem;
+
   }
 
-  .packages-header h2{
+  .awards-tag::before{
+
+    width:6px;
+    height:6px;
+
+  }
+
+  /* TITLE */
+
+  .awards-title{
 
     font-size:
-    clamp(2.5rem,12vw,4rem);
+    clamp(2.2rem,10vw,3.5rem);
+
+    line-height:.94;
 
     letter-spacing:-2px;
 
     margin-bottom:1rem;
 
+    max-width:90%;
+
   }
 
-  .packages-subtext{
+  /* DESC */
 
-    font-size:.9rem;
+  .awards-description{
+
+    font-size:.86rem;
 
     line-height:1.8;
 
-  }
-
-  .packages-container{
-
-    gap:1.2rem;
+    max-width:100%;
 
   }
 
-  .package-card{
+  /* GRID */
 
-    padding:1.5rem;
+  .awards-grid{
 
-    border-radius:28px;
-
-  }
-
-  .package-card:active{
-    transform:scale(.985);
-  }
-
-  .badge{
-
-    top:12px;
-    right:12px;
-
-    font-size:.48rem;
-
-    padding:
-    .38rem
-    .6rem;
-
-  }
-
-  .package-mini-title{
-
-    font-size:.52rem;
-
-    letter-spacing:2px;
-
-  }
-
-  .package-card h3{
-
-    font-size:
-    clamp(1.8rem,8vw,2.5rem);
-
-    letter-spacing:-1.5px;
-
-  }
-
-  .price-box h1{
-
-    font-size:
-    clamp(2.5rem,12vw,4rem);
-
-    letter-spacing:-2px;
-
-  }
-
-  .event-text{
-
-    font-size:.58rem;
-
-  }
-
-  .features{
+    grid-template-columns:
+    repeat(2,1fr);
 
     gap:.8rem;
 
-    margin-bottom:2rem;
+    margin-bottom:3rem;
 
   }
 
-  .feature-item p{
+  /* CARD */
 
-    font-size:.84rem;
+  .award-card{
 
-    line-height:1.7;
+    padding:1.4rem;
+
+    border-radius:22px;
+
+    min-width:0;
 
   }
 
-  .package-btn{
+  .award-card:active{
+    transform:scale(.985);
+  }
 
-    border-radius:999px;
+  /* VALUE */
 
-    font-size:.6rem;
+  .award-card h3{
 
-    letter-spacing:1.5px;
+    font-size:
+    clamp(1.6rem,8vw,2.6rem);
 
-    padding:
-    .9rem
-    1rem;
+    letter-spacing:-1.5px;
+
+    margin-bottom:.6rem;
+
+  }
+
+  /* LABEL */
+
+  .award-card p{
+
+    font-size:.72rem;
+
+    line-height:1.55;
+
+  }
+
+  /* MARQUEE */
+
+  .logo-marquee{
+
+    gap:2rem;
+
+  }
+
+  .logo-item{
+
+    font-size:
+    clamp(1.2rem,7vw,2rem);
+
+    letter-spacing:2px;
 
   }
 
@@ -771,26 +626,22 @@
 
 @media(max-width:480px){
 
-  .packages{
+  .awards-section{
 
     padding:6rem 1rem;
 
   }
 
-  .packages-header h2{
-    font-size:2.2rem;
+  .awards-title{
+    font-size:2rem;
   }
 
-  .packages-subtext{
-    font-size:.86rem;
+  .awards-description{
+    font-size:.82rem;
   }
 
-  .package-card h3{
+  .award-card h3{
     font-size:1.8rem;
-  }
-
-  .price-box h1{
-    font-size:2.8rem;
   }
 
 }

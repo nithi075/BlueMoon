@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 import "./Portfolio.css";
 
-/* LOCAL VIDEOS */
+/* VIDEOS */
 
 import video1 from "../../assets/video1.mp4";
 import video2 from "../../assets/video2.mp4";
@@ -22,18 +22,27 @@ const Portfolio = () => {
   const [activeCategory, setActiveCategory] =
     useState("all");
 
-  /* PORTFOLIO ITEMS */
+  /* =========================================================
+     VIDEO OVERLAY
+  ========================================================= */
+
+  const [selectedVideo, setSelectedVideo] =
+    useState(null);
+
+  /* =========================================================
+     ITEMS
+  ========================================================= */
 
   const portfolioItems = [
 
     {
       id: 1,
 
-      title: "Luxury Brand Commercial",
+      title: "Luxury Cafe Launch",
 
-      category: "commercial",
+      category: "social-campaign",
 
-      tag: "BRAND ADVERTISEMENT",
+      tag: "INSTAGRAM CAMPAIGN",
 
       video: video1,
     },
@@ -41,11 +50,11 @@ const Portfolio = () => {
     {
       id: 2,
 
-      title: "Midnight Music Visual",
+      title: "Fashion Brand Reels",
 
-      category: "music-video",
+      category: "reels",
 
-      tag: "MUSIC VIDEO",
+      tag: "SHORT FORM CONTENT",
 
       video: video2,
     },
@@ -53,11 +62,11 @@ const Portfolio = () => {
     {
       id: 3,
 
-      title: "Tech Product Reveal",
+      title: "Restaurant Content System",
 
-      category: "commercial",
+      category: "social-campaign",
 
-      tag: "PRODUCT AD",
+      tag: "SOCIAL MEDIA MANAGEMENT",
 
       video: video3,
     },
@@ -65,11 +74,11 @@ const Portfolio = () => {
     {
       id: 4,
 
-      title: "Fashion Editorial Campaign",
+      title: "Creator Growth Campaign",
 
-      category: "brand-film",
+      category: "brand-identity",
 
-      tag: "BRAND CINEMA",
+      tag: "PERSONAL BRANDING",
 
       video: video4,
     },
@@ -77,18 +86,20 @@ const Portfolio = () => {
     {
       id: 5,
 
-      title: "Premium Automotive Reel",
+      title: "Real Estate Visual Campaign",
 
-      category: "music-video",
+      category: "reels",
 
-      tag: "CINEMATIC VISUAL",
+      tag: "CINEMATIC REELS",
 
-      video: video3,
+      video: video5,
     },
 
   ];
 
-  /* FILTERS */
+  /* =========================================================
+     FILTERS
+  ========================================================= */
 
   const categories = [
 
@@ -98,27 +109,32 @@ const Portfolio = () => {
     },
 
     {
-      id: "commercial",
-      label: "COMMERCIAL ADS",
+      id: "reels",
+      label: "REELS",
     },
 
     {
-      id: "music-video",
-      label: "MUSIC VIDEOS",
+      id: "social-campaign",
+      label: "SOCIAL CAMPAIGNS",
     },
 
     {
-      id: "brand-film",
-      label: "BRAND FILMS",
+      id: "brand-identity",
+      label: "BRAND IDENTITY",
     },
 
   ];
 
-  /* FILTER LOGIC */
+  /* =========================================================
+     FILTER LOGIC
+  ========================================================= */
 
   const filteredItems =
+
     activeCategory === "all"
+
       ? portfolioItems
+
       : portfolioItems.filter(
           (item) =>
             item.category === activeCategory
@@ -127,31 +143,48 @@ const Portfolio = () => {
   return (
 
     <section
+
       className="portfolio-section-grid"
+
       id="portfolio"
     >
 
-      {/* MAIN GLOW */}
+      {/* BG TEXT */}
+
+      <div className="portfolio-bg-text">
+        PORTFOLIO
+      </div>
+
+      {/* GLOW */}
 
       <motion.div
 
         className="portfolio-main-glow"
 
         animate={{
+
           scale: [1, 1.08, 1],
+
           opacity: [0.3, 0.6, 0.3],
+
         }}
 
         transition={{
+
           duration: 8,
+
           repeat: Infinity,
+
           ease: "easeInOut",
+
         }}
       />
 
       <div className="portfolio-master-container">
 
-        {/* HEADER */}
+        {/* =====================================================
+            HEADER
+        ===================================================== */}
 
         <motion.div
 
@@ -178,23 +211,32 @@ const Portfolio = () => {
         >
 
           <span className="section-subtitle">
-            OUR WORKS
+
+            FEATURED PORTFOLIO
+
           </span>
 
           <h2 className="section-title">
-            Selected
+
+            Content Built
+
             <span className="text-highlight">
-              {" "}Productions
+
+              {" "}For Attention.
+
             </span>
+
           </h2>
 
           <p className="portfolio-section-desc">
-            Premium commercials, cinematic visuals,
-            branded films, and immersive storytelling
-            engineered for modern luxury brands.
+
+            A curated collection of social-first campaigns,
+            cinematic reels, and modern brand storytelling
+            crafted to dominate attention online.
+
           </p>
 
-          {/* FILTER TABS */}
+          {/* FILTERS */}
 
           <div className="portfolio-filter-tabs">
 
@@ -242,7 +284,9 @@ const Portfolio = () => {
 
         </motion.div>
 
-        {/* GRID */}
+        {/* =====================================================
+            GRID
+        ===================================================== */}
 
         <motion.div
 
@@ -266,9 +310,13 @@ const Portfolio = () => {
             visible: {
 
               transition: {
+
                 staggerChildren: 0.14,
+
                 delayChildren: 0.12,
+
               },
+
             },
           }}
         >
@@ -285,14 +333,19 @@ const Portfolio = () => {
 
                 className="portfolio-work-card"
 
+                onClick={() =>
+                  setSelectedVideo(item)
+                }
+
                 variants={{
 
                   hidden: {
+
                     opacity: 0,
                     y: 120,
                     scale: 0.84,
-                    rotateX: 12,
                     filter: "blur(18px)",
+
                   },
 
                   visible: {
@@ -300,28 +353,30 @@ const Portfolio = () => {
                     opacity: 1,
                     y: 0,
                     scale: 1,
-                    rotateX: 0,
                     filter: "blur(0px)",
 
                     transition: {
+
                       duration: 1,
+
                       ease: [0.16, 1, 0.3, 1],
+
                     },
                   },
                 }}
 
                 exit={{
+
                   opacity: 0,
                   y: 40,
                   scale: 0.9,
                   filter: "blur(10px)",
+
                 }}
 
                 whileHover={{
-                  y: -18,
+                  y: -16,
                   scale: 1.015,
-                  rotateX: -2,
-                  rotateY: 2,
                 }}
 
                 whileTap={{
@@ -333,18 +388,18 @@ const Portfolio = () => {
                   stiffness: 120,
                   damping: 18,
                 }}
-
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
               >
 
                 {/* VIDEO */}
 
                 <motion.div
+
                   className="card-media-viewport"
+
                   initial="rest"
+
                   whileHover="hover"
+
                   animate="rest"
                 >
 
@@ -354,21 +409,25 @@ const Portfolio = () => {
 
                     className="portfolio-card-video"
 
-                    autoPlay
                     muted
-                    loop
                     playsInline
 
                     variants={{
 
                       rest: {
+
                         scale: 1,
-                        filter: "brightness(1)",
+
+                        filter: "brightness(.82)",
+
                       },
 
                       hover: {
+
                         scale: 1.08,
-                        filter: "brightness(1.05)",
+
+                        filter: "brightness(1)",
+
                       },
                     }}
 
@@ -387,22 +446,14 @@ const Portfolio = () => {
                     variants={{
 
                       rest: {
-                        opacity: 0.62,
+                        opacity: 0.65,
                       },
 
                       hover: {
                         opacity: 0.9,
                       },
                     }}
-
-                    transition={{
-                      duration: 0.45,
-                    }}
                   />
-
-                  {/* NOISE */}
-
-                  <div className="portfolio-noise-layer"></div>
 
                   {/* BADGE */}
 
@@ -413,21 +464,23 @@ const Portfolio = () => {
                     variants={{
 
                       rest: {
+
                         opacity: 0,
                         y: -12,
+
                       },
 
                       hover: {
+
                         opacity: 1,
                         y: 0,
+
                       },
                     }}
-
-                    transition={{
-                      duration: 0.35,
-                    }}
                   >
+
                     FEATURED WORK
+
                   </motion.div>
 
                 </motion.div>
@@ -466,7 +519,9 @@ const Portfolio = () => {
                       scale: 1.05,
                     }}
                   >
+
                     {item.tag}
+
                   </motion.span>
 
                   <motion.h3
@@ -476,33 +531,20 @@ const Portfolio = () => {
                     whileHover={{
                       x: 5,
                     }}
-
-                    transition={{
-                      duration: 0.3,
-                    }}
                   >
+
                     {item.title}
+
                   </motion.h3>
 
                   <motion.p
 
                     className="portfolio-card-subtext"
-
-                    initial={{
-                      opacity: 0,
-                    }}
-
-                    whileInView={{
-                      opacity: 1,
-                    }}
-
-                    transition={{
-                      delay: 0.3,
-                    }}
                   >
-                    Premium cinematic storytelling
-                    crafted with high-end production
-                    workflows and immersive visuals.
+
+                    Built for reach, engagement,
+                    and modern digital culture.
+
                   </motion.p>
 
                 </motion.div>
@@ -515,7 +557,9 @@ const Portfolio = () => {
 
         </motion.div>
 
-        {/* BUTTON */}
+        {/* =====================================================
+            BUTTON
+        ===================================================== */}
 
         <motion.div
 
@@ -542,22 +586,149 @@ const Portfolio = () => {
         >
 
           <Link
+
             to="/gallery"
+
             className="portfolio-view-btn"
           >
-            VIEW MORE WORKS
+
+            VIEW FULL PORTFOLIO
 
             <span className="view-arrow">
+
               ↗
+
             </span>
+
           </Link>
 
         </motion.div>
 
       </div>
 
-    </section>
+      {/* =====================================================
+          VIDEO OVERLAY
+      ===================================================== */}
 
+      <AnimatePresence>
+
+        {selectedVideo && (
+
+          <motion.div
+
+            className="video-overlay"
+
+            initial={{
+              opacity: 0,
+            }}
+
+            animate={{
+              opacity: 1,
+            }}
+
+            exit={{
+              opacity: 0,
+            }}
+          >
+
+            {/* BACKDROP */}
+
+            <div
+
+              className="video-overlay-backdrop"
+
+              onClick={() =>
+                setSelectedVideo(null)
+              }
+            />
+
+            {/* CONTENT */}
+
+            <motion.div
+
+              className="video-overlay-content"
+
+              initial={{
+                scale: 0.9,
+                opacity: 0,
+                y: 40,
+              }}
+
+              animate={{
+                scale: 1,
+                opacity: 1,
+                y: 0,
+              }}
+
+              exit={{
+                scale: 0.9,
+                opacity: 0,
+                y: 40,
+              }}
+
+              transition={{
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+
+              {/* CLOSE */}
+
+              <button
+
+                className="video-close-btn"
+
+                onClick={() =>
+                  setSelectedVideo(null)
+                }
+              >
+
+                ✕
+
+              </button>
+
+              {/* VIDEO */}
+
+              <video
+
+                src={selectedVideo.video}
+
+                controls
+                autoPlay
+
+                className="fullscreen-video"
+              />
+
+              {/* INFO */}
+
+              <div className="overlay-video-info">
+
+                <span>
+                  {selectedVideo.tag}
+                </span>
+
+                <h2>
+                  {selectedVideo.title}
+                </h2>
+
+                <p>
+
+                  Built for reach, engagement,
+                  and modern digital culture.
+
+                </p>
+
+              </div>
+
+            </motion.div>
+
+          </motion.div>
+
+        )}
+
+      </AnimatePresence>
+
+    </section>
   );
 };
 

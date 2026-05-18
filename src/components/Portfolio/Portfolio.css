@@ -1,593 +1,825 @@
-/* ========================================================================== 
-   PORTFOLIO SECTION
-========================================================================== */
+/* =========================================================
+   CINEMATIC PORTFOLIO SECTION
+========================================================= */
 
-.portfolio-section-grid {
-  position: relative;
-  width: 100%;
-  padding: 8rem 5%;
-  background: #090D16;
-  overflow: hidden;
+.portfolio-section-grid{
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:#05070d;
+
+  padding:10rem 6%;
+
+  isolation:isolate;
+
 }
 
-/* MAIN GLOW */
+/* =========================================================
+   GRAIN TEXTURE
+========================================================= */
 
-.portfolio-section-grid::before {
-  content: "";
+.portfolio-section-grid::before{
 
-  position: absolute;
+  content:"";
 
-  width: 700px;
-  height: 700px;
+  position:absolute;
+  inset:0;
 
-  top: -250px;
-  right: -200px;
+  background:url("/grain.png");
 
-  border-radius: 50%;
+  opacity:.035;
+
+  mix-blend-mode:soft-light;
+
+  pointer-events:none;
+
+  z-index:0;
+
+}
+
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
+.portfolio-section-grid::after{
+
+  content:"";
+
+  position:absolute;
+
+  width:700px;
+  height:700px;
 
   background:
-    radial-gradient(
-      circle,
-      rgba(0,210,230,0.08) 0%,
-      transparent 70%
-    );
+  rgba(0,210,230,.08);
 
-  filter: blur(120px);
+  filter:blur(160px);
 
-  pointer-events: none;
+  border-radius:50%;
+
+  top:10%;
+  right:-250px;
+
+  pointer-events:none;
+
+  z-index:0;
+
 }
 
-.portfolio-master-container {
-  position: relative;
-  z-index: 2;
+/* =========================================================
+   HUGE BG TEXT
+========================================================= */
 
-  max-width: 1450px;
-  margin: 0 auto;
+.portfolio-bg-text{
+
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  font-size:18vw;
+
+  font-weight:700;
+
+  letter-spacing:-12px;
+
+  color:rgba(255,255,255,.02);
+
+  white-space:nowrap;
+
+  pointer-events:none;
+
+  user-select:none;
+
+  z-index:0;
+
 }
 
-/* ========================================================================== 
+/* =========================================================
+   MAIN GLOW
+========================================================= */
+
+.portfolio-main-glow{
+
+  position:absolute;
+
+  bottom:-150px;
+  left:-150px;
+
+  width:600px;
+  height:600px;
+
+  background:
+  radial-gradient(
+    circle,
+    rgba(255,255,255,.04),
+    transparent 70%
+  );
+
+  filter:blur(140px);
+
+  pointer-events:none;
+
+  z-index:0;
+
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.portfolio-master-container{
+
+  position:relative;
+
+  z-index:2;
+
+  max-width:1650px;
+
+  margin:0 auto;
+
+}
+
+/* =========================================================
    HEADER
-========================================================================== */
+========================================================= */
 
-.portfolio-section-header {
-  text-align: center;
-  margin-bottom: 5rem;
+.portfolio-section-header{
+
+  max-width:760px;
+
+  margin-bottom:7rem;
+
 }
 
-.section-subtitle {
-  display: inline-block;
+.section-subtitle{
 
-  color: #00D2E6;
+  display:inline-flex;
 
-  font-size: 0.78rem;
-  font-weight: 700;
+  align-items:center;
 
-  letter-spacing: 3px;
+  gap:.7rem;
 
-  margin-bottom: 1rem;
+  width:fit-content;
+
+  padding-bottom:.9rem;
+
+  border-bottom:
+  1px solid rgba(255,255,255,.14);
+
+  font-size:.72rem;
+
+  font-weight:500;
+
+  letter-spacing:4px;
+
+  text-transform:uppercase;
+
+  color:rgba(255,255,255,.82);
+
+  margin-bottom:2rem;
+
 }
 
-.section-title {
-  font-size: clamp(2.8rem, 6vw, 5rem);
+.section-subtitle::before{
 
-  line-height: 1.05;
+  content:"";
 
-  font-weight: 900;
+  width:8px;
+  height:8px;
 
-  letter-spacing: -2px;
+  border-radius:50%;
 
-  color: #FFFFFF;
-
-  margin-bottom: 1.5rem;
-}
-
-.text-highlight {
-  background:
-    linear-gradient(
-      135deg,
-      #00D2E6 0%,
-      #7DF9FF 100%
-    );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.portfolio-section-desc {
-  max-width: 720px;
-
-  margin: 0 auto 3rem auto;
-
-  font-size: 1rem;
-  line-height: 1.8;
-
-  color: #94A3B8;
-}
-
-/* ========================================================================== 
-   FILTER TABS
-========================================================================== */
-
-.portfolio-filter-tabs {
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  flex-wrap: wrap;
-
-  gap: 1rem;
-}
-
-.filter-tab-btn {
-  position: relative;
-
-  border: none;
-  outline: none;
-
-  background: transparent;
-
-  color: #94A3B8;
-
-  font-size: 0.78rem;
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  padding: 1rem 1.5rem;
-
-  border-radius: 100px;
-
-  overflow: hidden;
-
-  cursor: pointer;
-
-  transition:
-    color 0.35s ease,
-    transform 0.35s ease;
-}
-
-.filter-tab-btn:hover {
-  color: #FFFFFF;
-  transform: translateY(-2px);
-}
-
-.tab-active {
-  color: #FFFFFF;
-}
-
-.active-tab-bg-pill {
-  position: absolute;
-
-  inset: 0;
-
-  z-index: -1;
-
-  border-radius: 100px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(0,210,230,0.16),
-      rgba(0,210,230,0.05)
-    );
-
-  border:
-    1px solid rgba(0,210,230,0.16);
-
-  backdrop-filter: blur(10px);
-}
-
-/* ========================================================================== 
-   GRID
-========================================================================== */
-
-.portfolio-cards-masonry {
-  display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit,minmax(340px,1fr));
-
-  gap: 2rem;
-}
-
-/* ========================================================================== 
-   CARD
-========================================================================== */
-
-.portfolio-work-card {
-  position: relative;
-
-  overflow: hidden;
-
-  border-radius: 28px;
-
-  background:
-    rgba(255,255,255,0.02);
-
-  border:
-    1px solid rgba(255,255,255,0.05);
-
-  transition:
-    transform 0.45s ease,
-    border-color 0.45s ease,
-    box-shadow 0.45s ease;
-}
-
-.portfolio-work-card:hover {
-
-  border-color:
-    rgba(0,210,230,0.16);
+  background:#00d2e6;
 
   box-shadow:
-    0 25px 70px rgba(0,0,0,0.42),
-    0 0 0 1px rgba(0,210,230,0.04);
+  0 0 20px rgba(0,210,230,.8);
+
 }
 
-/* ========================================================================== 
-   MEDIA VIEWPORT
-========================================================================== */
+/* =========================================================
+   TITLE
+========================================================= */
 
-.card-media-viewport {
-  position: relative;
+.section-title{
 
-  width: 100%;
-  height: 500px;
+  font-size:
+  clamp(3rem,6vw,7rem);
 
-  overflow: hidden;
+  line-height:.92;
 
-  border-radius: inherit;
+  font-weight:300;
 
-  background: #050811;
+  letter-spacing:-4px;
+
+  color:#fff;
+
+  margin-bottom:2rem;
+
 }
 
-/* IMAGE */
+.text-highlight{
 
-.portfolio-card-img {
-  width: 100%;
-  height: 100%;
+  background:
+  linear-gradient(
+    135deg,
+    #ffffff 10%,
+    #00d2e6 100%
+  );
 
-  object-fit: cover;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 
-  display: block;
+  display:inline-block;
+
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.portfolio-section-desc{
+
+  max-width:650px;
+
+  font-size:1rem;
+
+  font-weight:300;
+
+  line-height:2;
+
+  letter-spacing:.3px;
+
+  color:
+  rgba(255,255,255,.5);
+
+}
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.portfolio-filter-tabs{
+
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:1rem;
+
+  margin-top:3rem;
+
+}
+
+.filter-tab-btn{
+
+  position:relative;
+
+  overflow:hidden;
+
+  background:
+  rgba(255,255,255,.03);
+
+  backdrop-filter:blur(12px);
+
+  border:
+  1px solid rgba(255,255,255,.06);
+
+  padding:
+  .95rem
+  1.5rem;
+
+  color:
+  rgba(255,255,255,.6);
+
+  font-size:.68rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
 
   transition:
-    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 1s ease;
+  all .5s cubic-bezier(.22,1,.36,1);
 
-  will-change: transform;
+}
+
+.filter-tab-btn:hover{
+
+  transform:translateY(-2px);
+
+  border-color:
+  rgba(255,255,255,.14);
+
+  color:#fff;
+
+  background:
+  rgba(255,255,255,.05);
+
+}
+
+.tab-active{
+
+  color:#fff;
+
+  border-color:
+  rgba(0,210,230,.22);
+
+  background:
+  rgba(0,210,230,.06);
+
+}
+
+.active-tab-bg-pill{
+
+  position:absolute;
+  inset:0;
+
+  background:
+  rgba(0,210,230,.08);
+
+  z-index:-1;
+
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.portfolio-cards-masonry{
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,1fr);
+
+  gap:2rem;
+
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.portfolio-work-card{
+
+  position:relative;
+
+  overflow:hidden;
+
+  isolation:isolate;
+
+  background:
+  linear-gradient(
+    180deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.015)
+  );
+
+  border:
+  1px solid rgba(255,255,255,.05);
+
+  backdrop-filter:blur(24px);
+
+  box-shadow:
+
+  0 20px 60px rgba(0,0,0,.45),
+
+  inset 0 1px 0 rgba(255,255,255,.04);
+
+  transition:
+  transform .7s cubic-bezier(.22,1,.36,1),
+  border-color .6s ease,
+  box-shadow .6s ease;
+
+}
+
+/* REFLECTION SWEEP */
+
+.portfolio-work-card::before{
+
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(255,255,255,.08) 50%,
+    transparent 80%
+  );
+
+  transform:translateX(-120%);
+
+  transition:1.4s ease;
+
+  z-index:3;
+
+}
+
+.portfolio-work-card:hover::before{
+  transform:translateX(120%);
+}
+
+.portfolio-work-card:hover{
+
+  transform:
+  translateY(-16px)
+  scale(1.015);
+
+  border-color:
+  rgba(0,210,230,.2);
+
+  box-shadow:
+
+  0 35px 90px rgba(0,0,0,.55),
+
+  0 0 60px rgba(0,210,230,.08);
+
+}
+
+/* =========================================================
+   VIDEO VIEWPORT
+========================================================= */
+
+.card-media-viewport{
+
+  position:relative;
+
+  aspect-ratio:9/16;
+
+  overflow:hidden;
+
 }
 
 /* VIDEO */
 
-.portfolio-card-video {
+.portfolio-card-video{
 
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height:100%;
 
-  object-fit: cover;
+  object-fit:cover;
 
-  display: block;
+  transform:scale(1.08);
 
-  background: #050811;
-
-  transform: scale(1.01);
+  filter:
+  brightness(.72)
+  contrast(1.08)
+  saturate(.9);
 
   transition:
-    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 1s ease;
+  transform 1.5s cubic-bezier(.22,1,.36,1),
+  filter 1s ease;
 
-  will-change: transform;
 }
 
-/* REMOVE CONTROLS */
+.portfolio-work-card:hover .portfolio-card-video{
 
-.portfolio-card-video::-webkit-media-controls{
-  display:none !important;
+  transform:scale(1.14);
+
+  filter:
+  brightness(.95)
+  contrast(1.1)
+  saturate(1);
+
 }
 
-/* HOVER */
-
-.portfolio-work-card:hover .portfolio-card-img,
-.portfolio-work-card:hover .portfolio-card-video {
-
-  transform: scale(1.08);
-
-  filter: brightness(1.05);
-}
-
-/* ========================================================================== 
+/* =========================================================
    OVERLAY
-========================================================================== */
+========================================================= */
 
-.card-vignette-layer {
-  position: absolute;
-  inset: 0;
+.card-vignette-layer{
 
-  z-index: 2;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(5,8,15,0.98) 0%,
-      rgba(5,8,15,0.42) 45%,
-      rgba(5,8,15,0.08) 100%
-    );
-
-  opacity: 0.82;
-
-  transition:
-    opacity 0.45s ease;
-}
-
-.portfolio-work-card:hover
-.card-vignette-layer {
-  opacity: 0.95;
-}
-
-/* ========================================================================== 
-   NOISE LAYER
-========================================================================== */
-
-.portfolio-noise-layer{
   position:absolute;
   inset:0;
 
-  z-index:3;
+  background:
 
-  opacity:0.06;
+  linear-gradient(
+    to top,
+    rgba(5,7,13,1) 0%,
+    rgba(5,7,13,.3) 40%,
+    rgba(5,7,13,.1) 100%
+  ),
 
-  pointer-events:none;
+  radial-gradient(
+    circle at center,
+    transparent 30%,
+    rgba(0,0,0,.35) 100%
+  );
 
-  background-image:
-    radial-gradient(
-      rgba(255,255,255,0.05) 1px,
-      transparent 1px
-    );
-
-  background-size:4px 4px;
 }
 
-/* ========================================================================== 
+/* =========================================================
    BADGE
-========================================================================== */
+========================================================= */
 
 .portfolio-floating-badge{
+
   position:absolute;
 
-  top:1.5rem;
-  left:1.5rem;
-
-  z-index:5;
+  top:20px;
+  left:20px;
 
   padding:
-    0.6rem 1rem;
-
-  border-radius:100px;
+  .55rem
+  .9rem;
 
   background:
-    rgba(255,255,255,0.08);
+  rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
 
   border:
-    1px solid rgba(255,255,255,0.12);
+  1px solid rgba(255,255,255,.08);
 
-  backdrop-filter:blur(16px);
+  font-size:.58rem;
 
-  color:#FFFFFF;
+  letter-spacing:2px;
 
-  font-size:0.68rem;
-  font-weight:700;
+  text-transform:uppercase;
 
-  letter-spacing:1.5px;
-}
+  color:#fff;
 
-/* ========================================================================== 
-   CONTENT
-========================================================================== */
-
-.card-details-footer {
-  position: absolute;
-
-  bottom: 0;
-  left: 0;
-
-  width: 100%;
-
-  padding: 2rem;
-
-  z-index: 5;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(5,8,15,0.82) 0%,
-      rgba(5,8,15,0.18) 55%,
-      transparent 100%
-    );
-}
-
-.card-meta-tag {
-  display: inline-flex;
-
-  align-items: center;
-
-  padding:
-    0.45rem 0.9rem;
-
-  border-radius: 100px;
-
-  background:
-    rgba(255,255,255,0.08);
-
-  border:
-    1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter: blur(12px);
-
-  color: #E2E8F0;
-
-  font-size: 0.7rem;
-  font-weight: 700;
-
-  letter-spacing: 1.5px;
-
-  margin-bottom: 1rem;
-}
-
-.card-display-title {
-  font-size: 1.7rem;
-
-  line-height: 1.15;
-
-  font-weight: 800;
-
-  color: #FFFFFF;
-
-  letter-spacing: -0.5px;
-
-  margin-bottom: 1rem;
-
-  max-width: 90%;
-
-  transition:
-    transform 0.35s ease;
-}
-
-.portfolio-work-card:hover
-.card-display-title {
-  transform: translateX(4px);
-}
-
-.portfolio-card-subtext{
-  color:#CBD5E1;
-
-  font-size:0.92rem;
-
-  line-height:1.7;
-
-  max-width:90%;
-}
-
-/* ========================================================================== 
-   BUTTON
-========================================================================== */
-
-.portfolio-view-more {
-  display: flex;
-  justify-content: center;
-
-  margin-top: 5rem;
-}
-
-.portfolio-view-btn {
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  gap: 0.8rem;
-
-  padding:
-    1rem 1.8rem;
-
-  border-radius: 100px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #00D2E6,
-      #00AFC0
-    );
-
-  color: #FFFFFF;
-
-  font-size: 0.8rem;
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
-  text-decoration: none;
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.portfolio-view-btn:hover {
-  transform: translateY(-2px);
+  z-index:4;
 
   box-shadow:
-    0 18px 40px rgba(0,210,230,0.28);
+  0 10px 30px rgba(0,0,0,.35);
+
 }
 
-.view-arrow {
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.card-details-footer{
+
+  padding:2rem;
+
+}
+
+/* META */
+
+.card-meta-tag{
+
+  display:inline-flex;
+
+  margin-bottom:1rem;
+
+  padding:
+  .5rem
+  .8rem;
+
+  background:
+  rgba(255,255,255,.04);
+
+  border:
+  1px solid rgba(255,255,255,.05);
+
+  font-size:.58rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  color:
+  rgba(255,255,255,.72);
+
+}
+
+/* TITLE */
+
+.card-display-title{
+
+  font-size:
+  clamp(2rem,2.5vw,3rem);
+
+  line-height:.95;
+
+  font-weight:300;
+
+  letter-spacing:-2px;
+
+  color:#fff;
+
+  margin-bottom:1rem;
+
+  max-width:90%;
+
+}
+
+/* SUBTEXT */
+
+.portfolio-card-subtext{
+
+  font-size:.92rem;
+
+  line-height:1.85;
+
+  color:
+  rgba(255,255,255,.45);
+
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.portfolio-view-more{
+
+  display:flex;
+
+  justify-content:center;
+
+  margin-top:7rem;
+
+}
+
+.portfolio-view-btn{
+
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+
+  padding:
+  1rem
+  1.7rem;
+
+  background:
+  rgba(255,255,255,.04);
+
+  backdrop-filter:blur(14px);
+
+  border:
+  1px solid rgba(255,255,255,.06);
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:.7rem;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
   transition:
-    transform 0.35s ease;
+  all .5s cubic-bezier(.22,1,.36,1);
+
 }
 
-.portfolio-view-btn:hover
-.view-arrow {
+.portfolio-view-btn:hover{
+
   transform:
-    translate(3px,-3px);
-}
+  translateY(-4px);
 
-/* ========================================================================== 
-   RESPONSIVE
-========================================================================== */
+  border-color:
+  rgba(0,210,230,.22);
 
-@media (max-width: 992px) {
+  background:
+  rgba(255,255,255,.06);
 
-  .portfolio-section-grid {
-    padding: 7rem 4%;
-  }
-
-  .portfolio-cards-masonry {
-    grid-template-columns: 1fr 1fr;
-  }
+  box-shadow:
+  0 0 40px rgba(0,210,230,.08);
 
 }
 
-@media (max-width: 768px) {
+.view-arrow{
+  font-size:1rem;
+}
 
-  .portfolio-section-grid {
-    padding: 6rem 4%;
-  }
+/* =========================================================
+   TABLET
+========================================================= */
 
-  .portfolio-section-header {
-    margin-bottom: 4rem;
-  }
+@media(max-width:1100px){
 
-  .portfolio-cards-masonry {
-    grid-template-columns: 1fr;
-  }
+  .portfolio-cards-masonry{
 
-  .card-media-viewport {
-    height: 420px;
-  }
+    grid-template-columns:
+    repeat(2,1fr);
 
-  .card-details-footer {
-    padding: 1.6rem;
-  }
-
-  .card-display-title {
-    font-size: 1.4rem;
   }
 
 }
 
-@media (max-width: 480px) {
+/* =========================================================
+   MOBILE
+========================================================= */
 
-  .card-media-viewport {
-    height: 360px;
+@media(max-width:768px){
+
+  .portfolio-section-grid{
+    padding:7rem 1.5rem;
   }
 
-  .card-display-title {
-    font-size: 1.2rem;
+  .portfolio-bg-text{
+
+    font-size:24vw;
+
+    letter-spacing:-5px;
+
+    top:42%;
+
   }
 
-  .portfolio-card-subtext {
-    font-size: 0.85rem;
+  .portfolio-section-header{
+    margin-bottom:4rem;
   }
+
+  .section-title{
+
+    font-size:
+    clamp(2.5rem,12vw,4rem);
+
+    letter-spacing:-2px;
+
+  }
+
+  .portfolio-section-desc{
+
+    font-size:.92rem;
+
+    line-height:1.9;
+
+  }
+
+  .portfolio-filter-tabs{
+    gap:.7rem;
+  }
+
+  .filter-tab-btn{
+
+    font-size:.58rem;
+
+    padding:
+    .8rem
+    1rem;
+
+  }
+
+  .portfolio-cards-masonry{
+
+    grid-template-columns:1fr;
+
+    gap:1.5rem;
+
+  }
+
+  .portfolio-work-card{
+    border-radius:24px;
+  }
+
+  .card-media-viewport{
+    aspect-ratio:9/15;
+  }
+
+  .card-details-footer{
+    padding:1.5rem;
+  }
+
+  .card-display-title{
+    font-size:1.8rem;
+  }
+
+  .portfolio-card-subtext{
+    font-size:.88rem;
+  }
+
+  .portfolio-view-more{
+    margin-top:4rem;
+  }
+
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+  .portfolio-section-grid{
+    padding:6rem 1rem;
+  }
+
+  .section-title{
+    font-size:2.2rem;
+  }
+
+  .portfolio-section-desc{
+    font-size:.88rem;
+  }
+
+  .card-display-title{
+    font-size:1.6rem;
+  }
+
 
 }

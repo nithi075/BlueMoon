@@ -1,58 +1,70 @@
 import "./Packages.css";
+
 import { motion } from "framer-motion";
 
 const packagesData = [
+
   {
-    title: "Starter Reel",
-    subtitle: "SOLO VIDEOGRAPHER PACKAGE",
-    price: "₹39,999",
+    title: "Starter Presence",
+
+    subtitle:
+      "SOCIAL-FIRST CONTENT SYSTEM",
+
+    price: "₹39K",
 
     features: [
-      "1 Professional Videographer",
-      "4 Hours of Event Coverage",
-      "Cinematic Highlight Reel",
-      "Edited HD Video Delivery",
-      "Social Media Short Clips",
-      "Licensed Music Integration"
+      "Creative Direction",
+      "1 Cinematic Shoot Day",
+      "4 Edited Reels",
+      "Instagram Story Assets",
+      "Premium Color Grading",
+      "Social-Optimized Delivery"
     ]
   },
 
   {
-    title: "Cinema Plus",
-    subtitle: "MULTI-CAMERA VIDEOGRAPHY",
-    price: "₹79,999",
+    title: "Brand Accelerator",
+
+    subtitle:
+      "HIGH-GROWTH CONTENT PACKAGE",
+
+    price: "₹79K",
 
     badge: "Most Popular",
 
     features: [
-      "2 Videographers",
-      "Multi-Camera Coverage",
-      "6 Hours of Cinematic Coverage",
-      "4K Highlight Film",
-      "Instagram Reels & Teasers",
-      "Professional Audio Recording",
-      "Color Grading & Cinematic Editing",
-      "Full Event Film"
+      "Multi-Camera Production",
+      "8 Premium Reels",
+      "Monthly Content Strategy",
+      "Social Campaign Assets",
+      "Luxury Cinematic Editing",
+      "Trending Short Form Content",
+      "Priority Delivery",
+      "Brand Visual Direction"
     ]
   },
 
   {
-    title: "Signature Production",
-    subtitle: "PREMIUM FILMMAKING EXPERIENCE",
-    price: "₹1,29,999",
+    title: "Signature Identity",
+
+    subtitle:
+      "FULL CREATIVE BRAND EXPERIENCE",
+
+    price: "₹129K",
 
     features: [
-      "3 Cinematographers",
-      "Drone Coverage Included",
-      "8+ Hours of Full Production",
-      "4K Cinematic Film",
-      "Luxury Teaser Trailer",
-      "Story-Based Editing",
-      "Professional Lighting Setup",
-      "Full Event Documentary Film",
-      "Priority Delivery"
+      "Full Brand Content System",
+      "Luxury Production Workflow",
+      "Drone & Cinematic Coverage",
+      "Campaign-Level Creative Direction",
+      "Premium Ad Creatives",
+      "Story-Based Reels",
+      "Social Media Visual Identity",
+      "Monthly Content Planning",
+      "Priority Creative Support"
     ]
   }
+
 ];
 
 export default function Packages() {
@@ -63,6 +75,30 @@ export default function Packages() {
       className="packages"
       id="packages"
     >
+
+      {/* BG TEXT */}
+
+      <div className="packages-bg-text">
+        PACKAGES
+      </div>
+
+      {/* GLOW */}
+
+      <motion.div
+
+        className="packages-main-glow"
+
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       {/* HEADER */}
 
@@ -90,13 +126,23 @@ export default function Packages() {
 
       >
 
-        <p>VIDEOGRAPHY PRICING</p>
+        <p>
+          CREATIVE PARTNERSHIPS
+        </p>
 
         <h2>
 
-          Cinematic <span>Packages</span>
+          Designed For
+          <span> Modern Brands</span>
 
         </h2>
+
+        <span className="packages-subtext">
+
+          Social-first content systems crafted
+          for brands built to dominate attention.
+
+        </span>
 
       </motion.div>
 
@@ -128,7 +174,7 @@ export default function Packages() {
 
             transition={{
               duration: 1,
-              delay: index * 0.2
+              delay: index * 0.15
             }}
 
             viewport={{
@@ -140,7 +186,15 @@ export default function Packages() {
               scale: 1.02
             }}
 
+            whileTap={{
+              scale: 0.985
+            }}
+
           >
+
+            {/* REFLECTION */}
+
+            <div className="card-reflection"></div>
 
             {/* BADGE */}
 
@@ -156,13 +210,17 @@ export default function Packages() {
 
             {/* TITLE */}
 
-            <h3>{item.title}</h3>
+            <div className="package-top">
 
-            <p className="subtitle">
+              <p className="package-mini-title">
 
-              {item.subtitle}
+                {item.subtitle}
 
-            </p>
+              </p>
+
+              <h3>{item.title}</h3>
+
+            </div>
 
             {/* PRICE */}
 
@@ -185,11 +243,25 @@ export default function Packages() {
               {item.features.map(
                 (feature, i) => (
 
-                  <p key={i}>
+                  <motion.div
 
-                    ✦ {feature}
+                    key={i}
 
-                  </p>
+                    className="feature-item"
+
+                    whileHover={{
+                      x: 4
+                    }}
+
+                  >
+
+                    <span className="feature-dot">
+                      ✦
+                    </span>
+
+                    <p>{feature}</p>
+
+                  </motion.div>
 
                 )
               )}
@@ -200,7 +272,7 @@ export default function Packages() {
 
             <button className="package-btn">
 
-              Book Your Shoot ↗
+              Start a Project ↗
 
             </button>
 

@@ -1,6 +1,5 @@
-// ContactSection.jsx
-
 import { motion } from "framer-motion";
+
 import "./Contact.css";
 
 /* =========================
@@ -8,9 +7,11 @@ import "./Contact.css";
 ========================= */
 
 const containerVariants = {
+
   hidden: {},
 
   visible: {
+
     transition: {
       staggerChildren: 0.18,
       delayChildren: 0.2,
@@ -23,6 +24,7 @@ const containerVariants = {
 ========================= */
 
 const panelVariants = {
+
   hidden: {
     opacity: 0,
     y: 80,
@@ -31,6 +33,7 @@ const panelVariants = {
   },
 
   visible: {
+
     opacity: 1,
     y: 0,
     scale: 1,
@@ -48,12 +51,14 @@ const panelVariants = {
 ========================= */
 
 const textVariants = {
+
   hidden: {
     opacity: 0,
     y: 30,
   },
 
   visible: {
+
     opacity: 1,
     y: 0,
 
@@ -69,9 +74,11 @@ const textVariants = {
 ========================= */
 
 const formVariants = {
+
   hidden: {},
 
   visible: {
+
     transition: {
       staggerChildren: 0.12,
       delayChildren: 0.3,
@@ -80,12 +87,14 @@ const formVariants = {
 };
 
 const inputVariants = {
+
   hidden: {
     opacity: 0,
     y: 20,
   },
 
   visible: {
+
     opacity: 1,
     y: 0,
 
@@ -97,16 +106,28 @@ const inputVariants = {
 };
 
 export default function ContactSection() {
+
   return (
+
     <section className="contact-section">
 
-      {/* BACKGROUND GLOW */}
+      {/* HUGE BG TEXT */}
+
+      <div className="contact-bg-text">
+        CONTACT
+      </div>
+
+      {/* AMBIENT GLOW */}
+
       <motion.div
+
         className="contact-bg-glow"
+
         animate={{
           scale: [1, 1.15, 1],
           opacity: [0.35, 0.6, 0.35],
         }}
+
         transition={{
           duration: 8,
           repeat: Infinity,
@@ -115,11 +136,17 @@ export default function ContactSection() {
       />
 
       {/* MAIN CONTAINER */}
+
       <motion.div
+
         className="contact-container"
+
         variants={containerVariants}
+
         initial="hidden"
+
         whileInView="visible"
+
         viewport={{
           once: true,
           amount: 0.2,
@@ -131,38 +158,56 @@ export default function ContactSection() {
         ========================= */}
 
         <motion.div
+
           className="contact-left"
+
           variants={panelVariants}
         >
 
           <motion.p
+
             className="section-tag"
+
             variants={textVariants}
           >
-            CONTACT
+
+            START A PROJECT
+
           </motion.p>
 
           <motion.h2
+
             className="panel-title"
+
             variants={textVariants}
           >
-            Turning Bold Ideas
+
+            Let’s Build
             <br />
-            Into Cinematic Reality.
+            Something
+            People Remember.
+
           </motion.h2>
 
           <motion.p
+
             className="panel-description"
+
             variants={textVariants}
           >
-            Whether it’s a brand film, commercial,
-            or cinematic storytelling — let’s create
-            something unforgettable together.
+
+            From cinematic reels to social-first campaigns,
+            we partner with modern brands
+            to create content engineered for attention.
+
           </motion.p>
 
           {/* CONTACT INFO */}
+
           <motion.div
+
             className="contact-info"
+
             variants={formVariants}
           >
 
@@ -181,10 +226,15 @@ export default function ContactSection() {
                 title: "Location",
                 value: "Chennai, India",
               },
+
             ].map((item, index) => (
+
               <motion.div
+
                 key={index}
+
                 className="info-item"
+
                 variants={inputVariants}
 
                 whileHover={{
@@ -196,12 +246,53 @@ export default function ContactSection() {
                   stiffness: 200,
                 }}
               >
+
                 <span>{item.title}</span>
+
                 <p>{item.value}</p>
+
               </motion.div>
+
             ))}
 
           </motion.div>
+
+          {/* SOCIALS */}
+
+          <motion.div
+
+            className="social-links"
+
+            variants={formVariants}
+          >
+
+            {[
+              "Instagram",
+              "Behance",
+              "LinkedIn"
+            ].map((social, i) => (
+
+              <motion.a
+
+                key={i}
+
+                href="/"
+
+                variants={inputVariants}
+
+                whileHover={{
+                  y: -3,
+                }}
+              >
+
+                {social}
+
+              </motion.a>
+
+            ))}
+
+          </motion.div>
+
         </motion.div>
 
         {/* =========================
@@ -209,7 +300,9 @@ export default function ContactSection() {
         ========================= */}
 
         <motion.div
+
           className="contact-form-wrapper"
+
           variants={panelVariants}
 
           whileHover={{
@@ -221,22 +314,34 @@ export default function ContactSection() {
           }}
         >
 
+          {/* REFLECTION */}
+
+          <div className="form-reflection"></div>
+
           <motion.form
+
             className="contact-form"
+
             variants={formVariants}
           >
 
             {/* ROW */}
+
             <div className="form-input-row">
 
               <motion.div
+
                 className="input-group"
+
                 variants={inputVariants}
               >
+
                 <label>Name</label>
 
                 <motion.input
+
                   type="text"
+
                   placeholder="Your Name"
 
                   whileFocus={{
@@ -247,16 +352,22 @@ export default function ContactSection() {
                     duration: 0.2,
                   }}
                 />
+
               </motion.div>
 
               <motion.div
+
                 className="input-group"
+
                 variants={inputVariants}
               >
+
                 <label>Email</label>
 
                 <motion.input
+
                   type="email"
+
                   placeholder="Your Email"
 
                   whileFocus={{
@@ -267,6 +378,7 @@ export default function ContactSection() {
                     duration: 0.2,
                   }}
                 />
+
               </motion.div>
 
             </div>
@@ -274,52 +386,87 @@ export default function ContactSection() {
             {/* SELECT */}
 
             <motion.div
+
               className="input-group"
+
               variants={inputVariants}
             >
+
               <label>Project Type</label>
 
               <motion.select
+
                 whileFocus={{
                   scale: 1.02,
                 }}
               >
+
                 <option>Select Project</option>
-                <option>Brand Film</option>
-                <option>Commercial</option>
-                <option>Music Video</option>
-                <option>Photography</option>
+
+                <option>
+                  Social Media Campaign
+                </option>
+
+                <option>
+                  Content System
+                </option>
+
+                <option>
+                  Brand Identity
+                </option>
+
+                <option>
+                  Luxury Reels
+                </option>
+
+                <option>
+                  Creator Branding
+                </option>
+
+                <option>
+                  Commercial Production
+                </option>
+
               </motion.select>
+
             </motion.div>
 
             {/* TEXTAREA */}
 
             <motion.div
+
               className="input-group"
+
               variants={inputVariants}
             >
+
               <label>Message</label>
 
               <motion.textarea
+
                 rows={6}
+
                 placeholder="Tell us about your vision..."
 
                 whileFocus={{
                   scale: 1.02,
                 }}
               />
+
             </motion.div>
 
             {/* BUTTON */}
 
             <motion.button
+
               type="submit"
+
               className="submit-btn"
 
               variants={inputVariants}
 
               whileHover={{
-                scale: 1.05,
+                scale: 1.04,
                 y: -4,
               }}
 
@@ -333,14 +480,30 @@ export default function ContactSection() {
                 damping: 15,
               }}
             >
-              LET’S CREATE MAGIC
+
+              START A PROJECT ↗
+
             </motion.button>
+
+            {/* RESPONSE */}
+
+            <motion.p
+
+              className="response-text"
+
+              variants={inputVariants}
+            >
+
+              Usually responds within 24 hours
+
+            </motion.p>
 
           </motion.form>
 
         </motion.div>
 
       </motion.div>
+
     </section>
   );
 }

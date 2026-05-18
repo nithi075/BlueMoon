@@ -1,266 +1,164 @@
 /* =========================================================
-   ULTRA PREMIUM HERO SECTION
+   EDITORIAL LUXURY HERO SECTION (HOTC INSPIRED)
 ========================================================= */
 
 .hero-section {
   position: relative;
-
   width: 100%;
   height: 100vh;
-
+  height: 100dvh; /* Safari & Chrome mobile address bar layout fixes */
   overflow: hidden;
-
   background: #05070d;
 }
 
 /* =========================================================
-   VIDEO BACKGROUND
+   CINEMATIC VIDEO BACKGROUND
 ========================================================= */
 
 .hero-video-wrapper {
   position: absolute;
-
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   overflow: hidden;
-
   z-index: 1;
 }
 
 .hero-video {
   position: absolute;
-
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
-  transform: scale(1.08);
-
+  transform: scale(1.04); /* Subtle scale for parallax feel */
   pointer-events: none;
-
-  filter:
-    brightness(0.72)
-    contrast(1.05)
-    saturate(1.05);
+  filter: brightness(0.65) contrast(1.02) saturate(0.95);
 }
 
 /* =========================================================
-   DARK OVERLAY
+   PREMIUM LUXURY GRADIENT OVERLAYS
 ========================================================= */
 
 .hero-overlay {
   position: absolute;
-
   inset: 0;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.38),
-      rgba(0,0,0,0.82)
-    );
-
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 7, 13, 0.4) 0%,
+    rgba(5, 7, 13, 0.8) 100%
+  );
   z-index: 2;
 }
 
-/* =========================================================
-   CYAN GLOW
-========================================================= */
-
 .hero-gradient {
   position: absolute;
-
   inset: 0;
-
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(0,210,230,0.16),
-      transparent 35%
-    );
-
+  background: radial-gradient(
+    circle at 85% 20%,
+    rgba(0, 210, 230, 0.12),
+    transparent 45%
+  );
   z-index: 3;
 }
 
-/* =========================================================
-   GRID TEXTURE
-========================================================= */
-
+/* Structural fine lines instead of bulky tech grids */
 .hero-grid {
   position: absolute;
-
   inset: 0;
-
-  background-image:
-    linear-gradient(
-      rgba(255,255,255,0.02) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,0.02) 1px,
-      transparent 1px
-    );
-
-  background-size: 70px 70px;
-
-  opacity: 0.32;
-
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 12vh;
+  opacity: 0.5;
   z-index: 3;
 }
 
 /* =========================================================
-   HERO CONTENT
+   HERO CONTENT (Centered & Balanced Layout)
 ========================================================= */
 
 .hero-content {
   position: relative;
-
   z-index: 10;
-
   width: 100%;
   height: 100%;
-
-  max-width: 1450px;
-
+  max-width: 1600px;
   margin: 0 auto;
-
-  padding: 0 6%;
-
+  padding: 0 8%;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
+  align-items: center; 
+  text-align: center;
 }
 
 /* =========================================================
-   HERO TAG
+   EDITORIAL MINIMAL TAG
 ========================================================= */
 
 .hero-tag {
   width: fit-content;
-
   display: flex;
   align-items: center;
-
-  gap: 0.8rem;
-
-  padding:
-    0.9rem 1.25rem;
-
-  border-radius: 999px;
-
-  background:
-    rgba(255,255,255,0.05);
-
-  backdrop-filter: blur(18px);
-
-  border:
-    1px solid rgba(255,255,255,0.08);
-
-  color:
-    rgba(255,255,255,0.9);
-
-  font-size: 0.72rem;
-  font-weight: 700;
-
-  letter-spacing: 2.5px;
-
+  gap: 0.6rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 0px; /* Sharp editorial structure */
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 4px; /* Premium tracking */
   text-transform: uppercase;
-
-  margin-bottom: 2.3rem;
-
-  box-shadow:
-    0 10px 35px rgba(0,0,0,0.28);
+  margin-bottom: 3rem;
 }
 
-/* =========================================================
-   PULSE DOT
-========================================================= */
-
 .pulse-dot {
-  width: 10px;
-  height: 10px;
-
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-
   background: #00D2E6;
-
   position: relative;
-
-  box-shadow:
-    0 0 18px rgba(0,210,230,0.85);
 }
 
 .pulse-dot::after {
   content: "";
-
   position: absolute;
-
-  inset: -5px;
-
+  inset: -4px;
   border-radius: 50%;
-
-  border: 1px solid #00D2E6;
-
-  animation: pulse 2s infinite;
+  border: 1px solid rgba(0, 210, 230, 0.5);
+  animation: pulse 2.5s infinite ease-in-out;
 }
 
 @keyframes pulse {
-
-  0% {
-    transform: scale(0.8);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1.8);
-    opacity: 0;
-  }
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 
 /* =========================================================
-   TITLE
+   LUXURY FINE-ART TYPOGRAPHY
 ========================================================= */
 
 .hero-title {
-
-  font-size:
-    clamp(4rem, 9vw, 8rem);
-
-  line-height: 0.92;
-
-  font-weight: 900;
-
+  font-size: clamp(2.5rem, 6.2vw, 6.2rem); 
+  line-height: 1.15;
+  font-weight: 300; /* Spaced light text for editorial vibe */
   color: #FFFFFF;
-
-  letter-spacing: -5px;
-
-  max-width: 1050px;
-
-  margin-bottom: 2rem;
-
-  text-shadow:
-    0 10px 40px rgba(0,0,0,0.4);
+  letter-spacing: -1px;
+  max-width: 1200px;
+  margin-bottom: 2.5rem;
+  text-transform: capitalize;
 }
 
 .gradient-text {
-
-  background:
-    linear-gradient(
-      135deg,
-      #00D2E6 0%,
-      #7DF9FF 100%
-    );
-
+  font-weight: 400;
+  background: linear-gradient(
+    135deg,
+    #FFFFFF 30%,
+    #00D2E6 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 /* =========================================================
@@ -268,305 +166,151 @@
 ========================================================= */
 
 .hero-description {
-
-  max-width: 720px;
-
-  color:
-    rgba(255,255,255,0.72);
-
-  font-size: 1.08rem;
-
-  line-height: 2;
-
-  letter-spacing: 0.2px;
-
-  margin-bottom: 3rem;
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 2.2; /* Spaced out text readability */
+  letter-spacing: 0.8px;
+  margin-bottom: 4rem;
 }
 
 /* =========================================================
-   BUTTONS
+   MINIMAL BUTTONS (Sharp & Clutter-free)
 ========================================================= */
 
 .hero-buttons {
-
   display: flex;
   align-items: center;
-
-  gap: 1.2rem;
+  gap: 2rem;
 }
 
-/* =========================================================
-   PRIMARY BUTTON
-========================================================= */
-
+/* Primary Button */
 .hero-btn-primary {
-
   position: relative;
-
-  overflow: hidden;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding:
-    1.1rem 2rem;
-
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #00D2E6,
-      #00AFC0
-    );
-
-  color: #FFFFFF;
-
+  padding: 1.2rem 2.8rem;
+  border-radius: 0px; 
+  background: #FFFFFF; /* High contrast clean button */
+  color: #05070d;
   text-decoration: none;
-
-  font-size: 0.8rem;
-  font-weight: 700;
-
-  letter-spacing: 1.5px;
-
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
   text-transform: uppercase;
-
-  box-shadow:
-    0 14px 40px rgba(0,210,230,0.32);
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.hero-btn-primary::before {
-
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: -120%;
-
-  width: 120%;
-  height: 100%;
-
-  background:
-    linear-gradient(
-      120deg,
-      transparent,
-      rgba(255,255,255,0.22),
-      transparent
-    );
-
-  transition:
-    left 0.7s ease;
-}
-
-.hero-btn-primary:hover::before {
-  left: 120%;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid #FFFFFF;
 }
 
 .hero-btn-primary:hover {
-
-  transform:
-    translateY(-4px);
-
-  box-shadow:
-    0 18px 55px rgba(0,210,230,0.45);
+  background: transparent;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
 }
 
-/* =========================================================
-   SECONDARY BUTTON
-========================================================= */
-
+/* Secondary Button */
 .hero-btn-secondary {
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding:
-    1.1rem 2rem;
-
-  border-radius: 999px;
-
-  border:
-    1px solid rgba(255,255,255,0.1);
-
-  background:
-    rgba(255,255,255,0.04);
-
-  backdrop-filter: blur(16px);
-
+  padding: 1.2rem 2.8rem;
+  border-radius: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
   color: #FFFFFF;
-
   text-decoration: none;
-
-  font-size: 0.8rem;
-  font-weight: 700;
-
-  letter-spacing: 1.5px;
-
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
   text-transform: uppercase;
-
-  transition:
-    background 0.35s ease,
-    transform 0.35s ease,
-    border-color 0.35s ease;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .hero-btn-secondary:hover {
-
-  background:
-    rgba(255,255,255,0.08);
-
-  border-color:
-    rgba(0,210,230,0.18);
-
-  transform:
-    translateY(-4px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #00D2E6; /* Smooth inject of your cyan tone */
+  transform: translateY(-2px);
 }
 
 /* =========================================================
-   SCROLL INDICATOR
+   SCROLL INDICATOR (Minimal Vertical Line Accent)
 ========================================================= */
 
 .scroll-indicator {
-
   position: absolute;
-
   left: 50%;
-  bottom: 30px;
-
+  bottom: 40px;
   transform: translateX(-50%);
-
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .mouse {
-
-  width: 30px;
-  height: 54px;
-
-  border-radius: 999px;
-
-  border:
-    1px solid rgba(255,255,255,0.18);
-
-  display: flex;
-  justify-content: center;
-
-  padding-top: 8px;
-
-  backdrop-filter: blur(10px);
+  width: 1px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
 .wheel {
-
-  width: 5px;
-  height: 10px;
-
-  border-radius: 999px;
-
-  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #00D2E6; /* Cyan scroll color identity */
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE & MOBILE DESIGN
 ========================================================= */
 
-@media (max-width: 992px) {
-
-  .hero-title {
-    max-width: 850px;
-  }
-
-}
-
 @media (max-width: 768px) {
-
   .hero-content {
-
-    align-items: center;
-
-    text-align: center;
-
-    padding: 0 1.5rem;
+    padding: 0 1.8rem;
   }
 
   .hero-tag {
-
-    font-size: 0.62rem;
-
-    letter-spacing: 1.5px;
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
   }
 
   .hero-title {
-
-    font-size: 3.3rem;
-
-    line-height: 1;
-
-    letter-spacing: -2px;
-  }
-
-  .hero-description {
-
-    font-size: 0.98rem;
-
-    line-height: 1.9;
-  }
-
-  .hero-buttons {
-
-    flex-direction: column;
-
-    width: 100%;
-  }
-
-  .hero-btn-primary,
-  .hero-btn-secondary {
-
-    width: 100%;
-
-    max-width: 320px;
-
-    text-align: center;
-  }
-
-}
-
-@media (max-width: 480px) {
-
-  .hero-title {
-    font-size: 2.6rem;
+    font-size: 2.1rem;
+    line-height: 1.25;
+    letter-spacing: 0px;
+    margin-bottom: 1.8rem;
   }
 
   .hero-description {
     font-size: 0.9rem;
+    line-height: 1.9;
+    margin-bottom: 3.5rem;
   }
 
   .hero-buttons {
-    gap: 0.9rem;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
   }
 
   .hero-btn-primary,
   .hero-btn-secondary {
-
-    padding:
-      1rem 1.5rem;
-
-    font-size: 0.72rem;
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem 2rem;
   }
-
-  .hero-tag {
-
-    padding:
-      0.75rem 1rem;
+  
+  .hero-video {
+    transform: scale(1.1); /* Prevents white spaces on dynamic mobile screen resizing */
   }
-
 }
 /* =========================================================
    RESPONSIVE (TABLETS & MOBILE DISCOVERIES)
@@ -694,5 +438,17 @@
   }
   .scroll-indicator {
     display: none; /* Layout overlay issues protection */
+  }
+}
+
+/* LANDSCAPE ORIENTATION BUG FIXES */
+@media (max-width: 932px) and (orientation: landscape) {
+  .hero-section {
+    height: auto;
+    min-height: 140vh;
+    padding: 5rem 0;
+  }
+  .scroll-indicator {
+    display: none;
   }
 }

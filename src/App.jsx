@@ -14,6 +14,8 @@ import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import Contact from "./components/Contact/Contact";
 import Portfolio from "./components/Portfolio/Portfolio";
+import Awards from "./components/award/Awards";
+import BrandBanner from "./components/banner/Banner";
 
 function HomePage() {
   return (
@@ -28,9 +30,9 @@ function HomePage() {
         <Services />
       </section>
 
-      <section id="featured">
+      {/* <section id="featured">
         <Featured />
-      </section>
+      </section> */}
 
       <section id="about">
         <About />
@@ -38,6 +40,10 @@ function HomePage() {
 
       <section id="portfolio">
         <Portfolio />
+      </section>
+
+      <section id="awards">
+        <Awards/>
       </section>
 
       <section id="packages">
@@ -51,7 +57,9 @@ function HomePage() {
       <section id="instagram">
         <Instagram />
       </section>
-
+    <section id="banner">
+      <BrandBanner/>
+    </section>
       <section id="location">
         <Location />
       </section>
