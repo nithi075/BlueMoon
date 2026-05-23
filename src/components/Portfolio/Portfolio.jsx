@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 
-import {
-  motion,
-  AnimatePresence,
-} from "framer-motion";
-
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 import "./Portfolio.css";
 
@@ -22,84 +23,84 @@ const Portfolio = () => {
   const [activeCategory, setActiveCategory] =
     useState("all");
 
-  /* =========================================================
-     VIDEO OVERLAY
-  ========================================================= */
+  const scrollRef = useRef(null);
 
-  const [selectedVideo, setSelectedVideo] =
-    useState(null);
-
-  /* =========================================================
-     ITEMS
-  ========================================================= */
+  /* =========================
+     PORTFOLIO DATA
+  ========================= */
 
   const portfolioItems = [
 
     {
       id: 1,
-
-      title: "Luxury Cafe Launch",
-
-      category: "social-campaign",
-
-      tag: "INSTAGRAM CAMPAIGN",
-
+      title: "Luxury Saree Campaign",
+      subtitle: "Editorial Fashion Shoot",
+      description:
+        "Premium cinematic saree visuals crafted with luxury styling and modern storytelling.",
+      category: "fashion-shoots",
+      tag: "FASHION",
+      year: "2026",
       video: video1,
+      link: "/gallery",
     },
 
     {
       id: 2,
-
-      title: "Fashion Brand Reels",
-
-      category: "reels",
-
-      tag: "SHORT FORM CONTENT",
-
+      title: "Model Portfolio Visuals",
+      subtitle: "High Fashion Production",
+      description:
+        "Luxury model shoot designed with elegant lighting and cinematic compositions.",
+      category: "fashion-shoots",
+      tag: "MODEL SHOOT",
+      year: "2026",
       video: video2,
+      link: "/gallery",
     },
 
     {
       id: 3,
-
-      title: "Restaurant Content System",
-
-      category: "social-campaign",
-
-      tag: "SOCIAL MEDIA MANAGEMENT",
-
+      title: "Jewelry Brand Film",
+      subtitle: "Luxury Product Campaign",
+      description:
+        "Premium jewelry visuals crafted with refined luxury aesthetics.",
+      category: "jewelry-shoots",
+      tag: "JEWELRY",
+      year: "2026",
       video: video3,
+      link: "/gallery",
     },
 
     {
       id: 4,
-
-      title: "Creator Growth Campaign",
-
-      category: "brand-identity",
-
-      tag: "PERSONAL BRANDING",
-
+      title: "Product Commercial Reel",
+      subtitle: "Commercial Ad Production",
+      description:
+        "Modern product commercial focused on premium lighting and storytelling.",
+      category: "product-shoots",
+      tag: "PRODUCT",
+      year: "2025",
       video: video4,
+      link: "/gallery",
     },
 
     {
       id: 5,
-
-      title: "Real Estate Visual Campaign",
-
-      category: "reels",
-
-      tag: "CINEMATIC REELS",
-
+      title: "Brand Commercial Film",
+      subtitle: "Luxury Reel Commercial",
+      description:
+        "High-end commercial crafted to elevate modern brands.",
+      category: "commercials",
+      tag: "COMMERCIAL",
+      year: "2026",
       video: video5,
+      link: "/gallery",
     },
 
   ];
 
-  /* =========================================================
+  /* =========================
      FILTERS
-  ========================================================= */
+  ========================= */
 
   const categories = [
 
@@ -109,626 +110,293 @@ const Portfolio = () => {
     },
 
     {
-      id: "reels",
-      label: "REELS",
+      id: "fashion-shoots",
+      label: "FASHION",
     },
 
     {
-      id: "social-campaign",
-      label: "SOCIAL CAMPAIGNS",
+      id: "commercials",
+      label: "COMMERCIALS",
     },
 
     {
-      id: "brand-identity",
-      label: "BRAND IDENTITY",
+      id: "jewelry-shoots",
+      label: "JEWELRY",
+    },
+
+    {
+      id: "product-shoots",
+      label: "PRODUCTS",
     },
 
   ];
 
-  /* =========================================================
-     FILTER LOGIC
-  ========================================================= */
-
   const filteredItems =
-
     activeCategory === "all"
-
       ? portfolioItems
-
       : portfolioItems.filter(
           (item) =>
             item.category === activeCategory
         );
 
+  /* =========================
+     AUTO CENTER SCROLL
+  ========================= */
+
+  useEffect(() => {
+
+    const container =
+      scrollRef.current;
+
+    if (!container) return;
+
+    let currentIndex = 0;
+
+    const cards =
+      container.querySelectorAll(
+        ".portfolio-card"
+      );
+
+    const scrollToCard = () => {
+
+      if (!cards.length) return;
+
+      const card =
+        cards[currentIndex];
+
+      const containerWidth =
+        container.offsetWidth;
+
+      const cardWidth =
+        card.offsetWidth;
+
+      const cardLeft =
+        card.offsetLeft;
+
+      const scrollPosition =
+        cardLeft -
+        containerWidth / 2 +
+        cardWidth / 2;
+
+      container.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+
+      currentIndex++;
+
+      if (
+        currentIndex >= cards.length
+      ) {
+        currentIndex = 0;
+      }
+
+    };
+
+    scrollToCard();
+
+    const interval =
+      setInterval(() => {
+
+        scrollToCard();
+
+      }, 3000);
+
+    return () =>
+      clearInterval(interval);
+
+  }, [activeCategory]);
+
   return (
 
     <section
-
-      className="portfolio-section-grid"
-
+      className="portfolio-section"
       id="portfolio"
     >
 
-      {/* BG TEXT */}
+      <div className="portfolio-container">
 
-      <div className="portfolio-bg-text">
-        PORTFOLIO
-      </div>
-
-      {/* GLOW */}
-
-      <motion.div
-
-        className="portfolio-main-glow"
-
-        animate={{
-
-          scale: [1, 1.08, 1],
-
-          opacity: [0.3, 0.6, 0.3],
-
-        }}
-
-        transition={{
-
-          duration: 8,
-
-          repeat: Infinity,
-
-          ease: "easeInOut",
-
-        }}
-      />
-
-      <div className="portfolio-master-container">
-
-        {/* =====================================================
-            HEADER
-        ===================================================== */}
+        {/* HEADER */}
 
         <motion.div
-
-          className="portfolio-section-header"
-
+          className="portfolio-top"
           initial={{
             opacity: 0,
-            y: 50,
+            y: 40,
           }}
-
           whileInView={{
             opacity: 1,
             y: 0,
           }}
-
+          transition={{
+            duration: 0.8,
+          }}
           viewport={{
             once: true,
           }}
-
-          transition={{
-            duration: 1,
-            ease: [0.22, 1, 0.36, 1],
-          }}
         >
 
-          <span className="section-subtitle">
+          <div className="portfolio-heading">
 
-            FEATURED PORTFOLIO
+            <div className="portfolio-mini-label">
 
-          </span>
+              <span className="portfolio-dot"></span>
 
-          <h2 className="section-title">
+              <p>
+                FEATURED & RECOGNIZED
+              </p>
 
-            Content Built
+            </div>
 
-            <span className="text-highlight">
+            <h2 className="portfolio-title">
 
-              {" "}For Attention.
+              Cinematic
+              <span>Brand Stories.</span>
 
-            </span>
+            </h2>
 
-          </h2>
+          </div>
 
-          <p className="portfolio-section-desc">
+          {/* RIGHT */}
 
-            A curated collection of social-first campaigns,
-            cinematic reels, and modern brand storytelling
-            crafted to dominate attention online.
+          <div className="portfolio-right-content">
 
-          </p>
+            <p>
+              Premium videography and luxury
+              visuals crafted with cinematic
+              storytelling and emotional
+              brand experiences.
+            </p>
 
-          {/* FILTERS */}
+            {/* FILTERS */}
 
-          <div className="portfolio-filter-tabs">
+            <div className="portfolio-filter-wrapper">
 
-            {categories.map((cat) => (
+              {categories.map((cat) => (
 
-              <button
+                <button
+                  key={cat.id}
+                  className={`portfolio-filter-btn ${
+                    activeCategory === cat.id
+                      ? "active-filter"
+                      : ""
+                  }`}
+                  onClick={() =>
+                    setActiveCategory(cat.id)
+                  }
+                >
+                  {cat.label}
+                </button>
 
-                key={cat.id}
+              ))}
 
-                className={`filter-tab-btn ${
-                  activeCategory === cat.id
-                    ? "tab-active"
-                    : ""
-                }`}
-
-                onClick={() =>
-                  setActiveCategory(cat.id)
-                }
-              >
-
-                {cat.label}
-
-                {activeCategory === cat.id && (
-
-                  <motion.div
-
-                    layoutId="activeTabPill"
-
-                    className="active-tab-bg-pill"
-
-                    transition={{
-                      type: "spring",
-                      stiffness: 380,
-                      damping: 30,
-                    }}
-                  />
-
-                )}
-
-              </button>
-
-            ))}
+            </div>
 
           </div>
 
         </motion.div>
 
-        {/* =====================================================
-            GRID
-        ===================================================== */}
+        {/* CARDS */}
 
-        <motion.div
-
-          layout
-
-          className="portfolio-cards-masonry"
-
-          initial="hidden"
-
-          whileInView="visible"
-
-          viewport={{
-            once: true,
-            amount: 0.08,
-          }}
-
-          variants={{
-
-            hidden: {},
-
-            visible: {
-
-              transition: {
-
-                staggerChildren: 0.14,
-
-                delayChildren: 0.12,
-
-              },
-
-            },
-          }}
+        <div
+          ref={scrollRef}
+          className="portfolio-scroll-grid"
         >
 
-          <AnimatePresence mode="popLayout">
-
-            {filteredItems.map((item, index) => (
+          {filteredItems.map(
+            (item, index) => (
 
               <motion.div
-
-                layout
-
                 key={item.id}
-
-                className="portfolio-work-card"
-
-                onClick={() =>
-                  setSelectedVideo(item)
-                }
-
-                variants={{
-
-                  hidden: {
-
-                    opacity: 0,
-                    y: 120,
-                    scale: 0.84,
-                    filter: "blur(18px)",
-
-                  },
-
-                  visible: {
-
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    filter: "blur(0px)",
-
-                    transition: {
-
-                      duration: 1,
-
-                      ease: [0.16, 1, 0.3, 1],
-
-                    },
-                  },
-                }}
-
-                exit={{
-
-                  opacity: 0,
-                  y: 40,
-                  scale: 0.9,
-                  filter: "blur(10px)",
-
-                }}
-
-                whileHover={{
-                  y: -16,
-                  scale: 1.015,
-                }}
-
-                whileTap={{
-                  scale: 0.985,
-                }}
-
-                transition={{
-                  type: "spring",
-                  stiffness: 120,
-                  damping: 18,
-                }}
+                className={`portfolio-card ${
+                  index === 1
+                    ? "featured-card"
+                    : ""
+                }`}
               >
 
-                {/* VIDEO */}
-
-                <motion.div
-
-                  className="card-media-viewport"
-
-                  initial="rest"
-
-                  whileHover="hover"
-
-                  animate="rest"
+                <Link
+                  to={item.link}
+                  className="portfolio-card-link"
                 >
 
-                  <motion.video
+                  <div className="portfolio-video-wrapper">
 
-                    src={item.video}
+                    <video
+                      src={item.video}
+                      muted
+                      autoPlay
+                      loop
+                      playsInline
+                    />
 
-                    className="portfolio-card-video"
+                    <div className="video-overlay"></div>
 
-                    muted
-                    playsInline
+                    {/* TOP */}
 
-                    variants={{
+                    <div className="portfolio-card-top">
 
-                      rest: {
+                      <span className="portfolio-card-tag">
+                        {item.tag}
+                      </span>
 
-                        scale: 1,
+                      <span className="portfolio-card-year">
+                        {item.year}
+                      </span>
 
-                        filter: "brightness(.82)",
+                    </div>
 
-                      },
+                    {/* CONTENT */}
 
-                      hover: {
+                    <div className="portfolio-card-content">
 
-                        scale: 1.08,
+                      <div>
 
-                        filter: "brightness(1)",
+                        <p className="portfolio-card-subtitle">
+                          {item.subtitle}
+                        </p>
 
-                      },
-                    }}
+                        <h3 className="portfolio-card-title-card">
+                          {item.title}
+                        </h3>
 
-                    transition={{
-                      duration: 1.2,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                  />
+                      </div>
 
-                  {/* OVERLAY */}
+                      <div>
 
-                  <motion.div
+                        <p className="portfolio-card-text">
+                          {item.description}
+                        </p>
 
-                    className="card-vignette-layer"
+                        <div className="portfolio-view-btn">
 
-                    variants={{
+                          View Project
 
-                      rest: {
-                        opacity: 0.65,
-                      },
+                          <ArrowUpRight
+                            size={18}
+                          />
 
-                      hover: {
-                        opacity: 0.9,
-                      },
-                    }}
-                  />
+                        </div>
 
-                  {/* BADGE */}
+                      </div>
 
-                  <motion.div
+                    </div>
 
-                    className="portfolio-floating-badge"
+                  </div>
 
-                    variants={{
-
-                      rest: {
-
-                        opacity: 0,
-                        y: -12,
-
-                      },
-
-                      hover: {
-
-                        opacity: 1,
-                        y: 0,
-
-                      },
-                    }}
-                  >
-
-                    FEATURED WORK
-
-                  </motion.div>
-
-                </motion.div>
-
-                {/* CONTENT */}
-
-                <motion.div
-
-                  className="card-details-footer"
-
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-
-                  viewport={{
-                    once: true,
-                  }}
-
-                  transition={{
-                    delay: 0.2 + index * 0.05,
-                    duration: 0.7,
-                  }}
-                >
-
-                  <motion.span
-
-                    className="card-meta-tag"
-
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                  >
-
-                    {item.tag}
-
-                  </motion.span>
-
-                  <motion.h3
-
-                    className="card-display-title"
-
-                    whileHover={{
-                      x: 5,
-                    }}
-                  >
-
-                    {item.title}
-
-                  </motion.h3>
-
-                  <motion.p
-
-                    className="portfolio-card-subtext"
-                  >
-
-                    Built for reach, engagement,
-                    and modern digital culture.
-
-                  </motion.p>
-
-                </motion.div>
+                </Link>
 
               </motion.div>
 
-            ))}
+            )
+          )}
 
-          </AnimatePresence>
-
-        </motion.div>
-
-        {/* =====================================================
-            BUTTON
-        ===================================================== */}
-
-        <motion.div
-
-          className="portfolio-view-more"
-
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-
-          viewport={{
-            once: true,
-          }}
-
-          transition={{
-            duration: 1,
-            delay: 0.3,
-          }}
-        >
-
-          <Link
-
-            to="/gallery"
-
-            className="portfolio-view-btn"
-          >
-
-            VIEW FULL PORTFOLIO
-
-            <span className="view-arrow">
-
-              ↗
-
-            </span>
-
-          </Link>
-
-        </motion.div>
+        </div>
 
       </div>
 
-      {/* =====================================================
-          VIDEO OVERLAY
-      ===================================================== */}
-
-      <AnimatePresence>
-
-        {selectedVideo && (
-
-          <motion.div
-
-            className="video-overlay"
-
-            initial={{
-              opacity: 0,
-            }}
-
-            animate={{
-              opacity: 1,
-            }}
-
-            exit={{
-              opacity: 0,
-            }}
-          >
-
-            {/* BACKDROP */}
-
-            <div
-
-              className="video-overlay-backdrop"
-
-              onClick={() =>
-                setSelectedVideo(null)
-              }
-            />
-
-            {/* CONTENT */}
-
-            <motion.div
-
-              className="video-overlay-content"
-
-              initial={{
-                scale: 0.9,
-                opacity: 0,
-                y: 40,
-              }}
-
-              animate={{
-                scale: 1,
-                opacity: 1,
-                y: 0,
-              }}
-
-              exit={{
-                scale: 0.9,
-                opacity: 0,
-                y: 40,
-              }}
-
-              transition={{
-                duration: 0.45,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-
-              {/* CLOSE */}
-
-              <button
-
-                className="video-close-btn"
-
-                onClick={() =>
-                  setSelectedVideo(null)
-                }
-              >
-
-                ✕
-
-              </button>
-
-              {/* VIDEO */}
-
-              <video
-
-                src={selectedVideo.video}
-
-                controls
-                autoPlay
-
-                className="fullscreen-video"
-              />
-
-              {/* INFO */}
-
-              <div className="overlay-video-info">
-
-                <span>
-                  {selectedVideo.tag}
-                </span>
-
-                <h2>
-                  {selectedVideo.title}
-                </h2>
-
-                <p>
-
-                  Built for reach, engagement,
-                  and modern digital culture.
-
-                </p>
-
-              </div>
-
-            </motion.div>
-
-          </motion.div>
-
-        )}
-
-      </AnimatePresence>
-
     </section>
+
   );
 };
 

@@ -1,524 +1,330 @@
-import React, { useState } from "react";
+import React, {
+  useState,
+} from "react";
 
 import {
   motion,
-  AnimatePresence,
 } from "framer-motion";
 
 import {
-  FiPlay,
-  FiArrowUpRight,
-} from "react-icons/fi";
+  ArrowUpRight,
+  Play,
+} from "lucide-react";
 
 import "./Gallery.css";
 
-/* =========================================================
-   LOCAL VIDEOS
-========================================================= */
+/* VIDEOS */
 
 import video1 from "../assets/video1.mp4";
 import video2 from "../assets/video2.mp4";
 import video3 from "../assets/video3.mp4";
 import video4 from "../assets/video4.mp4";
-import Navbar from "../components/Navbar/Navbar";
-
-/* =========================================================
-   COMPONENT
-========================================================= */
+import video5 from "../assets/video2.mp4";
 
 const Gallery = () => {
 
-  /* =========================================================
-     STATES
-  ========================================================= */
+  /* =========================
+     ACTIVE CATEGORY
+  ========================= */
 
   const [activeCategory, setActiveCategory] =
     useState("all");
 
-  const [selectedVideo, setSelectedVideo] =
-    useState(null);
+  /* =========================
+     FILTERS
+  ========================= */
 
-  /* =========================================================
-     PROJECTS
-  ========================================================= */
+  const categories = [
 
-  const videos = [
+    {
+      id: "all",
+      label: "ALL",
+    },
+
+    {
+      id: "fashion",
+      label: "FASHION",
+    },
+
+    {
+      id: "commercial",
+      label: "COMMERCIAL",
+    },
+
+    {
+      id: "jewelry",
+      label: "JEWELRY",
+    },
+
+    {
+      id: "branding",
+      label: "BRANDING",
+    },
+
+  ];
+
+  /* =========================
+     GALLERY DATA
+  ========================= */
+
+  const galleryItems = [
 
     {
       id: 1,
-
-      title: "Luxury Fashion Campaign",
-
-      category: "campaign",
-
+      title: "Luxury Saree Campaign",
+      category: "fashion",
+      type: "Fashion Shoot",
       year: "2026",
-
-      client: "ÉLAN STUDIO",
-
-      duration: "00:48",
-
-      description:
-        "Editorial short-form content crafted for luxury fashion storytelling and modern audience engagement.",
-
-      video: video4,
-    },
-
-    {
-      id: 2,
-
-      title: "Social Media Launch",
-
-      category: "social",
-
-      year: "2026",
-
-      client: "VELORA",
-
-      duration: "00:36",
-
-      description:
-        "High-retention reel campaign engineered for social-first product visibility and viral reach.",
-
-      video: video3,
-    },
-
-    {
-      id: 3,
-
-      title: "Creator Brand Identity",
-
-      category: "branding",
-
-      year: "2025",
-
-      client: "NOIR",
-
-      duration: "00:52",
-
-      description:
-        "Cinematic creator-focused visuals designed to establish premium digital identity and engagement.",
-
       video: video1,
     },
 
     {
-      id: 4,
-
-      title: "Luxury Reel Production",
-
-      category: "reels",
-
+      id: 2,
+      title: "Model Portfolio Visuals",
+      category: "fashion",
+      type: "Model Shoot",
       year: "2026",
-
-      client: "AETHER",
-
-      duration: "00:44",
-
-      description:
-        "Modern reel storytelling combining cinematic motion, premium editing, and social-first strategy.",
-
       video: video2,
+    },
+
+    {
+      id: 3,
+      title: "Jewelry Brand Commercial",
+      category: "jewelry",
+      type: "Jewelry Shoot",
+      year: "2025",
+      video: video3,
+    },
+
+    {
+      id: 4,
+      title: "Product Commercial Reel",
+      category: "commercial",
+      type: "Commercial",
+      year: "2025",
+      video: video4,
+    },
+
+    {
+      id: 5,
+      title: "Brand Story Campaign",
+      category: "branding",
+      type: "Brand Visuals",
+      year: "2026",
+      video: video5,
     },
 
   ];
 
-  /* =========================================================
-     FILTERS
-  ========================================================= */
-
-  const categories = [
-
-    "all",
-    "campaign",
-    "social",
-    "branding",
-    "reels",
-
-  ];
-
-  /* =========================================================
+  /* =========================
      FILTER LOGIC
-  ========================================================= */
+  ========================= */
 
-  const filteredVideos =
-
+  const filteredItems =
     activeCategory === "all"
-
-      ? videos
-
-      : videos.filter(
-          (video) =>
-            video.category === activeCategory
+      ? galleryItems
+      : galleryItems.filter(
+          (item) =>
+            item.category ===
+            activeCategory
         );
 
   return (
-    
-    <section className="gallery-page">
-      <Navbar />
-      {/* =====================================================
-          BG TEXT
-      ===================================================== */}
 
-      <div className="gallery-bg-text">
-        PROJECTS
-      </div>
+    <section className="gallery-section">
 
-      {/* =====================================================
-          MAIN GLOW
-      ===================================================== */}
-
-      <motion.div
-
-        className="gallery-main-glow"
-
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.4, 0.8, 0.4],
-        }}
-
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* =====================================================
+      {/* =========================
           HERO
-      ===================================================== */}
+      ========================= */}
 
       <div className="gallery-hero">
 
-        <motion.span
-
-          className="gallery-label"
-
+        <motion.div
           initial={{
             opacity: 0,
-            y: 20,
+            y: 40,
           }}
-
-          whileInView={{
+          animate={{
             opacity: 1,
             y: 0,
           }}
-
-          viewport={{
-            once: true,
-          }}
-
           transition={{
             duration: 0.8,
           }}
         >
 
-          SOCIAL-FIRST SHOWCASE
+          <div className="gallery-mini-label">
 
-        </motion.span>
+            <span></span>
 
-        {/* TITLE */}
+            <p>
+              SELECTED WORK
+            </p>
 
-        <motion.h1
+          </div>
 
-          initial={{
-            opacity: 0,
-            y: 60,
-          }}
+          <h1 className="gallery-title">
 
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
+            Cinematic
+            <span> Gallery.</span>
 
-          viewport={{
-            once: true,
-          }}
+          </h1>
 
-          transition={{
-            duration: 1,
-          }}
-        >
-
-          Built For
-
-          <span className="gallery-accent">
-
-            {" "}Attention
-
-          </span>
-
-        </motion.h1>
-
-        {/* DESCRIPTION */}
+        </motion.div>
 
         <motion.p
-
+          className="gallery-description"
           initial={{
             opacity: 0,
             y: 30,
           }}
-
-          whileInView={{
+          animate={{
             opacity: 1,
             y: 0,
           }}
-
-          viewport={{
-            once: true,
-          }}
-
           transition={{
-            duration: 1,
+            duration: 0.8,
             delay: 0.2,
           }}
         >
 
-          Explore cinematic reel campaigns,
-          social-first storytelling,
-          luxury brand visuals,
-          and modern digital experiences
-          crafted to dominate attention.
+          A curated collection of luxury
+          visuals, cinematic storytelling,
+          fashion campaigns, commercials,
+          and premium brand productions.
 
         </motion.p>
 
       </div>
 
-      {/* =====================================================
+      {/* =========================
           FILTERS
-      ===================================================== */}
+      ========================= */}
 
-      <motion.div
-
-        className="gallery-filters"
-
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-
-        viewport={{
-          once: true,
-        }}
-
-        transition={{
-          duration: 0.8,
-        }}
-      >
+      <div className="gallery-filter-wrapper">
 
         {categories.map((cat) => (
 
-          <motion.button
-
-            key={cat}
-
-            onClick={() =>
-              setActiveCategory(cat)
-            }
-
-            className={
-              activeCategory === cat
-                ? "active-filter"
+          <button
+            key={cat.id}
+            className={`gallery-filter-btn ${
+              activeCategory === cat.id
+                ? "active-gallery-filter"
                 : ""
+            }`}
+            onClick={() =>
+              setActiveCategory(cat.id)
             }
-
-            whileHover={{
-              y: -3,
-            }}
-
-            whileTap={{
-              scale: 0.95,
-            }}
           >
 
-            {cat.toUpperCase()}
+            {cat.label}
 
-          </motion.button>
+          </button>
 
         ))}
 
-      </motion.div>
+      </div>
 
-      {/* =====================================================
+      {/* =========================
+          STATS
+      ========================= */}
+
+  
+
+      {/* =========================
           GRID
-      ===================================================== */}
+      ========================= */}
 
-      <motion.div
+      <div className="gallery-grid">
 
-        layout
-
-        className="gallery-grid"
-      >
-
-        <AnimatePresence mode="popLayout">
-
-          {filteredVideos.map((item) => (
+        {filteredItems.map(
+          (item, index) => (
 
             <motion.div
-
-              layout
-
               key={item.id}
-
-              onClick={() =>
-                setSelectedVideo(item)
-              }
-
               className={`gallery-card ${
-                item.id === 1
-                  ? "featured-gallery-card"
+                index === 1
+                  ? "gallery-featured"
                   : ""
               }`}
-
               initial={{
                 opacity: 0,
-                y: 80,
-                scale: 0.92,
-                filter: "blur(12px)",
+                y: 50,
               }}
-
-              animate={{
+              whileInView={{
                 opacity: 1,
                 y: 0,
-                scale: 1,
-                filter: "blur(0px)",
               }}
-
-              exit={{
-                opacity: 0,
-                y: 40,
-                scale: 0.92,
-              }}
-
-              whileHover={{
-                y: -14,
-              }}
-
               transition={{
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1],
+                duration: 0.7,
+                delay: index * 0.08,
+              }}
+              viewport={{
+                once: true,
               }}
             >
 
-              {/* REFLECTION */}
-
-              <div className="gallery-reflection"></div>
-
-              {/* =================================================
-                  VIDEO
-              ================================================= */}
+              {/* VIDEO */}
 
               <div className="gallery-video-wrapper">
 
                 <video
-
                   src={item.video}
-
-                  className="gallery-video"
-
+                  autoPlay
                   muted
+                  loop
                   playsInline
-                  preload="metadata"
-
                 />
 
-                {/* OVERLAY */}
+                <div className="gallery-overlay"></div>
 
-                <div className="gallery-overlay">
+                {/* TOP */}
 
-                  <motion.div
-
-                    className="gallery-play-btn"
-
-                    whileHover={{
-                      scale: 1.08,
-                    }}
-                  >
-
-                    <FiPlay />
-
-                  </motion.div>
-
-                </div>
-
-                {/* TOP META */}
-
-                <div className="gallery-top-meta">
+                <div className="gallery-card-top">
 
                   <span>
-                    {item.client}
+                    {item.type}
                   </span>
 
-                  <span>
-                    {item.duration}
-                  </span>
-
-                </div>
-
-                {/* CATEGORY */}
-
-                <div className="gallery-category-badge">
-
-                  {item.category}
-
-                </div>
-
-              </div>
-
-              {/* =================================================
-                  CONTENT
-              ================================================= */}
-
-              <div className="gallery-content">
-
-                <div className="gallery-content-top">
-
-                  <span className="gallery-year">
-
+                  <p>
                     {item.year}
-
-                  </span>
+                  </p>
 
                 </div>
 
-                {/* TITLE */}
+                {/* PLAY */}
 
-                <h3>
+                <div className="gallery-play-btn">
 
-                  {item.title}
+                  <Play size={20} />
 
-                </h3>
+                </div>
 
-                {/* DESC */}
+                {/* CONTENT */}
 
-                <p>
+                <div className="gallery-content">
 
-                  {item.description}
+                  <div>
 
-                </p>
+                    <p>
+                      Premium Production
+                    </p>
 
-                {/* FOOTER */}
+                    <h2>
+                      {item.title}
+                    </h2>
 
-                <div className="gallery-footer">
+                  </div>
 
-                  <motion.button
+                  <button>
 
-                    className="gallery-watch-btn"
+                    Explore
 
-                    whileHover={{
-                      x: 3,
-                    }}
-                  >
+                    <ArrowUpRight
+                      size={18}
+                    />
 
-                    WATCH REEL
-
-                    <FiArrowUpRight />
-
-                  </motion.button>
+                  </button>
 
                 </div>
 
@@ -526,132 +332,38 @@ const Gallery = () => {
 
             </motion.div>
 
-          ))}
-
-        </AnimatePresence>
-
-      </motion.div>
-
-      {/* =====================================================
-          VIDEO OVERLAY
-      ===================================================== */}
-
-      <AnimatePresence>
-
-        {selectedVideo && (
-
-          <motion.div
-
-            className="video-overlay"
-
-            initial={{
-              opacity: 0,
-            }}
-
-            animate={{
-              opacity: 1,
-            }}
-
-            exit={{
-              opacity: 0,
-            }}
-          >
-
-            {/* BACKDROP */}
-
-            <div
-
-              className="video-overlay-backdrop"
-
-              onClick={() =>
-                setSelectedVideo(null)
-              }
-            />
-
-            {/* CONTENT */}
-
-            <motion.div
-
-              className="video-overlay-content"
-
-              initial={{
-                scale: 0.9,
-                opacity: 0,
-                y: 40,
-              }}
-
-              animate={{
-                scale: 1,
-                opacity: 1,
-                y: 0,
-              }}
-
-              exit={{
-                scale: 0.9,
-                opacity: 0,
-                y: 40,
-              }}
-
-              transition={{
-                duration: 0.45,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-
-              {/* CLOSE */}
-
-              <button
-
-                className="video-close-btn"
-
-                onClick={() =>
-                  setSelectedVideo(null)
-                }
-              >
-
-                ✕
-
-              </button>
-
-              {/* VIDEO */}
-
-              <video
-
-                src={selectedVideo.video}
-
-                controls
-                autoPlay
-
-                className="fullscreen-video"
-              />
-
-              {/* INFO */}
-
-              <div className="overlay-video-info">
-
-                <span>
-                  {selectedVideo.category}
-                </span>
-
-                <h2>
-                  {selectedVideo.title}
-                </h2>
-
-                <p>
-                  {selectedVideo.description}
-                </p>
-
-              </div>
-
-            </motion.div>
-
-          </motion.div>
-
+          )
         )}
 
-      </AnimatePresence>
+      </div>
+
+      {/* =========================
+          CTA
+      ========================= */}
+
+      <div className="gallery-bottom">
+
+        <h2>
+
+          Turning Creative Ideas
+          Into Cinematic Experiences.
+
+        </h2>
+
+        <button>
+
+          Start Your Project
+
+          <ArrowUpRight
+            size={18}
+          />
+
+        </button>
+
+      </div>
 
     </section>
+
   );
 };
 
